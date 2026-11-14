@@ -19,6 +19,7 @@
         body.dark-mode .reader-header { background: rgba(17, 34, 51, 0.98); }
         body.dark-mode .reader-tool-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
         body.dark-mode .reader-content h1, body.dark-mode .reader-content h2 { color: var(--accent-sand); }
+        body.dark-mode .reader-content { background-color: #112233; border-color: #2a3f4d; }
         body.dark-mode .toc-item, body.dark-mode .collection-item, body.dark-mode .character-card-collection { background: #1a2f3a; border-color: #2a3f4d; }
         body.dark-mode .toc-item.active { background: #0e2130; border-color: var(--accent-sand); }
         body.dark-mode .toc-number { color: var(--accent-sand); }
@@ -59,7 +60,20 @@
         .font-sizer button { background: var(--bg-paper); border: 1px solid var(--border-color); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px; color: var(--text-main); transition: all 0.2s; }
         .font-sizer button:hover { background: var(--accent-sand); color: white; border-color: var(--accent-sand); }
 
-        .reader-content { max-width: 800px; margin: 50px auto; padding: 0 20px; font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.8; color: var(--text-main); }
+        /* --- ЛИСТ С ТЕКСТОМ: ЧИСТО БЕЛЫЙ ФОН --- */
+        .reader-content { 
+            max-width: 800px; 
+            margin: 50px auto; 
+            padding: 60px 50px; 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 22px; 
+            line-height: 1.8; 
+            color: var(--text-main); 
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px; 
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
         .reader-content h1 { font-size: 48px; text-align: center; margin-bottom: 10px; color: var(--accent-sea); }
         .reader-content h2 { font-size: 32px; text-align: center; margin-bottom: 10px; color: var(--text-muted); font-style: italic; }
         .reader-content p { margin-bottom: 25px; text-indent: 30px; }
@@ -209,7 +223,7 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 768px) {
-            .reader-content { font-size: 18px; padding: 0 15px; margin: 30px auto; }
+            .reader-content { font-size: 18px; padding: 30px 20px; margin: 20px auto; border-radius: 0; border-left: none; border-right: none; }
             .reader-content h1 { font-size: 28px; }
             .reader-content h2 { font-size: 22px; }
             .reader-header { flex-direction: column; gap: 10px; padding: 10px; }
@@ -240,8 +254,8 @@
         <a href="index.html" class="close-reader"><span data-ru="✕ Закрыть" data-en="✕ Close">✕ Закрыть</span></a>
         <div class="reader-nav">
             <button class="reader-tool-btn" onclick="showPage('toc-page')">☰ <span data-ru="Оглавление" data-en="Contents">Оглавление</span></button>
-            <button class="reader-tool-btn" onclick="showPage('collection-page')"> <span data-ru="Коллекция" data-en="Collection">Коллекция</span></button>
-            <button class="reader-tool-btn" onclick="showPage('map-page')"> <span data-ru="Карта" data-en="Map">Карта</span></button>
+            <button class="reader-tool-btn" onclick="showPage('collection-page')">🏆 <span data-ru="Коллекция" data-en="Collection">Коллекция</span></button>
+            <button class="reader-tool-btn" onclick="showPage('map-page')">🗺️ <span data-ru="Карта" data-en="Map">Карта</span></button>
             
             <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
@@ -279,7 +293,7 @@
 
     <!-- Страница: Карта -->
     <div class="reader-page" id="map-page">
-        <div class="page-header"><h2 data-ru="Карта путешествия" data-en="Travel Map">Карта путешествия</h2><p data-ru="Следите за путь Августа по Южному королевству" data-en="Follow August's journey across the Southern Kingdom">Следите за путь Августа по Южному королевству</p></div>
+        <div class="page-header"><h2 data-ru="Карта путешествия" data-en="Travel Map">Карта путешествия</h2><p data-ru="Следите за путём Августа по Южному королевству" data-en="Follow August's journey across the Southern Kingdom">Следите за путём Августа по Южному королевству</p></div>
         <div class="travel-map-container" id="travel-map"></div>
         <div class="map-legend">
             <div class="legend-item"><div class="legend-dot passed"></div><span data-ru="Пройдено" data-en="Passed">Пройдено</span></div>
@@ -292,7 +306,7 @@
     <div class="reader-content" id="reader-text"></div>
 
     <!-- Подвал главы -->
-    <div class="reader-content" id="chapter-footer">
+    <div class="reader-content" id="chapter-footer" style="background: transparent; border: none; box-shadow: none; padding-top: 0;">
         <div class="chapter-nav">
             <button id="btn-prev" onclick="changeChapter(-1)" data-ru="← Предыдущая глава" data-en="← Previous chapter">← Предыдущая глава</button>
             <span id="chapter-indicator" style="font-weight: bold; color: var(--accent-sea);"></span>
@@ -302,7 +316,7 @@
             <h4 data-ru="Понравилась глава?" data-en="Enjoyed the chapter?">Понравилась глава?</h4>
             <p data-ru="Поддержите автора — купите печатную версию книги или оставьте отзыв. Это помогает писать продолжение быстрее!" data-en="Support the author — buy the paperback edition or leave a review. It helps write the sequel faster!">Поддержите автора — купите печатную версию книги или оставьте отзыв. Это помогает писать продолжение быстрее!</p>
             <div class="cta-buttons">
-                <a href="index.html#store" class="btn btn-green" data-ru="Купить печатную" data-en="Buy Paperback">Купить печатную</a>
+                <a href="shop.html" class="btn btn-green" data-ru="Купить печатную" data-en="Buy Paperback">Купить печатную</a>
                 <a href="index.html#support" class="btn btn-red" data-ru="Поддержать автора" data-en="Support Author">Поддержать автора</a>
                 <button onclick="openFeedbackModal()" class="btn" style="background: transparent; border: 2px solid var(--accent-sea); color: var(--accent-sea);" data-ru="Оставить отзыв" data-en="Leave a Review">Оставить отзыв</button>
             </div>
@@ -334,8 +348,9 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="resume-modal">
-        <div class="modal-content">
+    <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeResumeModal(event)">&times;</span>
             <h3 data-ru="С возвращением!" data-en="Welcome back!">С возвращением!</h3>
             <p id="resume-text">Вы остановились на главе 2. Продолжить чтение?</p>
             <div style="display: flex; gap: 10px; justify-content: center;">
@@ -359,7 +374,10 @@
 
         async function loadChapterList() {
             try {
+                // Если файлы глав лежат в папке chapters/ — используйте 'chapters/list.json'
+                // Если в корне — 'list.json'. Здесь оставлен вариант с папкой chapters/.
                 const response = await fetch('chapters/list.json');
+                if (!response.ok) throw new Error('HTTP ' + response.status);
                 const data = await response.json();
                 bookChapters = data;
                 initReader();
@@ -375,7 +393,7 @@
         function initReader() {
             const savedLang = localStorage.getItem('alba-mare-lang');
             if (savedLang && savedLang !== currentLang) {
-                toggleLang();
+                toggleLang(true); // true = без перезагрузки главы
             }
 
             const savedChapter = localStorage.getItem('alba-mare-progress');
@@ -412,6 +430,7 @@
 
             try {
                 const response = await fetch(`chapters/${chapterFile}`);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
                 const textHtml = await response.text();
 
                 const wordCount = textHtml.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length;
@@ -470,6 +489,11 @@
             modal.style.display = 'flex';
             modal.dataset.chapter = chapterIndex;
         }
+        function closeResumeModal(event) {
+            if (!event || event.target.id === 'resume-modal' || event.target.classList.contains('close-modal')) {
+                document.getElementById('resume-modal').style.display = 'none';
+            }
+        }
         function resumeReading() { const modal = document.getElementById('resume-modal'); currentChapter = parseInt(modal.dataset.chapter); modal.style.display = 'none'; renderChapter(); }
         function startFromBeginning() { const modal = document.getElementById('resume-modal'); modal.style.display = 'none'; currentChapter = 0; renderChapter(); }
         function changeChapter(dir) { if (currentChapter + dir >= 0 && currentChapter + dir < bookChapters.length) { currentChapter += dir; renderChapter(); hideAllPages(); } }
@@ -515,19 +539,24 @@
         }
 
         // ==========================================
-        // 4. СБОР АРТЕФАКТОВ (ОБНОВЛЕНО ДЛЯ КАРТОЧЕК)
+        // 4. СБОР АРТЕФАКТОВ
         // ==========================================
+        const artifactsData = {
+            'guitar':  { icon: '🎸', titleRu: 'Гитара Маттео',        titleEn: "Matteo's Guitar",          descRu: 'Инструмент, оставленный старым купцом.',   descEn: 'The instrument left by the old merchant.' },
+            'sword':   { icon: '⚔️', titleRu: 'Клинок отца',          titleEn: "Father's Blade",           descRu: 'Прямой меч с потертой рукоятью.',           descEn: 'A straight sword with a worn hilt.' },
+            'compass': { icon: '🧭', titleRu: 'Старый компас',        titleEn: 'Old Compass',              descRu: 'Стрелка дрожит, указывая путь на север.',   descEn: 'The needle trembles, pointing north.' },
+            'map':     { icon: '🗺️', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds the secrets of the fjords.' }
+        };
+
         function collectArtifact(id, element) {
             if (foundArtifacts.has(id)) return;
-            
             foundArtifacts.add(id);
             
-            // Если это карточка артефакта (а не скрытая иконка)
             if (element && element.classList.contains('artifact-inline-card')) {
                 element.style.borderColor = 'var(--support-gold)';
                 const hint = element.querySelector('.card-hint');
                 if (hint) {
-                    hint.innerHTML = '✓ Получено';
+                    hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Получено' : 'Collected');
                     hint.style.color = 'var(--shop-green)';
                     const span = hint.querySelector('span');
                     if (span) span.style.animation = 'none';
@@ -536,12 +565,14 @@
                 element.classList.add('found');
             }
 
-            const artifactsData = { 'guitar': { icon: '🎸', titleRu: 'Гитара Маттео', titleEn: 'Matteo\'s Guitar', descRu: 'Инструмент, оставленный старым купцом.', descEn: 'The instrument left by the old merchant.' }, 'sword': { icon: '⚔️', titleRu: 'Клинок отца', titleEn: 'Father\'s Blade', descRu: 'Прямой меч с потертой рукоятью.', descEn: 'A straight sword with a worn hilt.' }, 'compass': { icon: '🧭', titleRu: 'Старый компас', titleEn: 'Old Compass', descRu: 'Стрелка дрожит, указывая путь на север.', descEn: 'The needle trembles, pointing north.' }, 'map': { icon: '🗺️', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds secrets.' } };
             const data = artifactsData[id]; if (!data) return;
-            const title = currentLang === 'ru' ? data.titleRu : data.titleEn; const desc = currentLang === 'ru' ? data.descRu : data.descEn;
-            const toast = document.createElement('div'); toast.style.cssText = `position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--support-gold); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
+            const title = currentLang === 'ru' ? data.titleRu : data.titleEn;
+            const desc  = currentLang === 'ru' ? data.descRu  : data.descEn;
+            const toast = document.createElement('div');
+            toast.style.cssText = `position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--support-gold); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
             toast.innerHTML = `<div style="font-size: 30px; margin-bottom: 5px;">${data.icon}</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${title}</div><div style="font-size: 13px; color: var(--text-muted);">${desc}</div><div style="font-size: 11px; color: var(--support-gold); margin-top: 5px; font-weight: bold;">✓ ${currentLang === 'ru' ? 'Добавлено в коллекцию' : 'Added to collection'}</div>`;
-            document.body.appendChild(toast); setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
         }
 
         // ==========================================
@@ -549,14 +580,13 @@
         // ==========================================
         function unlockCharacter(charId, element) {
             if (unlockedCharacters.has(charId)) return;
-            
             unlockedCharacters.add(charId);
             
             if (element) {
                 element.style.borderColor = 'var(--support-gold)';
                 const hint = element.querySelector('.card-hint');
                 if (hint) {
-                    hint.innerHTML = '✓ Открыт';
+                    hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Открыт' : 'Unlocked');
                     hint.style.color = 'var(--shop-green)';
                     const span = hint.querySelector('span');
                     if (span) span.style.animation = 'none';
@@ -566,38 +596,74 @@
             showCharacterToast(charId);
         }
 
+        const charactersData = {
+            'matteo': { image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', nameRu: 'Маттео', nameEn: 'Matteo', roleRu: 'Торговец и Наставник', roleEn: 'Merchant and Mentor', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».', quoteEn: '“The instrument is just wood and strings. The main thing is inside.”' },
+            'mira':   { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', nameRu: 'Мира',   nameEn: 'Mira',   roleRu: 'Странница',        roleEn: 'Wanderer',        quoteRu: '«Дом — это не стены. Это те, кто ждёт тебя».', quoteEn: '“Home is not walls. It\'s those who wait for you.”' },
+            'einar':  { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', nameRu: 'Эйнар',  nameEn: 'Einar',  roleRu: 'Северный охотник', roleEn: 'Northern Hunter', quoteRu: '«Тишина иногда громче любого крика».',           quoteEn: '“Silence is sometimes louder than any scream.”' }
+        };
+
         // ==========================================
         // 6. КОЛЛЕКЦИЯ
         // ==========================================
-        function renderCollection() { switchTab('artifacts', document.querySelector('.tab-btn')); renderArtifacts(); renderCharacters(); }
-        function switchTab(tabName, btnElement) { document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active')); btnElement.classList.add('active'); document.getElementById(`tab-${tabName}`).classList.add('active'); }
+        function renderCollection() { 
+            const activeTab = document.querySelector('.tab-btn.active');
+            switchTab(activeTab && activeTab.textContent.trim() === 'Персонажи' ? 'characters' : 'artifacts', activeTab); 
+            renderArtifacts(); 
+            renderCharacters(); 
+        }
+        function switchTab(tabName, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+            const content = document.getElementById(`tab-${tabName}`);
+            if (content) content.classList.add('active');
+        }
         function renderArtifacts() {
             const grid = document.getElementById('collection-grid'); grid.innerHTML = '';
-            const artifactsData = { 'guitar': { icon: '🎸', titleRu: 'Гитара Маттео', titleEn: 'Matteo\'s Guitar', descRu: 'Инструмент, оставленный старым купцом.', descEn: 'The instrument left by the old merchant.' }, 'sword': { icon: '⚔️', titleRu: 'Клинок отца', titleEn: 'Father\'s Blade', descRu: 'Прямой меч с потертой рукоятью.', descEn: 'A straight sword with a worn hilt.' }, 'compass': { icon: '🧭', titleRu: 'Старый компас', titleEn: 'Old Compass', descRu: 'Стрелка дрожит, указывая путь на север.', descEn: 'The needle trembles, pointing north.' }, 'map': { icon: '🗺️', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds secrets.' } };
-            for (const id in artifactsData) { const data = artifactsData[id]; const isFound = foundArtifacts.has(id); const title = currentLang === 'ru' ? data.titleRu : data.titleEn; const desc = currentLang === 'ru' ? data.descRu : data.descEn; const item = document.createElement('div'); item.className = `collection-item ${isFound ? 'found' : ''}`; item.innerHTML = `<span class="icon">${data.icon}</span><div class="name">${isFound ? title : (currentLang === 'ru' ? '???' : '???')}</div><div class="desc">${isFound ? desc : (currentLang === 'ru' ? 'Продолжайте читать, чтобы найти.' : 'Keep reading to find.')}</div>`; grid.appendChild(item); }
+            for (const id in artifactsData) {
+                const data = artifactsData[id];
+                const isFound = foundArtifacts.has(id);
+                const title = currentLang === 'ru' ? data.titleRu : data.titleEn;
+                const desc  = currentLang === 'ru' ? data.descRu  : data.descEn;
+                const item = document.createElement('div');
+                item.className = `collection-item ${isFound ? 'found' : ''}`;
+                item.innerHTML = `<span class="icon">${data.icon}</span><div class="name">${isFound ? title : (currentLang === 'ru' ? '???' : '???')}</div><div class="desc">${isFound ? desc : (currentLang === 'ru' ? 'Продолжайте читать, чтобы найти.' : 'Keep reading to find.')}</div>`;
+                grid.appendChild(item);
+            }
         }
         function renderCharacters() {
             const grid = document.getElementById('characters-grid'); grid.innerHTML = '';
-            const charactersData = { 'matteo': { image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', nameRu: 'Маттео', nameEn: 'Matteo', roleRu: 'Торговец и Наставник', roleEn: 'Merchant and Mentor', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».', quoteEn: '“The instrument is just wood and strings. The main thing is inside.”' }, 'mira': { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', nameRu: 'Мира', nameEn: 'Mira', roleRu: 'Странница', roleEn: 'Wanderer', quoteRu: '«Дом — это не стены. Это те, кто ждёт тебя».', quoteEn: '“Home is not walls. It\'s those who wait for you.”' }, 'einar': { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', nameRu: 'Эйнар', nameEn: 'Einar', roleRu: 'Северный охотник', roleEn: 'Northern Hunter', quoteRu: '«Тишина иногда громче любого крика».', quoteEn: '“Silence is sometimes louder than any scream.”' } };
-            for (const id in charactersData) { const data = charactersData[id]; const isUnlocked = unlockedCharacters.has(id); const name = currentLang === 'ru' ? data.nameRu : data.nameEn; const role = currentLang === 'ru' ? data.roleRu : data.roleEn; const quote = currentLang === 'ru' ? data.quoteRu : data.quoteEn; const item = document.createElement('div'); item.className = `character-card-collection ${isUnlocked ? 'unlocked' : 'locked'}`; item.innerHTML = `<div class="char-image" style="background-image: url('${isUnlocked ? data.image : ''}');"></div><div class="char-info"><div class="char-status">✓ ${currentLang === 'ru' ? 'Открыт' : 'Unlocked'}</div><div class="char-name">${isUnlocked ? name : '???'}</div><span class="char-role">${isUnlocked ? role : (currentLang === 'ru' ? 'Неизвестно' : 'Unknown')}</span><div class="char-quote">${isUnlocked ? quote : (currentLang === 'ru' ? 'Продолжайте читать, чтобы встретить этого персонажа.' : 'Keep reading to meet this character.')}</div></div>`; grid.appendChild(item); }
+            for (const id in charactersData) {
+                const data = charactersData[id];
+                const isUnlocked = unlockedCharacters.has(id);
+                const name  = currentLang === 'ru' ? data.nameRu  : data.nameEn;
+                const role  = currentLang === 'ru' ? data.roleRu  : data.roleEn;
+                const quote = currentLang === 'ru' ? data.quoteRu : data.quoteEn;
+                const item = document.createElement('div');
+                item.className = `character-card-collection ${isUnlocked ? 'unlocked' : 'locked'}`;
+                item.innerHTML = `<div class="char-image" style="background-image: url('${isUnlocked ? data.image : ''}');"></div><div class="char-info"><div class="char-status">✓ ${currentLang === 'ru' ? 'Открыт' : 'Unlocked'}</div><div class="char-name">${isUnlocked ? name : '???'}</div><span class="char-role">${isUnlocked ? role : (currentLang === 'ru' ? 'Неизвестно' : 'Unknown')}</span><div class="char-quote">${isUnlocked ? quote : (currentLang === 'ru' ? 'Продолжайте читать, чтобы встретить этого персонажа.' : 'Keep reading to meet this character.')}</div></div>`;
+                grid.appendChild(item);
+            }
         }
 
         function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
         function closeFeedbackModal(event) { if (!event || event.target.id === 'feedback-modal' || event.target.classList.contains('close-modal')) { document.getElementById('feedback-modal').style.display = 'none'; } }
         
         function showCharacterToast(charId) {
-            const charactersData = { 'matteo': { nameRu: 'Маттео', nameEn: 'Matteo' }, 'mira': { nameRu: 'Мира', nameEn: 'Mira' }, 'einar': { nameRu: 'Эйнар', nameEn: 'Einar' } };
-            const char = charactersData[charId]; if (!char) return; const name = currentLang === 'ru' ? char.nameRu : char.nameEn;
-            const toast = document.createElement('div'); toast.style.cssText = `position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--accent-sea); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
+            const char = charactersData[charId]; if (!char) return;
+            const name = currentLang === 'ru' ? char.nameRu : char.nameEn;
+            const toast = document.createElement('div');
+            toast.style.cssText = `position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--accent-sea); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
             toast.innerHTML = `<div style="font-size: 24px; margin-bottom: 5px;">👤</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${currentLang === 'ru' ? 'Новый персонаж!' : 'New character!'}</div><div style="font-size: 15px; color: var(--text-main);">${name} ${currentLang === 'ru' ? 'добавлен в Коллекцию' : 'added to Collection'}</div>`;
-            document.body.appendChild(toast); setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
         }
 
-        function toggleLang() {
+        function toggleLang(noRerender) {
             currentLang = currentLang === 'ru' ? 'en' : 'ru';
             
-            document.getElementById('lang-ru').classList.toggle('active');
-            document.getElementById('lang-en').classList.toggle('active');
+            document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
+            document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
             
             document.querySelectorAll('[data-ru]').forEach(el => { 
                 const text = el.getAttribute(`data-${currentLang}`); 
@@ -607,7 +673,13 @@
             document.documentElement.lang = currentLang; 
             localStorage.setItem('alba-mare-lang', currentLang);
             
-            renderChapter();
+            if (!noRerender) {
+                // Сохраняем позицию скролла перед перерисовкой
+                const scrollY = window.scrollY;
+                renderChapter().then(() => {
+                    window.scrollTo({ top: scrollY, behavior: 'instant' });
+                });
+            }
             
             if (document.getElementById('toc-page').classList.contains('active')) { renderTOC(); } 
             else if (document.getElementById('collection-page').classList.contains('active')) { renderCollection(); } 

@@ -29,6 +29,10 @@
             transition: color 0.3s;
         }
         .back-btn:hover { color: var(--accent-red); }
+
+        /* Мобильное меню (дублируем из style.css для автономности) */
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+        .burger span { display: block; width: 25px; height: 2px; background-color: var(--accent-sea); transition: 0.3s; }
     </style>
 </head>
 <body>
@@ -38,12 +42,16 @@
         <a href="index.html" class="logo">Альба-Маре</a>
         <div class="nav-right">
             <nav id="main-nav">
-                <a href="index.html#books">Книги</a>
-                <a href="shop.html" style="color: var(--accent-red); font-weight: 700;">Магазин</a>
-                <a href="index.html#reviews">Отзывы</a>
-                <a href="index.html#author">Автор</a>
-                <a href="index.html#support" class="support-link">Поддержать проект</a>
+                <a href="index.html#books" data-ru="Книги" data-en="Books">Книги</a>
+                <a href="shop.html" style="color: var(--accent-red); font-weight: 700;" data-ru="Магазин" data-en="Store">Магазин</a>
+                <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
+                <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
+                <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
+            <div class="lang-switch" onclick="toggleLang()">
+                <div id="lang-ru" class="active">RU</div>
+                <div id="lang-en">EN</div>
+            </div>
             <div class="burger" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </div>
@@ -54,54 +62,74 @@
     <section class="shop-page">
         
         <div class="section-header">
-            <h2 class="serif" style="font-size: 46px; color: var(--accent-sea); margin-bottom: 10px;">Магазин</h2>
-            <p style="font-size: 18px; color: var(--text-muted); font-style: italic;">Печатные издания и подарки для фанатов</p>
+            <h2 class="serif" style="font-size: 46px; color: var(--accent-sea); margin-bottom: 10px;" data-ru="Магазин" data-en="Store">Магазин</h2>
+            <p style="font-size: 18px; color: var(--text-muted); font-style: italic;" data-ru="Печатные издания и подарки для фанатов" data-en="Printed editions and gifts for fans">Печатные издания и подарки для фанатов</p>
         </div>
         
         <div class="store-container">
             <!-- Печатная книга -->
             <div class="store-card">
-                <div class="store-badge">Хит</div>
+                <div class="store-badge" data-ru="Хит" data-en="Hit">Хит</div>
                 <span class="store-icon">📖</span>
-                <h4>Печатная книга</h4>
-                <p>«Август Фьорд» в мягкой обложке. Идеальный подарок для любителей морских приключений.</p>
-                <span class="store-price">Скоро</span>
-                <a href="#" class="btn btn-green">Скоро</a>
+                <h4 data-ru="Печатная книга" data-en="Printed Book">Печатная книга</h4>
+                <p data-ru="«Август Фьорд» в мягкой обложке. Идеальный подарок для любителей морских приключений." data-en="'August Fjord' in paperback. The perfect gift for lovers of sea adventures.">«Август Фьорд» в мягкой обложке. Идеальный подарок для любителей морских приключений.</p>
+                <span class="store-price" data-ru="Скоро" data-en="Soon">Скоро</span>
+                <a href="#" class="btn btn-green" data-ru="Скоро" data-en="Soon">Скоро</a>
             </div>
 
             <!-- Аудиокнига -->
             <div class="store-card">
                 <span class="store-icon">🎧</span>
-                <h4>Аудиокнига</h4>
-                <p>Слушайте историю в дороге. Профессиональная озвучка и атмосферный саундтрек.</p>
-                <span class="store-price">В разработке</span>
-                <a href="#" class="btn" style="width: 100%;">Узнать о выходе</a>
+                <h4 data-ru="Аудиокнига" data-en="Audiobook">Аудиокнига</h4>
+                <p data-ru="Слушайте историю в дороге. Профессиональная озвучка и атмосферный саундтрек." data-en="Listen to the story on the road. Professional voice acting and atmospheric soundtrack.">Слушайте историю в дороге. Профессиональная озвучка и атмосферный саундтрек.</p>
+                <span class="store-price" data-ru="В разработке" data-en="In development">В разработке</span>
+                <a href="#" class="btn" style="width: 100%;" data-ru="Узнать о выходе" data-en="Learn about release">Узнать о выходе</a>
             </div>
 
             <!-- Мерч -->
             <div class="store-card">
                 <span class="store-icon">👕</span>
-                <h4>Мерч</h4>
-                <p>Футболки с цитатами, постеры с картой мира и экслибрисы для вашей библиотеки.</p>
-                <span class="store-price">Скоро</span>
-                <a href="#" class="btn" style="width: 100%;">Посмотреть</a>
+                <h4 data-ru="Мерч" data-en="Merch">Мерч</h4>
+                <p data-ru="Футболки с цитатами, постеры с картой мира и экслибрисы для вашей библиотеки." data-en="T-shirts with quotes, posters with the world map, and bookplates for your library.">Футболки с цитатами, постеры с картой мира и экслибрисы для вашей библиотеки.</p>
+                <span class="store-price" data-ru="Скоро" data-en="Soon">Скоро</span>
+                <a href="#" class="btn" style="width: 100%;" data-ru="Посмотреть" data-en="View">Посмотреть</a>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 80px;">
-            <a href="index.html" class="btn" style="background: transparent; border: 2px solid var(--text-muted); color: var(--text-muted);">← Вернуться на главную</a>
+            <a href="index.html" class="btn" style="background: transparent; border: 2px solid var(--text-muted); color: var(--text-muted);" data-ru="← Вернуться на главную" data-en="← Back to home">← Вернуться на главную</a>
         </div>
     </section>
 
     <!-- Подвал -->
     <footer>
-        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov <span>Все права защищены.</span></p>
+        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov <span data-ru="Все права защищены." data-en="All rights reserved.">Все права защищены.</span></p>
     </footer>
 
     <script>
+        // --- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ ---
+        let currentLang = localStorage.getItem('alba-mare-lang') || 'ru';
+        function applyLang() {
+            document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
+            document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
+            document.querySelectorAll('[data-ru]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerHTML = text;
+            });
+            document.documentElement.lang = currentLang;
+        }
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            localStorage.setItem('alba-mare-lang', currentLang);
+            applyLang();
+        }
+
         function toggleMenu() {
             document.getElementById('main-nav').classList.toggle('active');
         }
+
+        // Применяем сохранённый язык при загрузке
+        document.addEventListener('DOMContentLoaded', applyLang);
     </script>
 </body>
 </html>
