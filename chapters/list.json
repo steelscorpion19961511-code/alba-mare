@@ -5,8 +5,7 @@
         "titleEn": "Chapter 1. Alba-Mare",
         "file": "chapter1.html",
         "fileEn": "chapter1_en.html",
-        "mapCoord": { "x": 20, "y": 70 },
-        "characters": []
+        "mapCoord": { "x": 20, "y": 70 }
     },
     {
         "id": 2,
@@ -14,6 +13,6 @@
         "titleEn": "Chapter 2. The Voice of the Wind",
         "file": "chapter2.html",
         "fileEn": "chapter2_en.html",
-        "mapCoord": { "x": 25, "y": 65 },
-    },
+        "mapCoord": { "x": 25, "y": 65 }
+    }
 ]
