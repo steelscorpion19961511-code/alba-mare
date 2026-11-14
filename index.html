@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Альба-Маре</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стиль для кнопки "Читать" на главном экране */
+        .hero-read-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 45px;
+            background-color: var(--accent-red);
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            border: 2px solid var(--accent-red);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .hero-read-btn:hover {
+            background-color: transparent;
+            color: var(--accent-red);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollToTopBtn" class="scroll-to-top" title="Вернуться наверх">
+        <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+    </button>
+
+    <!-- Шапка -->
+    <header>
+        <a href="#" class="logo">Альба-Маре</a>
+        <div class="nav-right">
+            <nav id="main-nav">
+                <a href="#books" data-ru="Книги" data-en="Books">Книги</a>
+                <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
+                <a href="#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
+                <a href="#author" data-ru="Автор" data-en="Author">Автор</a>
+                <a href="#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
+            </nav>
+            <div class="lang-switch" onclick="toggleLang()">
+                <div id="lang-ru" class="active">RU</div>
+                <div id="lang-en">EN</div>
+            </div>
+            <div class="burger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <div class="hero">
+        <div class="hero-text" data-aos="fade-right">
+            <div class="hero-subtitle" data-ru="Приключенческая повесть" data-en="Adventure Fantasy">Приключенческая повесть</div>
+            <h1 class="cinzel">Альба-Маре</h1>
+            <h2 class="serif" data-ru="Свет, рождённый морем" data-en="Light born of the sea">Свет, рождённый морем</h2>
+            
+            <div class="hero-description" style="font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 10px;">
+                <p data-ru="Когда южный город у моря пал, юный стражник Август потерял всё — дом, семью, своё место в мире. Вместе с гитарой и мечом отца он отправляется в путь, который приведёт его через города, моря и снега к самому себе." 
+                   data-en="When the southern city by the sea fell, the young guard August lost everything — home, family, his place in the world. Together with his father's guitar and sword, he sets out on a journey that will lead him through cities, seas, and snow to himself.">
+                   Когда южный город у моря пал, юный стражник Август потерял всё — дом, семью, своё место в мире. Вместе с гитарой и мечом отца он отправляется в путь, который приведёт его через города, моря и снега к самому себе.
+                </p>
+                <p data-ru="Мальчик, слышавший музыку в шуме прибоя. Юноша, семь лет не прикасавшийся к струнам. Мужчина, бежавший из горящего города с клинком отца на поясе и пеплом дома в волосах. Август не знал, куда идёт. Знал только, что не может остаться." 
+                   data-en="A boy who heard music in the sound of the surf. A young man who hadn't touched the strings for seven years. A man who fled a burning city with his father's blade at his belt and the ashes of his home in his hair. August didn't know where he was going. He only knew he couldn't stay.">
+                   Мальчик, слышавший музыку в шуме прибоя. Юноша, семь лет не прикасавшийся к струнам. Мужчина, бежавший из горящего города с клинком отца на поясе и пеплом дома в волосах. Август не знал, куда идёт. Знал только, что не может остаться.
+                </p>
+                <p data-ru="По пути — странники и барды, моряки и северные охотники. Игра для тех, кто готов слушать, и умение слышать тех, кого раньше считал врагами. Потеря надежды — и обретение её снова. Понимание, что дом — это не стены, а те, кто ждёт. И голос, который сильнее любого оружия." 
+                   data-en="Along the way — wanderers and bards, sailors and northern hunters. Playing for those ready to listen, and the ability to hear those you once considered enemies. The loss of hope — and its finding again. The understanding that home is not walls, but those who wait. And a voice stronger than any weapon.">
+                   По пути — странники и барды, моряки и северные охотники. Игра для тех, кто готов слушать, и умение слышать тех, кого раньше считал врагами. Потеря надежды — и обретение её снова. Понимание, что дом — это не стены, а те, кто ждёт. И голос, который сильнее любого оружия.
+                </p>
+                <p data-ru="«Август Фьорд» — история о том, как человек учится быть собой, когда всё, что его формировало, превратилось в пепел. Книга о музыке, которая сильнее ненависти, и о тишине, в которой слышно самое главное. О пути, который начинается с потери — и ведёт к обретению." 
+                   data-en="'August Fjord' is a story about how a person learns to be himself when everything that shaped him has turned to ashes. A book about music that is stronger than hatred, and about the silence in which the most important things can be heard. About a path that begins with loss — and leads to finding.">
+                   «Август Фьорд» — история о том, как человек учится быть собой, когда всё, что его формировало, превратилось в пепел. Книга о музыке, которая сильнее ненависти, и о тишине, в которой слышно самое главное. О пути, который начинается с потери — и ведёт к обретению.
+                </p>
+            </div>
+
+            <a href="reader.html" class="hero-read-btn" data-ru="ЧИТАТЬ" data-en="READ">ЧИТАТЬ</a>
+        </div>
+
+        <!-- Три картинки в столбик -->
+        <div class="hero-image" data-aos="fade-left">
+            <div class="hero-image-grid">
+                <img src="images/hero1.jpg" alt="Корабль" class="hero-grid-img">
+                <img src="images/hero2.jpg" alt="Пустыня" class="hero-grid-img">
+                <img src="images/hero3.jpg" alt="Север" class="hero-grid-img">
+            </div>
+        </div>
+    </div>
+ 
+      <!-- Секция: Книги -->
+    <section id="books" class="books-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="serif" data-ru="Цикл: свет, рождённый морем" data-en="Series: Light Born of the Sea">Цикл: свет, рождённый морем</h2>
+            <p data-ru="История Августа Фьорда в трёх книгах" data-en="The story of August Fjord in three books">История Августа Фьорда в трёх книгах</p>
+        </div>
+            
+        <div class="books-container">
+            <!-- Книга 1 -->
+            <div class="book-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/cover.png" alt="August Fjord" class="book-cover">
+                <a href="reader.html" class="hero-read-btn" style="width: 100%; margin-top: 15px;" data-ru="Читать" data-en="Read">Читать</a>
+            </div> 
+
+            <!-- Книга 2 -->
+            <div class="book-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="images/cover2.png" alt="East Wind" class="book-cover">
+                <a href="reader2.html" class="hero-read-btn" style="width: 100%; margin-top: 15px;" data-ru="Читать" data-en="Read">Читать</a>
+            </div>
+
+            <!-- Книга 3 -->
+            <div class="book-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="images/cover3.png" alt="Where the Cold is Born" class="book-cover">
+                <a href="reader3.html" class="hero-read-btn" style="width: 100%; margin-top: 15px;" data-ru="Читать" data-en="Read">Читать</a>
+            </div>
+        </div>
+    </section>
+
+  <!-- Секция: Отзывы -->
+    <section id="reviews" class="reviews-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="serif" data-ru="Отзывы читателей" data-en="Reader Reviews">Отзывы читателей</h2>
+            
+        </div>
+        
+        <div class="reviews-container">
+            
+            <!-- ЛЕВАЯ КОЛОНКА: Форма -->
+            <div class="review-form-wrapper" data-aos="fade-right">
+                <h3 class="serif">Оставить отзыв</h3>
+                <p>Поделитесь впечатлениями о книге. Ваше мнение очень важно!</p>
+                
+                <!-- ВАЖНО: Замените ВАША_ССЫЛКА на ваш endpoint из Formspree -->
+                <form action="https://formspree.io/f/ВАША_ССЫЛКА" method="POST" class="review-form">
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" name="name" required placeholder="Иван">
+                    </div>
+                    <div class="form-group">
+                        <label>Email (не будет опубликован)</label>
+                        <input type="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Ваш отзыв</label>
+                        <textarea name="message" required rows="4" placeholder="Мне очень понравилась книга..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-red" style="width: 100%;">Отправить отзыв</button>
+                </form>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА: Существующие отзывы -->
+            <div class="reviews-list" data-aos="fade-left">
+                
+                <!-- Отзыв 1 -->
+                <div class="review-card">
+                    <p class="review-text">«Я не мог оторваться! Атмосфера моря, соли и ветра передана настолько живо, что кажется, будто слышишь крики чаек. Август — потрясающий герой, за которого переживаешь с первой страницы.»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Anna">
+                        <div>
+                            <span>Анна С.</span>
+                            <small>Книжный блогер</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Отзыв 2 -->
+                <div class="review-card">
+                    <p class="review-text">«Редко встречаю фэнтези, где музыка играет такую важную роль. Сцены игры на гитаре описаны волшебно. Эта книга — как тихая гавань, в которую хочется возвращаться.»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Igor">
+                        <div>
+                            <span>Игорь М.</span>
+                            <small>Читатель</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Отзыв 3 -->
+                <div class="review-card">
+                    <p class="review-text">«Северные главы — это что-то невероятное. Холод, снег, суровые люди, и среди всего этого — тепло человеческой души. Очень жду продолжения!»</p>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Maria">
+                        <div>
+                            <span>Мария К.</span>
+                            <small>Бета-ридер</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+    <!-- Секция: Автор -->
+    <section id="author" class="author-section">
+        <div class="author-container" data-aos="fade-up">
+            
+            <div class="author-image-wrapper">
+                <div class="author-image">
+                    <img src="images/author.jpg" alt="author" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                </div>
+                <a href="https://vk.ru/jukero" target="_blank" class="btn btn-vk" data-ru="Я ВКонтакте" data-en="My VK Page">Я ВКонтакте</a>
+            </div>
+
+            <div class="author-text">
+                <h2 class="serif" data-ru="Об авторе" data-en="About the Author">Об авторе</h2>
+                <p data-ru="Привет! Меня зовут Дмитрий. Я пишу не только книги, но и песни, и занимаюсь музыкой — играю на электрогитаре." 
+                   data-en="Hi! My name is Dmitry. I write not only books but also songs, and I play the electric guitar.">
+                   Привет! Меня зовут <strong>Дмитрий</strong>. Я пишу не только книги, но и песни, и занимаюсь музыкой — играю на электрогитаре.
+                </p>
+                <p data-ru="Всё началось с моей песни «Царство у моря». Я написал её, чтобы передать тишину и покой разрушенного рая — кусочек мира, который остался только в легендах. Но вскоре понял: одной песни мало. Эта история не умещалась в три куплета. Так родился рассказ, который вырос в полноценную повесть, а за ней появились вторая и третья книги." 
+                   data-en="It all started with my song 'Kingdom by the Sea'. I wrote it to convey the silence and peace of a ruined paradise — a piece of a world that remained only in legends. But soon I realized: one song is not enough. This story did not fit into three verses. So a short story was born, which grew into a full-fledged novella, followed by the second and third books.">
+                   Всё началось с моей песни «Царство у моря». Я написал её, чтобы передать тишину и покой разрушенного рая — кусочек мира, который остался только в легендах. Но вскоре понял: одной песни мало. Эта история не умещалась в три куплета. Так родился рассказ, который вырос в полноценную повесть, а за ней появились вторая и третья книги.
+                </p>
+                <p data-ru="Главный герой, Август, во многом списан с меня. Спустя время, уже во взрослой жизни, я вновь вернулся к стихам и песням. Научился играть на гитаре и понял, что не могу жить без своего творчества. Теперь я пою свои песни под гитару." 
+                   data-en="The main character, August, is largely based on me. Over time, in my adult life, I returned to poetry and songs again. I learned to play the guitar and realized that I cannot live without my creativity. Now I sing my songs with a guitar.">
+                   Главный герой, Август, во многом списан с меня. Спустя время, уже во взрослой жизни, я вновь вернулся к стихам и песням. Научился играть на гитаре и понял, что не могу жить без своего творчества. Теперь я пою свои песни под гитару.
+                </p>
+                <p data-ru="Летом 2025 года мы с супругой и рыжим котом отправились в автопутешествие — проехали чуть более 17 000 километров по всей стране! От Амурской области до Краснодарского края, посетили множество городов по пути, ночевали у самой кромки воды Байкала, жили некоторое время на море. Год спустя, на основе всего этого — песен, дорог, потерь и обретений — родилась «Альба-Маре». Мир, где музыка сильнее ненависти, а дом — это не стены, а те, кто ждёт." 
+                   data-en="In the summer of 2025, my wife, our ginger cat, and I set off on a road trip — we drove over 17,000 kilometers across the whole country! From the Amur Region to Krasnodar Krai, visited many cities along the way, spent the night right at the edge of Lake Baikal's water, and lived by the sea for a while. A year later, based on all of this — songs, roads, losses, and gains — Alba-Mare was born. A world where music is stronger than hatred, and home is not walls, but those who wait.">
+                   Однажды в начале лета мы с супругой и рыжим котом отправились в автопутешествие — проехали чуть более 17 000 километров по всей стране! От Амурской области до Краснодарского края, посетили множество городов по пути, ночевали у самой кромки воды Байкала, жили некоторое время на море. Год спустя, на основе всего этого — песен, дорог, потерь и обретений — родилась «Альба-Маре». Мир, где музыка сильнее ненависти, а дом — это не стены, а те, кто ждёт.
+                </p>
+                <div class="quote" data-ru="«Иногда нужно преодолеть тысячи километров, чтобы понять: ты не ищешь новый дом. Ты возвращаешься к тому, кем всегда должен был стать»." 
+                     data-en="“Sometimes you have to travel thousands of kilometers to understand: you are not looking for a new home. You are returning to who you were always meant to be.”">
+                    «Иногда нужно преодолеть тысячи километров, чтобы понять: ты не ищешь новый дом. Ты возвращаешься к тому, кем всегда должен был стать».
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Секция: Поддержать автора -->
+    <section id="support" class="support-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="serif" data-ru="Поддержать автора" data-en="Support the Author">Поддержать автора</h2>
+            <p data-ru="Книга бесплатна, но ваша поддержка помогает писать продолжение" data-en="The book is free, but your support helps write the sequel">Книга бесплатна, но ваша поддержка помогает писать продолжение</p>
+        </div>
+        
+        <div class="support-container" data-aos="zoom-in">
+            <h3 data-ru="Спасибо, что читаете!" data-en="Thank you for reading!">Спасибо, что читаете!</h3>
+            <p data-ru="Вы можете поддержать меня любой суммой." 
+               data-en="You can support me with any amount.">
+               Вы можете поддержать меня любой суммой
+            </p>
+
+            <div class="support-grid" style="display: flex; justify-content: center;">
+                <div class="support-card" style="max-width: 500px; width: 100%;">
+                    <h4 data-ru="Банковская карта (РФ)" data-en="Bank Card (Russia)">Банковская карта (РФ)</h4>
+                    <p data-ru="Перевод с карты любого банка РФ:" data-en="Transfer from any Russian bank card:">Перевод на Сбербанк Дмитрий Д.Ю.</p>
+                    <div class="copy-box" onclick="copyText('2202 2092 8822 1251', event)">
+                        <span>2202 2092 8822 1251</span>
+                        <button data-ru="Копировать" data-en="Copy">Копировать</button>
+                        <div class="copy-tooltip" data-ru="Скопировано!" data-en="Copied!">Скопировано!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov <span data-ru="Все права защищены." data-en="All rights reserved.">Все права защищены.</span></p>
+    </footer>
+
+    <!-- Подключаем скрипт AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Инициализация AOS
+        AOS.init({ duration: 800, once: true });
+
+        // --- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ ---
+        let currentLang = 'ru';
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            document.getElementById('lang-ru').classList.toggle('active');
+            document.getElementById('lang-en').classList.toggle('active');
+            document.querySelectorAll('[data-ru]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerHTML = text;
+            });
+            document.documentElement.lang = currentLang;
+        }
+
+        // --- МОБИЛЬНОЕ МЕНЮ ---
+        function toggleMenu() {
+            document.getElementById('main-nav').classList.toggle('active');
+        }
+
+        // --- КОПИРОВАНИЕ РЕКВИЗИТОВ ---
+        function copyText(text, event) {
+            navigator.clipboard.writeText(text).then(() => {
+                const tooltip = event.currentTarget.querySelector('.copy-tooltip');
+                tooltip.classList.add('show');
+                setTimeout(() => tooltip.classList.remove('show'), 2000);
+            }).catch(err => console.error('Ошибка: ', err));
+        }
+
+        // --- КНОПКА "НАВЕРХ" ---
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
