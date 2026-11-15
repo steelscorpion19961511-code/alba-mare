@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин | Альба-Маре</title>
     
+	<!-- Фавикон -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -37,6 +41,17 @@
 </head>
 <body>
 
+    <!-- Open Graph / социальные сети -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Магазин — Альба-Маре">
+    <meta property="og:description" content="Печатные издания, аудиокнига и мерч по вселенной «Альба-Маре».">
+    <meta property="og:image" content="https://ВАШ_НИК.github.io/images/og-shop.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ВАШ_НИК.github.io/shop.html">
+    <meta property="og:site_name" content="Альба-Маре">
+    <meta property="og:locale" content="ru_RU">
+	
     <!-- Шапка -->
     <header>
         <a href="index.html" class="logo">Альба-Маре</a>
@@ -48,10 +63,11 @@
                 <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
                 <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
-            <div class="lang-switch" onclick="toggleLang()">
+                  <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
                 <div id="lang-en">EN</div>
             </div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
             <div class="burger" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </div>
@@ -103,7 +119,7 @@
 
     <!-- Подвал -->
     <footer>
-        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov <span data-ru="Все права защищены." data-en="All rights reserved.">Все права защищены.</span></p>
+        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov</p>
     </footer>
 
     <script>
@@ -128,6 +144,28 @@
             document.getElementById('main-nav').classList.toggle('active');
         }
 
+        // --- ТЁМНАЯ ТЕМА ---
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('theme-btn');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerText = '☀️';
+                localStorage.setItem('alba-mare-theme', 'dark');
+            } else {
+                btn.innerText = '🌙';
+                localStorage.setItem('alba-mare-theme', 'light');
+            }
+        }
+
+        // Применяем сохранённую тему при загрузке (без мигания)
+        (function applyTheme() {
+            if (localStorage.getItem('alba-mare-theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                const btn = document.getElementById('theme-btn');
+                if (btn) btn.innerText = '☀️';
+            }
+        })();
+		
         // Применяем сохранённый язык при загрузке
         document.addEventListener('DOMContentLoaded', applyLang);
     </script>

@@ -3,80 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Читать | Альба-Маре</title>
-    
+    <title>Читать «Август Фьорд» — Альба-Маре</title>
+    <meta name="description" content="Первая книга цикла «Свет, рождённый морем». 43 главы, бесплатно и без регистрации. Читайте онлайн на русском и английском.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+
+    <meta property="og:type" content="book">
+    <meta property="og:title" content="Читать «Август Фьорд» — Альба-Маре">
+    <meta property="og:description" content="Первая книга цикла «Свет, рождённый морем». 43 главы, бесплатно и без регистрации.">
+    <meta property="og:image" content="https://ВАШ_НИК.github.io/images/og-reader.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ВАШ_НИК.github.io/reader.html">
+    <meta property="og:site_name" content="Альба-Маре">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Читать «Август Фьорд» — Альба-Маре">
+    <meta name="twitter:description" content="Первая книга цикла «Свет, рождённый морем». Бесплатно и без регистрации.">
+    <meta name="twitter:image" content="https://ВАШ_НИК.github.io/images/og-reader.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <style>
-        /* --- СТИЛИ --- */
-        :root { --bg-sand: #f5f0e6; --bg-paper: #fcfaf5; --text-main: #2b3238; --text-muted: #5e6b73; --accent-sea: #2a7f8f; --accent-sand: #c29a5b; --accent-red: #b33939; --border-color: #dcd3c0; --support-gold: #d4af37; --shop-green: #27ae60; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-sand); background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); color: var(--text-main); line-height: 1.7; overflow-x: hidden; transition: background-color 0.4s, color 0.4s; padding-bottom: 100px; }
-        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
-        
-        body.dark-mode { --bg-sand: #0b1a26; --bg-paper: #112233; --text-main: #e0e0e0; --text-muted: #8899a6; --border-color: #2a3f4d; background-image: none; }
-        body.dark-mode .reader-header { background: rgba(17, 34, 51, 0.98); }
-        body.dark-mode .reader-tool-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
-        body.dark-mode .reader-content h1, body.dark-mode .reader-content h2 { color: var(--accent-sand); }
-        body.dark-mode .reader-content { background-color: #112233; border-color: #2a3f4d; }
-        body.dark-mode .toc-item, body.dark-mode .collection-item, body.dark-mode .character-card-collection { background: #1a2f3a; border-color: #2a3f4d; }
-        body.dark-mode .toc-item.active { background: #0e2130; border-color: var(--accent-sand); }
-        body.dark-mode .toc-number { color: var(--accent-sand); }
-        body.dark-mode .toc-title, body.dark-mode .char-name { color: #e0e0e0; }
-        body.dark-mode .collection-item.found, body.dark-mode .character-card-collection.unlocked { background: #0e2130; border-color: var(--support-gold); }
-        body.dark-mode .collection-item .name, body.dark-mode .char-name { color: var(--accent-sand); }
-        body.dark-mode .chapter-cta { background: #1a2f3a; border-color: #2a3f4d; }
-        body.dark-mode .chapter-cta h4 { color: var(--accent-sand); }
-        body.dark-mode .chapter-cta p { color: #8899a6; }
-        body.dark-mode .btn { background: var(--accent-sand); border-color: var(--accent-sand); color: #0b1a26; }
-        body.dark-mode .btn:hover { background: transparent; color: var(--accent-sand); }
-        body.dark-mode .btn-red { background: var(--accent-red); border-color: var(--accent-red); color: white; }
-        body.dark-mode .btn-red:hover { background: transparent; color: var(--accent-red); }
-        body.dark-mode .floating-controls { background: rgba(17, 34, 51, 0.95); border-color: #2a3f4d; }
-        body.dark-mode .floating-controls button { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
-        body.dark-mode .lang-switch { background: #1a2f3a; border-color: #2a3f4d; }
-        body.dark-mode .lang-switch div { color: var(--accent-sand); }
-        body.dark-mode .lang-switch div.active { background: var(--accent-sand); color: #0b1a26; }
+    <!-- Подключаем общий файл стилей -->
+    <link rel="stylesheet" href="style.css">
 
+    <style>
+        /* ========================================= */
+        /* УНИКАЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ ЧИТАЛКИ */
+        /* ========================================= */
+        
         #progress-container { position: sticky; top: 0; width: 100%; height: 4px; background: rgba(0,0,0,0.1); z-index: 3002; }
         #progress-bar { height: 100%; background: var(--accent-red); width: 0%; transition: width 0.1s; }
 
-        .reader-header { position: sticky; top: 4px; background: rgba(245, 240, 230, 0.98); backdrop-filter: blur(5px); border-bottom: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 3001; flex-wrap: wrap; gap: 10px; }
-        .close-reader { background: none; border: none; font-size: 15px; font-weight: 600; color: var(--accent-red); cursor: pointer; display: flex; align-items: center; gap: 5px; text-decoration: none; }
-        .close-reader:hover { text-decoration: underline; }
-        .reader-nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-        .reader-tool-btn { background: var(--bg-paper); border: 1px solid var(--accent-sand); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600; color: var(--accent-sea); display: flex; align-items: center; gap: 6px; transition: all 0.3s; }
-        .reader-tool-btn:hover { background: var(--accent-sand); color: white; }
-
-        .lang-switch { display: flex; background: var(--bg-paper); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; cursor: pointer; font-size: 12px; font-weight: 600; }
-        .lang-switch div { padding: 5px 12px; transition: all 0.3s; color: var(--text-main); }
-        .lang-switch div.active { background-color: var(--accent-sea); color: white; }
-
-        .floating-controls { position: fixed; bottom: 20px; right: 20px; background: rgba(252, 250, 245, 0.95); backdrop-filter: blur(8px); border: 2px solid var(--accent-sand); border-radius: 30px; padding: 8px 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 3005; transition: all 0.3s; }
-        .theme-toggle { background: var(--bg-paper); border: 1px solid var(--accent-sand); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.3s; color: var(--text-main); }
-        .theme-toggle:hover { background: var(--accent-sand); color: white; }
-        .font-sizer { display: flex; gap: 5px; align-items: center; }
-        .font-sizer button { background: var(--bg-paper); border: 1px solid var(--border-color); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px; color: var(--text-main); transition: all 0.2s; }
-        .font-sizer button:hover { background: var(--accent-sand); color: white; border-color: var(--accent-sand); }
-
-        /* --- ЛИСТ С ТЕКСТОМ: ЧИСТО БЕЛЫЙ ФОН --- */
-        .reader-content { 
-            max-width: 800px; 
-            margin: 50px auto; 
-            padding: 60px 50px; 
-            font-family: 'Cormorant Garamond', serif; 
-            font-size: 22px; 
-            line-height: 1.8; 
-            color: var(--text-main); 
-            background-color: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 8px; 
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        .reader-header { 
+            position: sticky; top: 0; 
+            background: rgba(245, 240, 230, 0.95); 
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(194, 154, 91, 0.3); 
+            padding: 15px 5%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            z-index: 3001; 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
+        .reader-header .logo { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700; color: var(--accent-sea); letter-spacing: 2px; text-decoration: none; transition: color 0.3s; }
+        .reader-header .logo:hover { color: var(--accent-red); }
+        .reader-header .nav-right { display: flex; align-items: center; gap: 20px; }
+        .reader-header nav { display: flex; gap: 20px; }
+        .reader-header nav a { color: var(--text-main); text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 500; position: relative; padding-bottom: 4px; transition: color 0.3s; }
+        .reader-header nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background-color: var(--support-gold); transition: width 0.3s ease; }
+        .reader-header nav a:hover { color: var(--accent-sea); }
+        .reader-header nav a:hover::after { width: 100%; }
+        .reader-header nav a.support-link { color: var(--accent-red); font-weight: 700; }
+        .reader-header nav a.support-link::after { background-color: var(--accent-sand); }
+        
+        body.dark-mode .reader-header { background: rgba(17, 34, 51, 0.98); }
+        
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; z-index: 1001; }
+        .burger span { display: block; width: 25px; height: 2px; background-color: var(--accent-sea); transition: 0.3s; }
+
+        .reader-content { max-width: 800px; margin: 50px auto; padding: 60px 50px; font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.8; color: var(--text-main); background-color: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
         .reader-content h1 { font-size: 48px; text-align: center; margin-bottom: 10px; color: var(--accent-sea); }
         .reader-content h2 { font-size: 32px; text-align: center; margin-bottom: 10px; color: var(--text-muted); font-style: italic; }
         .reader-content p { margin-bottom: 25px; text-indent: 30px; }
+        
+        body.dark-mode .reader-content { background-color: #112233; border-color: #2a3f4d; }
+        body.dark-mode .reader-content h1, body.dark-mode .reader-content h2 { color: var(--accent-sand); }
 
         .reading-time { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--text-muted); margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
@@ -87,42 +80,19 @@
         .hidden-artifact span { font-size: 40px; display: inline-block; filter: grayscale(100%); transition: filter 0.3s; }
         .hidden-artifact:hover span, .hidden-artifact.found span { filter: grayscale(0%); }
 
-        /* --- Карточка персонажа в тексте --- */
-        .character-inline-card {
-            float: left; width: 220px; margin: 0 25px 15px 0;
-            background: var(--bg-paper); border: 2px solid var(--accent-sand);
-            border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative;
-        }
-        .character-inline-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-        .character-inline-card img { width: 100%; height: auto; display: block; }
-        .character-inline-card .card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--accent-sea); padding: 10px; background: var(--bg-paper); }
-        .character-inline-card .card-hint { font-family: 'Montserrat', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--support-gold); padding: 0 10px 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .character-inline-card .card-hint span { animation: pulse-icon 2s infinite; display: inline-block; }
-        @keyframes pulse-icon { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
-        @media (max-width: 768px) { .character-inline-card { float: none; width: 100%; max-width: 250px; margin: 20px auto; } }
-
-        /* --- Карточка артефакта в тексте --- */
-        .artifact-inline-card {
-            float: left; width: 220px; margin: 0 25px 15px 0;
-            background: var(--bg-paper); border: 2px solid var(--accent-sea);
-            border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative;
-        }
-        .artifact-inline-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .character-inline-card, .artifact-inline-card, .city-inline-card, .place-inline-card { float: left; width: 220px; margin: 0 25px 15px 0; background: var(--bg-paper); border: 2px solid var(--accent-sand); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+        .artifact-inline-card { border-color: var(--accent-sea); }
+        .city-inline-card { border-color: var(--accent-red); }
+        .place-inline-card { border-color: var(--shop-green); }
+        .character-inline-card:hover, .artifact-inline-card:hover, .city-inline-card:hover, .place-inline-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .character-inline-card img, .city-inline-card img, .place-inline-card img { width: 100%; height: auto; display: block; }
         .artifact-inline-card .card-icon { font-size: 80px; display: block; padding: 20px 0; background: var(--bg-sand); filter: grayscale(100%); transition: filter 0.3s; }
         .artifact-inline-card:hover .card-icon { filter: grayscale(0%); }
-        .artifact-inline-card .card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--accent-sea); padding: 10px; background: var(--bg-paper); }
-        .artifact-inline-card .card-hint { font-family: 'Montserrat', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--support-gold); padding: 0 10px 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .artifact-inline-card .card-hint span { animation: pulse-icon 2s infinite; display: inline-block; }
-        @media (max-width: 768px) { .artifact-inline-card { float: none; width: 100%; max-width: 250px; margin: 20px auto; } }
-
-        .btn { display: inline-block; padding: 14px 35px; background-color: var(--accent-sea); color: white; text-decoration: none; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; border-radius: 2px; transition: all 0.3s; border: 2px solid var(--accent-sea); cursor: pointer; text-align: center; }
-        .btn:hover { background-color: transparent; color: var(--accent-sea); }
-        .btn-red { background-color: var(--accent-red); border-color: var(--accent-red); }
-        .btn-red:hover { background-color: transparent; color: var(--accent-red); }
-        .btn-green { background-color: var(--shop-green); border-color: var(--shop-green); color: white; }
-        .btn-green:hover { background-color: transparent; color: var(--shop-green); }
+        .character-inline-card .card-name, .artifact-inline-card .card-name, .city-inline-card .card-name, .place-inline-card .card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--accent-sea); padding: 10px; background: var(--bg-paper); }
+        .character-inline-card .card-hint, .artifact-inline-card .card-hint, .city-inline-card .card-hint, .place-inline-card .card-hint { font-family: 'Montserrat', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--support-gold); padding: 0 10px 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .character-inline-card .card-hint span, .artifact-inline-card .card-hint span, .city-inline-card .card-hint span, .place-inline-card .card-hint span { animation: pulse-icon 2s infinite; display: inline-block; }
+        @keyframes pulse-icon { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
+        @media (max-width: 768px) { .character-inline-card, .artifact-inline-card, .city-inline-card, .place-inline-card { float: none; width: 100%; max-width: 250px; margin: 20px auto; } }
 
         .reader-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-sand); z-index: 3500; overflow-y: auto; padding: 40px 20px; animation: fadeIn 0.3s ease; }
         .reader-page.active { display: block; }
@@ -142,6 +112,11 @@
         .toc-check { font-size: 14px; color: var(--shop-green); opacity: 0; }
         .toc-item.read .toc-check { opacity: 1; }
 
+        body.dark-mode .toc-item { background: #1a2f3a; border-color: #2a3f4d; }
+        body.dark-mode .toc-item.active { background: #0e2130; border-color: var(--accent-sand); }
+        body.dark-mode .toc-number { color: var(--accent-sand); }
+        body.dark-mode .toc-title { color: #e0e0e0; }
+
         .travel-map-container { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; padding-bottom: 60%; background-color: #e8e2d5; border-radius: 8px; border: 4px solid var(--accent-sand); box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; }
         .travel-point { position: absolute; width: 24px; height: 24px; background-color: var(--accent-sand); border: 3px solid white; border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.4s ease; z-index: 10; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold; }
         .travel-point.passed { background-color: var(--shop-green); opacity: 0.8; }
@@ -155,7 +130,7 @@
         .legend-dot.passed { background: var(--shop-green); }
         .legend-dot.current { background: var(--accent-red); animation: pulse 1.5s infinite; }
 
-        .collection-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .collection-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; max-width: 900px; margin-left: auto; margin-right: auto; flex-wrap: wrap; }
         .tab-btn { background: none; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; color: var(--text-muted); transition: all 0.3s; position: relative; }
         .tab-btn:hover { color: var(--accent-sea); }
         .tab-btn.active { color: var(--accent-sea); }
@@ -163,29 +138,19 @@
         .tab-content { display: none; max-width: 900px; margin: 0 auto; }
         .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
 
-        .collection-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
-        .collection-item { background: var(--bg-paper); border: 2px solid var(--border-color); border-radius: 8px; padding: 20px; text-align: center; transition: all 0.3s; position: relative; }
-        .collection-item.found { border-color: var(--support-gold); background: linear-gradient(to bottom right, #fcfaf5, #fdfbf7); }
-        .collection-item .icon { font-size: 50px; display: block; margin-bottom: 10px; filter: grayscale(100%); opacity: 0.3; transition: all 0.3s; }
-        .collection-item.found .icon { filter: grayscale(0%); opacity: 1; }
-        .collection-item .name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--text-main); }
-        .collection-item.found .name { color: var(--accent-sea); }
-        .collection-item .desc { font-size: 12px; color: var(--text-muted); margin-top: 10px; display: none; }
-        .collection-item.found .desc { display: block; }
-
-        .characters-grid-collection { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; }
-        .character-card-collection { background: var(--bg-paper); border: 2px solid var(--border-color); border-radius: 8px; overflow: hidden; text-align: center; transition: all 0.3s; position: relative; }
-        .character-card-collection.locked { opacity: 0.5; filter: grayscale(100%); }
-        .character-card-collection.locked .char-image { background-color: #ccc; }
-        .character-card-collection.locked .char-image::after { content: '?'; font-size: 40px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%; }
-        .character-card-collection.unlocked { border-color: var(--support-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .char-image { width: 100%; height: 200px; background-color: var(--bg-sand); background-size: cover; background-position: center; position: relative; }
-        .char-info { padding: 15px; }
-        .char-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
-        .char-role { font-size: 11px; text-transform: uppercase; color: var(--accent-red); letter-spacing: 1px; font-weight: 600; margin-bottom: 10px; display: block; }
-        .char-quote { font-size: 13px; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 10px; margin-top: 10px; }
-        .char-status { position: absolute; top: 10px; right: 10px; background: var(--support-gold); color: white; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: bold; display: none; }
-        .character-card-collection.unlocked .char-status { display: block; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; }
+        .card-item { background: var(--bg-paper); border: 2px solid var(--border-color); border-radius: 8px; overflow: hidden; text-align: center; transition: all 0.3s; position: relative; }
+        .card-item.locked { opacity: 0.5; filter: grayscale(100%); }
+        .card-item.locked .card-image { background-color: #ccc; }
+        .card-item.locked .card-image::after { content: '?'; font-size: 40px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%; }
+        .card-item.unlocked { border-color: var(--support-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card-image { width: 100%; height: 200px; background-color: var(--bg-sand); background-size: cover; background-position: center; position: relative; }
+        .card-info { padding: 15px; }
+        .card-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+        .card-role { font-size: 11px; text-transform: uppercase; color: var(--accent-red); letter-spacing: 1px; font-weight: 600; margin-bottom: 10px; display: block; }
+        .card-quote { font-size: 13px; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 10px; margin-top: 10px; }
+        .card-status { position: absolute; top: 10px; right: 10px; background: var(--support-gold); color: white; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: bold; display: none; }
+        .card-item.unlocked .card-status { display: block; }
 
         .chapter-nav { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color); margin-bottom: 30px; }
         .chapter-nav button { background: none; border: none; font-size: 18px; color: var(--accent-sea); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; }
@@ -197,6 +162,10 @@
         .chapter-cta p { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; text-indent: 0; }
         .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
         .cta-buttons .btn { padding: 10px 20px; font-size: 12px; }
+        
+        body.dark-mode .chapter-cta { background: #1a2f3a; border-color: #2a3f4d; }
+        body.dark-mode .chapter-cta h4 { color: var(--accent-sand); }
+        body.dark-mode .chapter-cta p { color: #8899a6; }
 
         .book-teaser { display: none; background: #1a2f3a; color: #f5f0e6; padding: 50px 20px; text-align: center; border-radius: 12px; margin: 40px auto; max-width: 800px; border: 3px solid var(--support-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
         .book-teaser.active { display: block; }
@@ -215,18 +184,29 @@
         .close-modal:hover { color: var(--accent-red); }
         .modal-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--accent-sea); margin-bottom: 20px; }
         .modal-content form { display: flex; flex-direction: column; gap: 15px; }
-        .modal-content input, .modal-content textarea { padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+        .modal-content input, .modal-content textarea { padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 14px; background: var(--bg-sand); color: var(--text-main); }
         .modal-content textarea { resize: vertical; min-height: 100px; }
         .modal-content button[type="submit"] { background: var(--accent-sea); color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         .modal-content button[type="submit"]:hover { background: var(--accent-red); }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+        @media (max-width: 992px) {
+            .reader-header nav { gap: 12px; }
+            .reader-header nav a { font-size: 11px; }
+        }
+
         @media (max-width: 768px) {
             .reader-content { font-size: 18px; padding: 30px 20px; margin: 20px auto; border-radius: 0; border-left: none; border-right: none; }
             .reader-content h1 { font-size: 28px; }
             .reader-content h2 { font-size: 22px; }
-            .reader-header { flex-direction: column; gap: 10px; padding: 10px; }
+            .reader-header { padding: 12px 5%; }
+            .reader-header .logo { font-size: 18px; }
+            .reader-header .burger { display: flex; }
+            .reader-header nav { position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg-paper); flex-direction: column; align-items: center; padding: 20px 0; border-bottom: 2px solid var(--accent-sand); display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+            .reader-header nav.active { display: flex; }
+            .reader-header nav a { margin: 10px 0; font-size: 15px; }
+            
             .chapter-nav { flex-direction: column; gap: 15px; align-items: center; }
             .cta-buttons { flex-direction: column; }
             .toc-item { padding: 12px 15px; }
@@ -238,11 +218,9 @@
             .tab-btn { border-bottom: 1px solid var(--border-color); }
             .tab-btn.active::after { display: none; }
             .tab-btn.active { background: rgba(42, 127, 143, 0.1); border-radius: 4px; }
-            .collection-grid { grid-template-columns: repeat(2, 1fr); }
-            .characters-grid-collection { grid-template-columns: repeat(2, 1fr); }
+            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
             .reader-page { padding: 20px 10px; }
             .page-header h2 { font-size: 32px; }
-            .floating-controls { bottom: 10px; right: 10px; left: 10px; justify-content: center; border-radius: 15px; padding: 10px; gap: 20px; }
         }
     </style>
 </head>
@@ -251,47 +229,68 @@
     <div id="progress-container"><div id="progress-bar"></div></div>
 
     <div class="reader-header">
-        <a href="index.html" class="close-reader"><span data-ru="✕ Закрыть" data-en="✕ Close">✕ Закрыть</span></a>
-        <div class="reader-nav">
-            <button class="reader-tool-btn" onclick="showPage('toc-page')">☰ <span data-ru="Оглавление" data-en="Contents">Оглавление</span></button>
-            <button class="reader-tool-btn" onclick="showPage('collection-page')">🏆 <span data-ru="Коллекция" data-en="Collection">Коллекция</span></button>
-            <button class="reader-tool-btn" onclick="showPage('map-page')">🗺️ <span data-ru="Карта" data-en="Map">Карта</span></button>
-            
+        <a href="index.html" class="logo">Альба-Маре</a>
+        <div class="nav-right">
+            <nav id="main-nav">
+                <a href="index.html#books" data-ru="Книги" data-en="Books">Книги</a>
+                <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
+                <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
+                <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
+                <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
+            </nav>
+         
             <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
                 <div id="lang-en">EN</div>
             </div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
+			
+            <div class="burger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </div>
 
+    <!-- Панель инструментов -->
     <div class="floating-controls">
-        <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
-        <div class="font-sizer">
-            <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A-</button>
-            <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
+        <div class="left-zone">
+            <span class="chapter-progress-label" id="chapter-progress-top"></span>
+        </div>
+        <div class="right-zone">
+            <button class="tool-btn" onclick="showPage('toc-page')">📖 <span data-ru="Оглавление" data-en="Contents">Оглавление</span></button>
+            <button class="tool-btn" onclick="showPage('collection-page')">🏆 <span data-ru="Коллекция" data-en="Collection">Коллекция</span></button>
+            <button class="tool-btn" onclick="showPage('map-page')">🗺️ <span data-ru="Карта" data-en="Map">Карта</span></button>
+            <div class="font-sizer">
+                <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
+                <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
+            </div>
         </div>
     </div>
 
-    <!-- Страница: Оглавление -->
+    <!-- Оглавление -->
     <div class="reader-page" id="toc-page">
         <div class="page-header"><h2 data-ru="Оглавление" data-en="Table of Contents">Оглавление</h2><p data-ru="Выберите главу для чтения" data-en="Select a chapter to read">Выберите главу для чтения</p></div>
         <div class="toc-list" id="toc-list"></div>
         <div style="text-align: center; margin-top: 40px;"><button class="btn" onclick="hideAllPages()" data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</button></div>
     </div>
 
-    <!-- Страница: Коллекция -->
+    <!-- Коллекция -->
     <div class="reader-page" id="collection-page">
-        <div class="page-header"><h2 data-ru="Коллекция" data-en="Collection">Коллекция</h2><p data-ru="Артефакты, которые вы нашли, и персонажи, с которыми встретились" data-en="Artifacts you have found and characters you have met">Артефакты, которые вы нашли, и персонажи, с которыми встретились</p></div>
+        <div class="page-header"><h2 data-ru="Коллекция" data-en="Collection">Коллекция</h2><p data-ru="Всё, что вы нашли и встретили в этом мире" data-en="Everything you have found and met in this world">Всё, что вы нашли и встретили в этом мире</p></div>
         <div class="collection-tabs">
             <button class="tab-btn active" onclick="switchTab('artifacts', this)" data-ru="Артефакты" data-en="Artifacts">Артефакты</button>
             <button class="tab-btn" onclick="switchTab('characters', this)" data-ru="Персонажи" data-en="Characters">Персонажи</button>
+            <button class="tab-btn" onclick="switchTab('cities', this)" data-ru="Города" data-en="Cities">Города</button>
+            <button class="tab-btn" onclick="switchTab('places', this)" data-ru="Места" data-en="Places">Места</button>
         </div>
-        <div class="tab-content active" id="tab-artifacts"><div class="collection-grid" id="collection-grid"></div></div>
-        <div class="tab-content" id="tab-characters"><div class="characters-grid-collection" id="characters-grid"></div></div>
+        <div class="tab-content active" id="tab-artifacts"><div class="cards-grid" id="artifacts-grid"></div></div>
+        <div class="tab-content" id="tab-characters"><div class="cards-grid" id="characters-grid"></div></div>
+        <div class="tab-content" id="tab-cities"><div class="cards-grid" id="cities-grid"></div></div>
+        <div class="tab-content" id="tab-places"><div class="cards-grid" id="places-grid"></div></div>
         <div style="text-align: center; margin-top: 40px;"><button class="btn" onclick="hideAllPages()" data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</button></div>
     </div>
 
-    <!-- Страница: Карта -->
+    <!-- Карта -->
     <div class="reader-page" id="map-page">
         <div class="page-header"><h2 data-ru="Карта путешествия" data-en="Travel Map">Карта путешествия</h2><p data-ru="Следите за путём Августа по Южному королевству" data-en="Follow August's journey across the Southern Kingdom">Следите за путём Августа по Южному королевству</p></div>
         <div class="travel-map-container" id="travel-map"></div>
@@ -302,25 +301,33 @@
         <div style="text-align: center; margin-top: 40px;"><button class="btn" onclick="hideAllPages()" data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</button></div>
     </div>
 
-    <!-- Основной текст главы -->
     <div class="reader-content" id="reader-text"></div>
 
-    <!-- Подвал главы -->
     <div class="reader-content" id="chapter-footer" style="background: transparent; border: none; box-shadow: none; padding-top: 0;">
         <div class="chapter-nav">
             <button id="btn-prev" onclick="changeChapter(-1)" data-ru="← Предыдущая глава" data-en="← Previous chapter">← Предыдущая глава</button>
             <span id="chapter-indicator" style="font-weight: bold; color: var(--accent-sea);"></span>
             <button id="btn-next" onclick="changeChapter(1)" data-ru="Следующая глава →" data-en="Next chapter →">Следующая глава →</button>
         </div>
+		
         <div class="chapter-cta">
             <h4 data-ru="Понравилась глава?" data-en="Enjoyed the chapter?">Понравилась глава?</h4>
-            <p data-ru="Поддержите автора — купите печатную версию книги или оставьте отзыв. Это помогает писать продолжение быстрее!" data-en="Support the author — buy the paperback edition or leave a review. It helps write the sequel faster!">Поддержите автора — купите печатную версию книги или оставьте отзыв. Это помогает писать продолжение быстрее!</p>
+            <p data-ru="Поддержите автора — это помогает писать продолжение быстрее! А если хотите поделиться — нажмите на кнопку ниже." data-en="Support the author — it helps write the sequel faster! And if you want to share — click the button below.">Поддержите автора — это помогает писать продолжение быстрее! А если хотите поделиться — нажмите на кнопку ниже.</p>
+            
             <div class="cta-buttons">
-                <a href="shop.html" class="btn btn-green" data-ru="Купить печатную" data-en="Buy Paperback">Купить печатную</a>
                 <a href="index.html#support" class="btn btn-red" data-ru="Поддержать автора" data-en="Support Author">Поддержать автора</a>
                 <button onclick="openFeedbackModal()" class="btn" style="background: transparent; border: 2px solid var(--accent-sea); color: var(--accent-sea);" data-ru="Оставить отзыв" data-en="Leave a Review">Оставить отзыв</button>
+                <button onclick="toggleShareMenu()" class="btn btn-share-toggle" id="share-toggle-btn" data-ru="Поделиться главой" data-en="Share chapter">Поделиться главой</button>
+            </div>
+
+            <!-- Выпадающий блок с соцсетями -->
+            <div class="share-menu" id="share-menu">
+                <a href="#" onclick="shareVK(event)" class="share-btn share-vk" title="ВКонтакте">ВК</a>
+                <a href="#" onclick="shareTelegram(event)" class="share-btn share-tg" title="Telegram">Telegram</a>
+                <button onclick="copyLink(event)" class="share-btn share-copy" id="share-copy-btn" data-ru="Копировать ссылку" data-en="Copy link">Копировать ссылку</button>
             </div>
         </div>
+
         <div class="book-teaser" id="book-teaser">
             <h2 data-ru="Продолжение следует..." data-en="To be continued...">Продолжение следует...</h2>
             <div class="teaser-text" data-ru="Вторая книга цикла «Альба-Маре» уже пишется." data-en="The second book of the Alba-Mare series is already being written.">Вторая книга цикла «Альба-Маре» уже пишется.</div>
@@ -362,7 +369,33 @@
 
     <script>
         // ==========================================
-        // 1. ЗАГРУЗКА СПИСКА ГЛАВ (из list.json)
+        // 1. ДАННЫЕ КОЛЛЕКЦИИ
+        // ==========================================
+        const artifactsData = {
+            'guitar':  { icon: '🎸', image: '', titleRu: 'Гитара Маттео',        titleEn: "Matteo's Guitar",          descRu: 'Инструмент, оставленный старым купцом.',   descEn: 'The instrument left by the old merchant.' },
+            'sword':   { icon: '⚔️', image: '', titleRu: 'Клинок отца',          titleEn: "Father's Blade",           descRu: 'Прямой меч с потертой рукоятью.',           descEn: 'A straight sword with a worn hilt.' },
+            'compass': { icon: '🧭', image: '', titleRu: 'Старый компас',        titleEn: 'Old Compass',              descRu: 'Стрелка дрожит, указывая путь на север.',   descEn: 'The needle trembles, pointing north.' },
+            'map':     { icon: '🗺️', image: '', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds the secrets of the fjords.' }
+        };
+
+        const charactersData = {
+            'matteo': { image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', nameRu: 'Маттео', nameEn: 'Matteo', roleRu: 'Торговец и Наставник', roleEn: 'Merchant and Mentor', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».', quoteEn: '“The instrument is just wood and strings. The main thing is inside.”' },
+            'mira':   { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', nameRu: 'Мира',   nameEn: 'Mira',   roleRu: 'Странница',        roleEn: 'Wanderer',        quoteRu: '«Дом — это не стены. Это те, кто ждёт тебя».', quoteEn: '“Home is not walls. It\'s those who wait for you.”' },
+            'einar':  { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', nameRu: 'Эйнар',  nameEn: 'Einar',  roleRu: 'Северный охотник', roleEn: 'Northern Hunter', quoteRu: '«Тишина иногда громче любого крика».',           quoteEn: '“Silence is sometimes louder than any scream.”' }
+        };
+
+        const citiesData = {
+            'alba-mare':     { image: '', nameRu: 'Альба-Маре',     nameEn: 'Alba-Mare',     roleRu: 'Город у моря',      roleEn: 'City by the Sea',   quoteRu: '«Свет, рождённый морем».', quoteEn: '“Light born of the sea.”' },
+            'northern-fjords': { image: '', nameRu: 'Северные фьорды', nameEn: 'Northern Fjords', roleRu: 'Край снега и тишины', roleEn: 'Land of Snow and Silence', quoteRu: '«Здесь холод рождается из молчания».', quoteEn: '“Here the cold is born of silence.”' }
+        };
+
+        const placesData = {
+            'old-pier':     { image: '', nameRu: 'Старый пирс',     nameEn: 'The Old Pier',     roleRu: 'Бухта',   roleEn: 'Bay',   quoteRu: '«Место, где Август впервые услышал город».', quoteEn: '“The place where August first heard the city.”' },
+            'market-square': { image: '', nameRu: 'Рыночная площадь', nameEn: 'Market Square', roleRu: 'Площадь', roleEn: 'Square', quoteRu: '«Здесь музыка впервые зазвучала для Августа».', quoteEn: '“Here music first sounded for August.”' }
+        };
+
+        // ==========================================
+        // 2. СОСТОЯНИЕ
         // ==========================================
         let bookChapters = [];
         let currentChapter = 0;
@@ -371,11 +404,14 @@
         let foundArtifacts = new Set();
         let readChapters = new Set();
         let unlockedCharacters = new Set();
+        let unlockedCities = new Set();
+        let unlockedPlaces = new Set();
 
+        // ==========================================
+        // 3. ЗАГРУЗКА СПИСКА ГЛАВ
+        // ==========================================
         async function loadChapterList() {
             try {
-                // Если файлы глав лежат в папке chapters/ — используйте 'chapters/list.json'
-                // Если в корне — 'list.json'. Здесь оставлен вариант с папкой chapters/.
                 const response = await fetch('chapters/list.json');
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 const data = await response.json();
@@ -388,12 +424,12 @@
         }
 
         // ==========================================
-        // 2. ИНИЦИАЛИЗАЦИЯ
+        // 4. ИНИЦИАЛИЗАЦИЯ
         // ==========================================
         function initReader() {
             const savedLang = localStorage.getItem('alba-mare-lang');
             if (savedLang && savedLang !== currentLang) {
-                toggleLang(true); // true = без перезагрузки главы
+                toggleLang(true);
             }
 
             const savedChapter = localStorage.getItem('alba-mare-progress');
@@ -413,7 +449,7 @@
         }
 
         // ==========================================
-        // 3. ОТРИСОВКА ГЛАВЫ (Загрузка файла с учетом языка)
+        // 5. ОТРИСОВКА ГЛАВЫ
         // ==========================================
         async function renderChapter() {
             if (bookChapters.length === 0) return;
@@ -445,23 +481,14 @@
 
                 readChapters.add(currentChapter);
 
-                if (chapterInfo.characters && chapterInfo.characters.length > 0) {
-                    chapterInfo.characters.forEach(charId => {
-                        if (!unlockedCharacters.has(charId)) {
-                            unlockedCharacters.add(charId);
-                            showCharacterToast(charId);
-                        }
-                    });
-                }
-
                 document.querySelectorAll('.hidden-artifact').forEach(el => {
                     const id = el.getAttribute('data-id');
-                    if (foundArtifacts.has(id)) {
-                        el.classList.add('found');
-                    }
+                    if (foundArtifacts.has(id)) el.classList.add('found');
                 });
 
-                document.getElementById('chapter-indicator').innerText = `${currentLang === 'ru' ? 'Глава' : 'Chapter'} ${currentChapter + 1} / ${bookChapters.length}`;
+                const chapterLabel = `${currentLang === 'ru' ? 'Глава' : 'Chapter'} ${currentChapter + 1} / ${bookChapters.length}`;
+                document.getElementById('chapter-indicator').innerText = chapterLabel;
+                document.getElementById('chapter-progress-top').innerText = chapterLabel;
                 document.getElementById('btn-prev').disabled = currentChapter === 0;
                 document.getElementById('btn-next').disabled = currentChapter === bookChapters.length - 1;
                 
@@ -481,6 +508,124 @@
             }
         }
 
+        // ==========================================
+        // 6. РАЗБЛОКИРОВКА КАРТОЧЕК
+        // ==========================================
+        function collectArtifact(id, element) {
+            if (foundArtifacts.has(id)) return;
+            foundArtifacts.add(id);
+            markInlineCardCollected(element);
+            showUnlockToast('artifact', id);
+        }
+
+        function unlockCharacter(id, element) {
+            if (unlockedCharacters.has(id)) return;
+            unlockedCharacters.add(id);
+            markInlineCardCollected(element);
+            showUnlockToast('character', id);
+        }
+
+        function unlockCity(id, element) {
+            if (unlockedCities.has(id)) return;
+            unlockedCities.add(id);
+            markInlineCardCollected(element);
+            showUnlockToast('city', id);
+        }
+
+        function unlockPlace(id, element) {
+            if (unlockedPlaces.has(id)) return;
+            unlockedPlaces.add(id);
+            markInlineCardCollected(element);
+            showUnlockToast('place', id);
+        }
+
+        function markInlineCardCollected(element) {
+            if (!element) return;
+            element.style.borderColor = 'var(--support-gold)';
+            const hint = element.querySelector('.card-hint');
+            if (hint) {
+                hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Получено' : 'Collected');
+                hint.style.color = 'var(--shop-green)';
+                const span = hint.querySelector('span');
+                if (span) span.style.animation = 'none';
+            }
+        }
+
+        function showUnlockToast(type, id) {
+            const config = {
+                artifact:  { data: artifactsData[id],  names: ['titleRu', 'titleEn'],  icon: '🎁', labelRu: 'Новый артефакт!', labelEn: 'New artifact!' },
+                character: { data: charactersData[id], names: ['nameRu', 'nameEn'],    icon: '👤', labelRu: 'Новый персонаж!', labelEn: 'New character!' },
+                city:      { data: citiesData[id],     names: ['nameRu', 'nameEn'],    icon: '🏙️', labelRu: 'Новый город!', labelEn: 'New city!' },
+                place:     { data: placesData[id],     names: ['nameRu', 'nameEn'],    icon: '📍', labelRu: 'Новое место!', labelEn: 'New place!' }
+            }[type];
+            if (!config || !config.data) return;
+            const name = config.data[currentLang === 'ru' ? config.names[0] : config.names[1]];
+            const toast = document.createElement('div');
+            toast.style.cssText = `position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--accent-sea); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
+            toast.innerHTML = `<div style="font-size: 24px; margin-bottom: 5px;">${config.icon}</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${currentLang === 'ru' ? config.labelRu : config.labelEn}</div><div style="font-size: 15px; color: var(--text-main);">${name} ${currentLang === 'ru' ? 'добавлен в Коллекцию' : 'added to Collection'}</div>`;
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
+        }
+
+        // ==========================================
+        // 7. КОЛЛЕКЦИЯ
+        // ==========================================
+        function renderCollection() {
+            const activeTab = document.querySelector('.tab-btn.active');
+            const tabName = activeTab ? activeTab.getAttribute('onclick').match(/'([^']+)'/)[1] : 'artifacts';
+            switchTab(tabName, activeTab);
+            renderCards('artifacts');
+            renderCards('characters');
+            renderCards('cities');
+            renderCards('places');
+        }
+
+        function switchTab(tabName, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+            const content = document.getElementById(`tab-${tabName}`);
+            if (content) content.classList.add('active');
+        }
+
+        function renderCards(type) {
+            const grids = {
+                artifacts:  { el: document.getElementById('artifacts-grid'),  data: artifactsData,  set: foundArtifacts,      roleRu: 'Артефакт', roleEn: 'Artifact', emptyRu: 'Продолжайте читать, чтобы найти этот артефакт.', emptyEn: 'Keep reading to find this artifact.' },
+                characters: { el: document.getElementById('characters-grid'), data: charactersData, set: unlockedCharacters, roleRu: '',         roleEn: '',         emptyRu: 'Продолжайте читать, чтобы встретить этого персонажа.', emptyEn: 'Keep reading to meet this character.' },
+                cities:     { el: document.getElementById('cities-grid'),     data: citiesData,     set: unlockedCities,     roleRu: '',         roleEn: '',         emptyRu: 'Продолжайте читать, чтобы открыть этот город.', emptyEn: 'Keep reading to discover this city.' },
+                places:     { el: document.getElementById('places-grid'),     data: placesData,     set: unlockedPlaces,     roleRu: '',         roleEn: '',         emptyRu: 'Продолжайте читать, чтобы открыть это место.', emptyEn: 'Keep reading to discover this place.' }
+            };
+            const cfg = grids[type];
+            if (!cfg || !cfg.el) return;
+            const grid = cfg.el; grid.innerHTML = '';
+
+            for (const id in cfg.data) {
+                const data = cfg.data[id];
+                const isOpen = cfg.set.has(id);
+                const name = data.nameRu !== undefined ? (currentLang === 'ru' ? data.nameRu : data.nameEn) : (currentLang === 'ru' ? data.titleRu : data.titleEn);
+                const role = data.roleRu !== undefined ? (currentLang === 'ru' ? data.roleRu : data.roleEn) : (currentLang === 'ru' ? cfg.roleRu : cfg.roleEn);
+                const desc = data.quoteRu !== undefined ? (currentLang === 'ru' ? data.quoteRu : data.quoteEn) : (currentLang === 'ru' ? data.descRu : data.descEn);
+                const image = isOpen ? (data.image || '') : '';
+                const emptyText = currentLang === 'ru' ? cfg.emptyRu : cfg.emptyEn;
+
+                const item = document.createElement('div');
+                item.className = `card-item ${isOpen ? 'unlocked' : 'locked'}`;
+                item.innerHTML = `
+                    <div class="card-image" style="background-image: url('${image}');"></div>
+                    <div class="card-info">
+                        <div class="card-status">✓ ${currentLang === 'ru' ? 'Открыт' : 'Unlocked'}</div>
+                        <div class="card-name">${isOpen ? name : '???'}</div>
+                        <span class="card-role">${isOpen ? role : (currentLang === 'ru' ? 'Неизвестно' : 'Unknown')}</span>
+                        <div class="card-quote">${isOpen ? desc : emptyText}</div>
+                    </div>
+                `;
+                grid.appendChild(item);
+            }
+        }
+
+        // ==========================================
+        // 8. НАВИГАЦИЯ ПО ГЛАВАМ
+        // ==========================================
         function showResumeModal(chapterIndex) {
             const modal = document.getElementById('resume-modal');
             const text = document.getElementById('resume-text');
@@ -500,7 +645,7 @@
         function changeFontSize(step) { readerFontSize += step; if (readerFontSize < 16) readerFontSize = 16; if (readerFontSize > 32) readerFontSize = 32; document.getElementById('reader-text').style.fontSize = readerFontSize + 'px'; setTimeout(updateProgressBar, 100); }
         function updateProgressBar() { const totalHeight = document.documentElement.scrollHeight - window.innerHeight; const progressBar = document.getElementById('progress-bar'); if (totalHeight > 0) { const scrollPercentage = (window.scrollY / totalHeight) * 100; progressBar.style.width = scrollPercentage + '%'; } else { progressBar.style.width = '100%'; } }
         window.addEventListener('scroll', updateProgressBar);
-        
+
         function showPage(pageId) { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); document.getElementById(pageId).classList.add('active'); if (pageId === 'toc-page') renderTOC(); if (pageId === 'collection-page') renderCollection(); if (pageId === 'map-page') renderMap(); }
         function hideAllPages() { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); }
 
@@ -538,126 +683,15 @@
             if (document.body.classList.contains('dark-mode')) { btn.innerText = '☀️'; localStorage.setItem('alba-mare-theme', 'dark'); } else { btn.innerText = '🌙'; localStorage.setItem('alba-mare-theme', 'light'); }
         }
 
-        // ==========================================
-        // 4. СБОР АРТЕФАКТОВ
-        // ==========================================
-        const artifactsData = {
-            'guitar':  { icon: '🎸', titleRu: 'Гитара Маттео',        titleEn: "Matteo's Guitar",          descRu: 'Инструмент, оставленный старым купцом.',   descEn: 'The instrument left by the old merchant.' },
-            'sword':   { icon: '⚔️', titleRu: 'Клинок отца',          titleEn: "Father's Blade",           descRu: 'Прямой меч с потертой рукоятью.',           descEn: 'A straight sword with a worn hilt.' },
-            'compass': { icon: '🧭', titleRu: 'Старый компас',        titleEn: 'Old Compass',              descRu: 'Стрелка дрожит, указывая путь на север.',   descEn: 'The needle trembles, pointing north.' },
-            'map':     { icon: '🗺️', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds the secrets of the fjords.' }
-        };
-
-        function collectArtifact(id, element) {
-            if (foundArtifacts.has(id)) return;
-            foundArtifacts.add(id);
-            
-            if (element && element.classList.contains('artifact-inline-card')) {
-                element.style.borderColor = 'var(--support-gold)';
-                const hint = element.querySelector('.card-hint');
-                if (hint) {
-                    hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Получено' : 'Collected');
-                    hint.style.color = 'var(--shop-green)';
-                    const span = hint.querySelector('span');
-                    if (span) span.style.animation = 'none';
-                }
-            } else if (element) {
-                element.classList.add('found');
-            }
-
-            const data = artifactsData[id]; if (!data) return;
-            const title = currentLang === 'ru' ? data.titleRu : data.titleEn;
-            const desc  = currentLang === 'ru' ? data.descRu  : data.descEn;
-            const toast = document.createElement('div');
-            toast.style.cssText = `position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--support-gold); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
-            toast.innerHTML = `<div style="font-size: 30px; margin-bottom: 5px;">${data.icon}</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${title}</div><div style="font-size: 13px; color: var(--text-muted);">${desc}</div><div style="font-size: 11px; color: var(--support-gold); margin-top: 5px; font-weight: bold;">✓ ${currentLang === 'ru' ? 'Добавлено в коллекцию' : 'Added to collection'}</div>`;
-            document.body.appendChild(toast);
-            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
+        function toggleMenu() {
+            document.getElementById('main-nav').classList.toggle('active');
         }
 
         // ==========================================
-        // 5. РАЗБЛОКИРОВКА ПЕРСОНАЖЕЙ
+        // 9. ОСТАЛЬНОЕ
         // ==========================================
-        function unlockCharacter(charId, element) {
-            if (unlockedCharacters.has(charId)) return;
-            unlockedCharacters.add(charId);
-            
-            if (element) {
-                element.style.borderColor = 'var(--support-gold)';
-                const hint = element.querySelector('.card-hint');
-                if (hint) {
-                    hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Открыт' : 'Unlocked');
-                    hint.style.color = 'var(--shop-green)';
-                    const span = hint.querySelector('span');
-                    if (span) span.style.animation = 'none';
-                }
-            }
-            
-            showCharacterToast(charId);
-        }
-
-        const charactersData = {
-            'matteo': { image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', nameRu: 'Маттео', nameEn: 'Matteo', roleRu: 'Торговец и Наставник', roleEn: 'Merchant and Mentor', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».', quoteEn: '“The instrument is just wood and strings. The main thing is inside.”' },
-            'mira':   { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', nameRu: 'Мира',   nameEn: 'Mira',   roleRu: 'Странница',        roleEn: 'Wanderer',        quoteRu: '«Дом — это не стены. Это те, кто ждёт тебя».', quoteEn: '“Home is not walls. It\'s those who wait for you.”' },
-            'einar':  { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', nameRu: 'Эйнар',  nameEn: 'Einar',  roleRu: 'Северный охотник', roleEn: 'Northern Hunter', quoteRu: '«Тишина иногда громче любого крика».',           quoteEn: '“Silence is sometimes louder than any scream.”' }
-        };
-
-        // ==========================================
-        // 6. КОЛЛЕКЦИЯ
-        // ==========================================
-        function renderCollection() { 
-            const activeTab = document.querySelector('.tab-btn.active');
-            switchTab(activeTab && activeTab.textContent.trim() === 'Персонажи' ? 'characters' : 'artifacts', activeTab); 
-            renderArtifacts(); 
-            renderCharacters(); 
-        }
-        function switchTab(tabName, btnElement) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            if (btnElement) btnElement.classList.add('active');
-            const content = document.getElementById(`tab-${tabName}`);
-            if (content) content.classList.add('active');
-        }
-        function renderArtifacts() {
-            const grid = document.getElementById('collection-grid'); grid.innerHTML = '';
-            for (const id in artifactsData) {
-                const data = artifactsData[id];
-                const isFound = foundArtifacts.has(id);
-                const title = currentLang === 'ru' ? data.titleRu : data.titleEn;
-                const desc  = currentLang === 'ru' ? data.descRu  : data.descEn;
-                const item = document.createElement('div');
-                item.className = `collection-item ${isFound ? 'found' : ''}`;
-                item.innerHTML = `<span class="icon">${data.icon}</span><div class="name">${isFound ? title : (currentLang === 'ru' ? '???' : '???')}</div><div class="desc">${isFound ? desc : (currentLang === 'ru' ? 'Продолжайте читать, чтобы найти.' : 'Keep reading to find.')}</div>`;
-                grid.appendChild(item);
-            }
-        }
-        function renderCharacters() {
-            const grid = document.getElementById('characters-grid'); grid.innerHTML = '';
-            for (const id in charactersData) {
-                const data = charactersData[id];
-                const isUnlocked = unlockedCharacters.has(id);
-                const name  = currentLang === 'ru' ? data.nameRu  : data.nameEn;
-                const role  = currentLang === 'ru' ? data.roleRu  : data.roleEn;
-                const quote = currentLang === 'ru' ? data.quoteRu : data.quoteEn;
-                const item = document.createElement('div');
-                item.className = `character-card-collection ${isUnlocked ? 'unlocked' : 'locked'}`;
-                item.innerHTML = `<div class="char-image" style="background-image: url('${isUnlocked ? data.image : ''}');"></div><div class="char-info"><div class="char-status">✓ ${currentLang === 'ru' ? 'Открыт' : 'Unlocked'}</div><div class="char-name">${isUnlocked ? name : '???'}</div><span class="char-role">${isUnlocked ? role : (currentLang === 'ru' ? 'Неизвестно' : 'Unknown')}</span><div class="char-quote">${isUnlocked ? quote : (currentLang === 'ru' ? 'Продолжайте читать, чтобы встретить этого персонажа.' : 'Keep reading to meet this character.')}</div></div>`;
-                grid.appendChild(item);
-            }
-        }
-
         function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
         function closeFeedbackModal(event) { if (!event || event.target.id === 'feedback-modal' || event.target.classList.contains('close-modal')) { document.getElementById('feedback-modal').style.display = 'none'; } }
-        
-        function showCharacterToast(charId) {
-            const char = charactersData[charId]; if (!char) return;
-            const name = currentLang === 'ru' ? char.nameRu : char.nameEn;
-            const toast = document.createElement('div');
-            toast.style.cssText = `position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--accent-sea); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
-            toast.innerHTML = `<div style="font-size: 24px; margin-bottom: 5px;">👤</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${currentLang === 'ru' ? 'Новый персонаж!' : 'New character!'}</div><div style="font-size: 15px; color: var(--text-main);">${name} ${currentLang === 'ru' ? 'добавлен в Коллекцию' : 'added to Collection'}</div>`;
-            document.body.appendChild(toast);
-            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
-        }
 
         function toggleLang(noRerender) {
             currentLang = currentLang === 'ru' ? 'en' : 'ru';
@@ -674,7 +708,6 @@
             localStorage.setItem('alba-mare-lang', currentLang);
             
             if (!noRerender) {
-                // Сохраняем позицию скролла перед перерисовкой
                 const scrollY = window.scrollY;
                 renderChapter().then(() => {
                     window.scrollTo({ top: scrollY, behavior: 'instant' });
@@ -684,6 +717,67 @@
             if (document.getElementById('toc-page').classList.contains('active')) { renderTOC(); } 
             else if (document.getElementById('collection-page').classList.contains('active')) { renderCollection(); } 
             else if (document.getElementById('map-page').classList.contains('active')) { renderMap(); }
+        }
+
+        // ==========================================
+        // 10. ПОДЕЛИТЬСЯ
+        // ==========================================
+        function toggleShareMenu() {
+            const menu = document.getElementById('share-menu');
+            const btn = document.getElementById('share-toggle-btn');
+            
+            menu.classList.toggle('active');
+            
+            if (menu.classList.contains('active')) {
+                btn.innerText = currentLang === 'ru' ? 'Скрыть' : 'Hide';
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--accent-sea)';
+            } else {
+                btn.innerText = currentLang === 'ru' ? 'Поделиться главой' : 'Share chapter';
+                btn.style.background = 'var(--accent-sea)';
+                btn.style.color = 'white';
+            }
+        }
+
+        function getShareUrl() {
+            const chapterTitle = document.querySelector('.reader-content h2')?.innerText || 'Август Фьорд';
+            const baseUrl = window.location.origin + window.location.pathname;
+            return { url: baseUrl, title: `${chapterTitle} — Август Фьорд` };
+        }
+
+        function shareVK(event) {
+            event.preventDefault();
+            const { url, title } = getShareUrl();
+            const vkUrl = `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+            window.open(vkUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareTelegram(event) {
+            event.preventDefault();
+            const { url, title } = getShareUrl();
+            const tgUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+            window.open(tgUrl, '_blank', 'width=600,height=400');
+        }
+
+        function copyLink(event) {
+            if (event) event.preventDefault();
+            const { url } = getShareUrl();
+            const btn = document.getElementById('share-copy-btn');
+            
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = currentLang === 'ru' ? '✓ Скопировано!' : '✓ Copied!';
+                btn.style.backgroundColor = 'var(--shop-green)';
+                btn.style.borderColor = 'var(--shop-green)';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = '';
+                    btn.style.borderColor = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Не удалось скопировать:', err);
+                alert(currentLang === 'ru' ? 'Не удалось скопировать ссылку.' : 'Failed to copy link.');
+            });
         }
 
         window.onload = loadChapterList;

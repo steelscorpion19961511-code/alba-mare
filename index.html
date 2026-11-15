@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Альба-Маре</title>
+  <title>Альба-Маре — Август Фьорд. Читать онлайн бесплатно</title>
+    <meta name="description" content="«Август Фьорд» — приключенческая повесть о музыке, потере и обретении дома. Читать онлайн бесплатно, без регистрации. 43 главы, русский и английский.">
     
+
+	<!-- Фавикон -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
+    
+	<style>
         /* Стиль для кнопки "Читать" на главном экране */
         .hero-read-btn {
             display: inline-block;
@@ -35,6 +42,24 @@
 </head>
 <body>
 
+	    <!-- Open Graph / социальные сети -->
+    <meta property="og:type" content="book">
+    <meta property="og:title" content="Альба-Маре — Свет, рождённый морем">
+    <meta property="og:description" content="Приключенческая повесть о музыке, потере и обретении дома. Читать онлайн бесплатно, без регистрации — с телефона, планшета или компьютера.">
+    <meta property="og:image" content="https://ВАШ_НИК.github.io/images/og-cover.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://ВАШ_НИК.github.io/">
+    <meta property="og:site_name" content="Альба-Маре">
+    <meta property="og:locale" content="ru_RU">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Альба-Маре — Свет, рождённый морем">
+    <meta name="twitter:description" content="Приключенческая повесть о музыке, потере и обретении дома. Читать онлайн бесплатно.">
+    <meta name="twitter:image" content="https://ВАШ_НИК.github.io/images/og-cover.png">
+	
+	
     <!-- Кнопка "Наверх" -->
     <button id="scrollToTopBtn" class="scroll-to-top" title="Вернуться наверх">
         <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
@@ -42,20 +67,23 @@
 
     <!-- Шапка -->
     <header>
-        <a href="#" class="logo">Альба-Маре</a>
+      <a href="index.html" class="logo">Альба-Маре</a>
         <div class="nav-right">
             <nav id="main-nav">
                 <a href="#books" data-ru="Книги" data-en="Books">Книги</a>
+                <a href="universe.html" data-ru="Вселенная" data-en="Universe">Вселенная</a>
                 <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
                 <a href="#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
                 <a href="#author" data-ru="Автор" data-en="Author">Автор</a>
                 <a href="#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
-            <div class="lang-switch" onclick="toggleLang()">
+     <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
                 <div id="lang-en">EN</div>
             </div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
             <div class="burger" onclick="toggleMenu()">
+          
                 <span></span><span></span><span></span>
             </div>
         </div>
@@ -73,10 +101,6 @@
                    data-en="When the southern city by the sea fell, the young guard August lost everything — home, family, his place in the world. Together with his father's guitar and sword, he sets out on a journey that will lead him through cities, seas, and snow to himself.">
                    Когда южный город у моря пал, юный стражник Август потерял всё — дом, семью, своё место в мире. Вместе с гитарой и мечом отца он отправляется в путь, который приведёт его через города, моря и снега к самому себе.
                 </p>
-                <p data-ru="Мальчик, слышавший музыку в шуме прибоя. Юноша, семь лет не прикасавшийся к струнам. Мужчина, бежавший из горящего города с клинком отца на поясе и пеплом дома в волосах. Август не знал, куда идёт. Знал только, что не может остаться." 
-                   data-en="A boy who heard music in the sound of the surf. A young man who hadn't touched the strings for seven years. A man who fled a burning city with his father's blade at his belt and the ashes of his home in his hair. August didn't know where he was going. He only knew he couldn't stay.">
-                   Мальчик, слышавший музыку в шуме прибоя. Юноша, семь лет не прикасавшийся к струнам. Мужчина, бежавший из горящего города с клинком отца на поясе и пеплом дома в волосах. Август не знал, куда идёт. Знал только, что не может остаться.
-                </p>
                 <p data-ru="По пути — странники и барды, моряки и северные охотники. Игра для тех, кто готов слушать, и умение слышать тех, кого раньше считал врагами. Потеря надежды — и обретение её снова. Понимание, что дом — это не стены, а те, кто ждёт. И голос, который сильнее любого оружия." 
                    data-en="Along the way — wanderers and bards, sailors and northern hunters. Playing for those ready to listen, and the ability to hear those you once considered enemies. The loss of hope — and its finding again. The understanding that home is not walls, but those who wait. And a voice stronger than any weapon.">
                    По пути — странники и барды, моряки и северные охотники. Игра для тех, кто готов слушать, и умение слышать тех, кого раньше считал врагами. Потеря надежды — и обретение её снова. Понимание, что дом — это не стены, а те, кто ждёт. И голос, который сильнее любого оружия.
@@ -87,7 +111,21 @@
                 </p>
             </div>
 
-            <a href="reader.html" class="hero-read-btn" data-ru="ЧИТАТЬ" data-en="READ">ЧИТАТЬ</a>
+            <!-- Компактные факты о книге -->
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent-sea); font-weight: 600; line-height: 1.6; padding: 12px 0; margin-bottom: 10px; border-top: 1px solid rgba(194, 154, 91, 0.3); border-bottom: 1px solid rgba(194, 154, 91, 0.3);"
+                 data-ru="Жанр: приключенческая повесть · 43 главы · ~3,5 часа · RU / EN" 
+                 data-en="Genre: adventure novella · 43 chapters · ~3.5 hours · RU / EN">
+               Жанр: приключенческая повесть · 43 главы · ~3,5 часа · RU / EN
+            </div>
+
+             <!-- Почему бесплатно -->
+            <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 30px; padding: 18px 22px; background: rgba(42, 127, 143, 0.08); border-left: 4px solid var(--accent-sea); border-radius: 6px;"
+                 data-ru="💙 Бесплатно. Без регистрации. Без подписок. Просто откройте книгу и читайте — с телефона, планшета или компьютера."
+                 data-en="💙 Free. No registration. No subscriptions. Just open the book and read — on your phone, tablet or computer.">
+                💙 Бесплатно. Без регистрации. Без подписок. Просто откройте книгу и читайте — с телефона, планшета или компьютера.
+            </div>
+			
+            <a href="reader.html" class="btn btn-red" data-ru="Читать первую книгу" data-en="Read the first book">Читать первую книгу</a>
         </div>
 
         <!-- Три картинки в столбик -->
@@ -100,7 +138,7 @@
         </div>
     </div>
  
-      <!-- Секция: Книги -->
+    <!-- Секция: Книги -->
     <section id="books" class="books-section">
         <div class="section-header" data-aos="fade-up">
             <h2 class="serif" data-ru="Цикл: свет, рождённый морем" data-en="Series: Light Born of the Sea">Цикл: свет, рождённый морем</h2>
@@ -126,9 +164,25 @@
                 <a href="reader3.html" class="hero-read-btn" style="width: 100%; margin-top: 15px;" data-ru="Читать" data-en="Read">Скоро</a>
             </div>
         </div>
-    </section>
 
-  <!-- Секция: Отзывы -->
+<!-- Кнопка "Вся вселенная" -->
+        <div style="text-align: center; margin-top: 60px; padding: 0 20px;" data-aos="fade-up">
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--text-muted); max-width: 720px; margin: 0 auto 30px; line-height: 1.7;"
+               data-ru="Вселенная «Альба-Маре» не заканчивается на трёх книгах об Августе Фьорде. Впереди — новые книги, пересекающиеся с сюжетом цикла «Свет, рождённый морем», и новый цикл." 
+               data-en="The Alba-Mare universe does not end with the three books about August Fjord. Ahead — new books intersecting with the 'Light Born of the Sea' cycle, and a new cycle.">
+               Вселенная «Альба-Маре» не заканчивается на трёх книгах об Августе Фьорде. Впереди — новые книги, пересекающиеся с сюжетом цикла «Свет, рождённый морем», и новый цикл.
+            </p>
+
+            <a href="universe.html" class="universe-btn"
+               data-ru="Вся вселенная →" data-en="The whole universe →">
+               <span class="universe-btn-icon">🌊</span>
+               <span class="universe-btn-text" data-ru="Вся вселенная" data-en="The whole universe">Вся вселенная</span>
+               <span class="universe-btn-arrow">→</span>
+            </a>
+        </div>
+ </section>
+ 
+    <!-- Секция: Отзывы -->
     <section id="reviews" class="reviews-section">
         <div class="section-header" data-aos="fade-up">
             <h2 class="serif" data-ru="Отзывы читателей" data-en="Reader Reviews">Отзывы читателей</h2>
@@ -142,8 +196,7 @@
                 <h3 class="serif">Оставить отзыв</h3>
                 <p>Поделитесь впечатлениями о книге. Ваше мнение очень важно!</p>
                 
-                <!-- ВАЖНО: Замените ВАША_ССЫЛКА на ваш endpoint из Formspree -->
-                <form action="https://formspree.io/f/ВАША_ССЫЛКА" method="POST" class="review-form">
+                <form action="https://formspree.io/f/xzerdyby" method="POST" class="review-form">
                     <div class="form-group">
                         <label>Ваше имя</label>
                         <input type="text" name="name" required placeholder="Иван">
@@ -210,8 +263,7 @@
                 <div class="author-image">
                     <img src="images/author.jpg" alt="author" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
                 </div>
-                <a href="https://vk.ru/jukero" target="_blank" class="btn btn-vk" data-ru="Я ВКонтакте" data-en="My VK Page">Я ВКонтакте</a>
-            </div>
+        </div>
 
             <div class="author-text">
                 <h2 class="serif" data-ru="Об авторе" data-en="About the Author">Об авторе</h2>
@@ -254,8 +306,9 @@
                Вы можете поддержать меня любой суммой
             </p>
 
-            <div class="support-grid" style="display: flex; justify-content: center;">
-                <div class="support-card" style="max-width: 500px; width: 100%;">
+            <div class="support-grid">
+                <!-- Карта РФ -->
+                <div class="support-card">
                     <h4 data-ru="Банковская карта (РФ)" data-en="Bank Card (Russia)">Банковская карта (РФ)</h4>
                     <p data-ru="Перевод с карты любого банка РФ:" data-en="Transfer from any Russian bank card:">Перевод на Сбербанк Дмитрий Д.Ю.</p>
                     <div class="copy-box" onclick="copyText('2202 2092 8822 1251', event)">
@@ -264,12 +317,24 @@
                         <div class="copy-tooltip" data-ru="Скопировано!" data-en="Copied!">Скопировано!</div>
                     </div>
                 </div>
+
+                <!-- Boosty -->
+                <div class="support-card">
+                    <h4 data-ru="Boosty (для всех стран)" data-en="Boosty (all countries)">Boosty (для всех стран)</h4>
+                    <p data-ru="Донат картой любого банка мира. Работает из Европы, США и других стран." 
+                       data-en="Donate with a card from any bank in the world. Works from Europe, USA and other countries.">
+                       Донат картой любого банка мира. Работает из Европы, США и других стран.
+                    </p>
+                    <a href="https://boosty.to/alba.mare" target="_blank" class="support-link-btn" style="background: var(--support-gold); color: #1a2f3a; font-weight: 700;">
+                        <span data-ru="Поддержать на Boosty →" data-en="Support on Boosty →">Поддержать на Boosty →</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-
+ 
     <footer>
-        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov <span data-ru="Все права защищены." data-en="All rights reserved.">Все права защищены.</span></p>
+        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov</p>
     </footer>
 
     <!-- Подключаем скрипт AOS -->
@@ -279,16 +344,20 @@
         AOS.init({ duration: 800, once: true });
 
         // --- ПЕРЕКЛЮЧЕНИЕ ЯЗЫКОВ ---
-        let currentLang = 'ru';
-        function toggleLang() {
-            currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            document.getElementById('lang-ru').classList.toggle('active');
-            document.getElementById('lang-en').classList.toggle('active');
+        let currentLang = localStorage.getItem('alba-mare-lang') || 'ru';
+        function applyLang() {
+            document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
+            document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
             document.querySelectorAll('[data-ru]').forEach(el => {
                 const text = el.getAttribute(`data-${currentLang}`);
                 if (text) el.innerHTML = text;
             });
             document.documentElement.lang = currentLang;
+        }
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            localStorage.setItem('alba-mare-lang', currentLang);
+            applyLang();
         }
 
         // --- МОБИЛЬНОЕ МЕНЮ ---
@@ -322,6 +391,31 @@
                 behavior: 'smooth'
             });
         });
+
+        // --- ТЁМНАЯ ТЕМА ---
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('theme-btn');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerText = '☀️';
+                localStorage.setItem('alba-mare-theme', 'dark');
+            } else {
+                btn.innerText = '🌙';
+                localStorage.setItem('alba-mare-theme', 'light');
+            }
+        }
+
+        // Применяем сохранённую тему при загрузке (без мигания)
+        (function applyTheme() {
+            if (localStorage.getItem('alba-mare-theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                const btn = document.getElementById('theme-btn');
+                if (btn) btn.innerText = '☀️';
+            }
+        })();
+		
+        // Применяем сохранённый язык при загрузке
+        document.addEventListener('DOMContentLoaded', applyLang);
     </script>
 </body>
 </html>

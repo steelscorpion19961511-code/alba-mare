@@ -6,7 +6,9 @@
         "file": "chapter1.html",
         "fileEn": "chapter1_en.html",
         "mapCoord": { "x": 20, "y": 70 },
-        "characters": []
+        "characters": [],
+        "cities": ["alba-mare"],
+        "places": ["old-pier"]
     },
     {
         "id": 2,
@@ -15,6 +17,8 @@
         "file": "chapter2.html",
         "fileEn": "chapter2_en.html",
         "mapCoord": { "x": 25, "y": 65 },
-        "characters": ["matteo"]
+        "characters": ["matteo"],
+        "cities": [],
+        "places": ["market-square"]
     }
 ]
