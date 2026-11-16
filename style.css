@@ -609,3 +609,34 @@ body.dark-mode .font-sizer button:hover { background: var(--accent-sand); color:
     .review-card { flex: 0 0 100%; } 
     .carousel-nav-btn { display: none; } 
 }
+/* ========================================= */
+/* --- СЕТКА ОТЗЫВОВ ДЛЯ ПК --- */
+/* ========================================= */
+@media (min-width: 993px) {
+    .reviews-track {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* По 2 карточки в ряд */
+        gap: 20px;
+        overflow-x: visible; /* Отключаем горизонтальный скролл */
+        scroll-snap-type: none;
+        padding: 20px 0;
+    }
+
+    /* Делаем карточки гибкими внутри сетки */
+    .review-card {
+        flex: none; 
+        width: 100%;
+        scroll-snap-align: none;
+    }
+
+    /* Прячем стрелки на ПК, так как сетка видна полностью */
+    .carousel-nav-btn {
+        display: none;
+    }
+    
+    /* Делаем обертку не такой широкой, чтобы форма и отзывы смотрелись гармонично */
+    .reviews-carousel-wrapper {
+        flex: 1.2;
+        width: 100%;
+    }
+}
