@@ -143,8 +143,52 @@ nav a.support-link:hover::after { width: 100%; }
 }
 .burger:hover span { background: var(--accent-sea); }
 
-/* --- ГЛАВНЫЙ ЭКРАН --- */
-.hero { padding: 150px 10% 100px; display: flex; align-items: center; justify-content: space-between; gap: 50px; position: relative; background: linear-gradient(to right, rgba(245,240,230,0.9) 0%, rgba(245,240,230,0.7) 50%, rgba(245,240,230,0.9) 100%), url('images/hero-bg.jpg') center/cover; }
+/* ========================================= */
+/* --- ГЛАВНЫЙ ЭКРАН (ВАРИАНТ 2: РАЗМЫТАЯ ПОДЛОЖКА) --- */
+/* ========================================= */
+.hero {
+    position: relative;
+    padding: 150px 10% 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    overflow: hidden;
+    background: var(--bg-sand);
+    isolation: isolate;
+}
+
+/* Размытая копия картинки на весь блок */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    filter: blur(24px) brightness(0.85) saturate(1.1);
+    transform: scale(1.05);
+    z-index: 0;
+}
+
+/* Градиент поверх размытия — для читаемости текста */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(245, 240, 230, 0.88) 0%,
+        rgba(245, 240, 230, 0.65) 50%,
+        rgba(245, 240, 230, 0.88) 100%
+    );
+    z-index: 1;
+}
+
+/* Контент поверх всего */
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
 .hero-text { flex: 1; max-width: 600px; }
 .hero-subtitle { font-size: 22px; color: var(--accent-sea); margin-bottom: 10px; font-family: 'Cormorant Garamond', serif; font-style: italic; }
 .hero h1 { font-size: 80px; color: var(--text-main); letter-spacing: 3px; margin-bottom: 10px; line-height: 1.1; text-shadow: 2px 2px 0px rgba(255,255,255,0.5); }
@@ -565,7 +609,18 @@ body.dark-mode .roadmap-item h4 { color: #e0e0e0; }
 body.dark-mode .universe-quote { background: rgba(42, 127, 143, 0.15); }
 body.dark-mode .universe-quote p { color: #e0e0e0; }
 body.dark-mode .books-section { background-color: #0e2130; box-shadow: inset 0 20px 30px -30px rgba(0,0,0,0.4), inset 0 -20px 30px -30px rgba(0,0,0,0.4); }
-body.dark-mode .hero { background: linear-gradient(to right, rgba(11,26,38,0.95) 0%, rgba(11,26,38,0.85) 50%, rgba(11,26,38,0.95) 100%); }
+body.dark-mode .hero { background: var(--bg-sand); }
+body.dark-mode .hero::before {
+    filter: blur(24px) brightness(0.35) saturate(0.8);
+}
+body.dark-mode .hero::after {
+    background: linear-gradient(
+        to right,
+        rgba(11, 26, 38, 0.92) 0%,
+        rgba(11, 26, 38, 0.78) 50%,
+        rgba(11, 26, 38, 0.92) 100%
+    );
+}
 body.dark-mode .universe-section.paper { background-color: #112233; }
 body.dark-mode .universe-hero { background: linear-gradient(to bottom, rgba(11,26,38,0.95), rgba(11,26,38,0.9)), url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1920&q=80') center/cover; }
 
@@ -596,6 +651,7 @@ body.dark-mode .universe-hero { background: linear-gradient(to bottom, rgba(11,2
     .hero h1 { font-size: 42px; letter-spacing: 1px; }
     .hero h2 { font-size: 24px; }
     .hero p { font-size: 15px; }
+    .hero::before { filter: blur(16px) brightness(0.85) saturate(1.1); inset: -20px; }
     .btn { display: block; width: 100%; margin-bottom: 10px; text-align: center; }
     section { padding: 60px 5%; scroll-margin-top: 80px; }
     .section-header h2 { font-size: 32px; }
