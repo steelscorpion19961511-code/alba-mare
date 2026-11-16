@@ -15,7 +15,7 @@
     <meta property="og:image" content="https://alba-mare.ru/images/og-universe.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://alba-mare.ru/universe.html">
+    <meta property="og:url" content="https://alba-mare.ru/reader.html">
     <meta property="og:site_name" content="Альба-Маре">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary_large_image">
@@ -25,8 +25,6 @@
 	
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-	
-    <!-- Подключаем общий файл стилей -->
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -217,7 +215,6 @@
                 <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
             
-            <!-- Кнопка "Читать" (ведет в библиотеку) -->
             <a href="library.html" class="header-read-btn" data-ru="Читать" data-en="Read">Читать</a>
             
             <div class="lang-switch" onclick="toggleLang()">
@@ -231,7 +228,7 @@
         </div>
     </header>
 	
-    <!-- Панель инструментов (парящая справа) -->
+    <!-- Панель инструментов -->
     <div class="floating-controls">
         <div class="left-zone">
             <span class="chapter-progress-label" id="chapter-progress-top"></span>
@@ -300,7 +297,6 @@
                 <button onclick="toggleShareMenu()" class="btn btn-share-toggle" id="share-toggle-btn" data-ru="Поделиться главой" data-en="Share chapter">Поделиться главой</button>
             </div>
 
-            <!-- Выпадающий блок с соцсетями -->
             <div class="share-menu" id="share-menu">
                 <a href="#" onclick="shareVK(event)" class="share-btn share-vk" title="ВКонтакте">ВК</a>
                 <a href="#" onclick="shareTelegram(event)" class="share-btn share-tg" title="Telegram">Telegram</a>
@@ -359,7 +355,7 @@
         };
 
         const charactersData = {
-            'matteo': { image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', nameRu: 'Маттео', nameEn: 'Matteo', roleRu: 'Торговец и Наставник', roleEn: 'Merchant and Mentor', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».', quoteEn: '“The instrument is just wood and strings. The main thing is inside.”' },
+            'matteo': { image: 'images/matteo.jpg', nameRu: 'Маттео', nameEn: 'Matteo', roleRu: 'Торговец и Наставник', roleEn: 'Merchant and Mentor', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».', quoteEn: '“The instrument is just wood and strings. The main thing is inside.”' },
             'mira':   { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', nameRu: 'Мира',   nameEn: 'Mira',   roleRu: 'Странница',        roleEn: 'Wanderer',        quoteRu: '«Дом — это не стены. Это те, кто ждёт тебя».', quoteEn: '“Home is not walls. It\'s those who wait for you.”' },
             'einar':  { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', nameRu: 'Эйнар',  nameEn: 'Einar',  roleRu: 'Северный охотник', roleEn: 'Northern Hunter', quoteRu: '«Тишина иногда громче любого крика».',           quoteEn: '“Silence is sometimes louder than any scream.”' }
         };
@@ -375,17 +371,37 @@
         };
 
         // ==========================================
-        // 2. СОСТОЯНИЕ
+        // 2. СОСТОЯНИЕ (с сохранением в localStorage)
         // ==========================================
         let bookChapters = [];
         let currentChapter = 0;
         let currentLang = 'ru';
         let readerFontSize = 22;
-        let foundArtifacts = new Set();
-        let readChapters = new Set();
-        let unlockedCharacters = new Set();
-        let unlockedCities = new Set();
-        let unlockedPlaces = new Set();
+
+        function loadSet(key) {
+            try {
+                const raw = localStorage.getItem(key);
+                if (!raw) return new Set();
+                const arr = JSON.parse(raw);
+                return new Set(Array.isArray(arr) ? arr : []);
+            } catch (e) {
+                console.warn('Не удалось загрузить', key, e);
+                return new Set();
+            }
+        }
+        function saveSet(key, set) {
+            try {
+                localStorage.setItem(key, JSON.stringify(Array.from(set)));
+            } catch (e) {
+                console.warn('Не удалось сохранить', key, e);
+            }
+        }
+
+        let foundArtifacts = loadSet('alba-mare-artifacts');
+        let readChapters = loadSet('alba-mare-read-chapters');
+        let unlockedCharacters = loadSet('alba-mare-characters');
+        let unlockedCities = loadSet('alba-mare-cities');
+        let unlockedPlaces = loadSet('alba-mare-places');
 
         // ==========================================
         // 3. ЗАГРУЗКА СПИСКА ГЛАВ
@@ -426,6 +442,7 @@
             }
 
             updateProgressBar();
+            refreshCollectionIfOpen();
         }
 
         // ==========================================
@@ -459,7 +476,10 @@
                     ${textHtml}
                 `;
 
-                readChapters.add(currentChapter);
+                if (!readChapters.has(currentChapter)) {
+                    readChapters.add(currentChapter);
+                    saveSet('alba-mare-read-chapters', readChapters);
+                }
 
                 document.querySelectorAll('.hidden-artifact').forEach(el => {
                     const id = el.getAttribute('data-id');
@@ -494,29 +514,44 @@
         function collectArtifact(id, element) {
             if (foundArtifacts.has(id)) return;
             foundArtifacts.add(id);
+            saveSet('alba-mare-artifacts', foundArtifacts);
             markInlineCardCollected(element);
             showUnlockToast('artifact', id);
+            refreshCollectionIfOpen();
         }
 
         function unlockCharacter(id, element) {
             if (unlockedCharacters.has(id)) return;
             unlockedCharacters.add(id);
+            saveSet('alba-mare-characters', unlockedCharacters);
             markInlineCardCollected(element);
             showUnlockToast('character', id);
+            refreshCollectionIfOpen();
         }
 
         function unlockCity(id, element) {
             if (unlockedCities.has(id)) return;
             unlockedCities.add(id);
+            saveSet('alba-mare-cities', unlockedCities);
             markInlineCardCollected(element);
             showUnlockToast('city', id);
+            refreshCollectionIfOpen();
         }
 
         function unlockPlace(id, element) {
             if (unlockedPlaces.has(id)) return;
             unlockedPlaces.add(id);
+            saveSet('alba-mare-places', unlockedPlaces);
             markInlineCardCollected(element);
             showUnlockToast('place', id);
+            refreshCollectionIfOpen();
+        }
+
+        function refreshCollectionIfOpen() {
+            const collectionPage = document.getElementById('collection-page');
+            if (collectionPage && collectionPage.classList.contains('active')) {
+                renderCollection();
+            }
         }
 
         function markInlineCardCollected(element) {
