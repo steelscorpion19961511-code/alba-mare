@@ -199,14 +199,6 @@ section { padding: 100px 10%; scroll-margin-top: 100px; }
 .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-sea); }
 .form-group textarea { resize: vertical; }
 .reviews-list { flex: 1.2; display: flex; flex-direction: column; gap: 20px; }
-.review-card { background: var(--bg-paper); padding: 25px; border-radius: 8px; border-left: 4px solid var(--accent-sand); position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s; }
-.review-card:hover { transform: translateX(-5px); }
-.review-card::before { content: '“'; font-family: 'Cormorant Garamond', serif; font-size: 60px; color: rgba(42, 127, 143, 0.15); position: absolute; top: 0; left: 15px; }
-.review-text { font-size: 16px; font-style: italic; color: var(--text-main); margin-bottom: 20px; position: relative; z-index: 1; }
-.review-author { display: flex; align-items: center; gap: 15px; }
-.review-author img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-sea); }
-.review-author div span { display: block; font-size: 15px; font-weight: 600; color: var(--accent-sea); }
-.review-author div small { display: block; font-size: 12px; color: var(--text-muted); }
 
 /* --- АВТОР --- */
 .author-section { background-color: var(--bg-paper); }
@@ -302,6 +294,224 @@ footer a { color: var(--accent-sea); text-decoration: none; font-weight: 600; }
 body.dark-mode .share-menu { border-top-color: #2a3f4d; }
 
 /* ========================================= */
+/* --- МОДАЛЬНОЕ ОКНО "СПАСИБО" И ИСКРЫ --- */
+/* ========================================= */
+.thanks-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(11, 26, 38, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.thanks-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.thanks-modal-content {
+    background: var(--bg-paper);
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 2px solid var(--accent-sand);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    transform: translateY(20px) scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.thanks-modal-overlay.active .thanks-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.thanks-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+.thanks-modal-content h3 {
+    font-size: 32px;
+    color: var(--accent-sea);
+    margin-bottom: 10px;
+}
+
+.thanks-modal-content p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Тёмная тема для модалки */
+body.dark-mode .thanks-modal-content {
+    background: #1a2f3a;
+    border-color: #2a3f4d;
+}
+body.dark-mode .thanks-modal-content h3 {
+    color: var(--accent-sand);
+}
+
+/* Анимация искр */
+.spark {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: var(--support-gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5001;
+    box-shadow: 0 0 10px var(--support-gold), 0 0 20px var(--support-gold);
+}
+
+/* ========================================= */
+/* --- КАРУСЕЛЬ ОТЗЫВОВ --- */
+/* ========================================= */
+.reviews-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1.2; 
+    min-width: 0; 
+}
+
+.reviews-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    width: 100%;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+.reviews-track::-webkit-scrollbar { display: none; }
+
+.review-card {
+    flex: 0 0 calc(50% - 10px); 
+    scroll-snap-align: start;
+    background: var(--bg-paper);
+    border: 1px solid var(--border-color);
+    border-top: 4px solid var(--accent-sand);
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.review-icon {
+    font-size: 24px;
+    margin-bottom: 15px;
+    background: var(--bg-sand);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.review-text {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-main);
+    flex-grow: 1;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.review-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 15px;
+}
+
+.review-author span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--accent-sea);
+    font-size: 14px;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.review-author small {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-muted);
+    font-size: 11px;
+    display: block;
+}
+
+/* Кнопки навигации */
+.carousel-nav-btn {
+    background: var(--bg-sand);
+    border: 1px solid var(--border-color);
+    color: var(--accent-sea);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.carousel-nav-btn:hover {
+    background: var(--accent-sea);
+    color: white;
+    border-color: var(--accent-sea);
+}
+
+/* Тёмная тема для карточек */
+body.dark-mode .review-card {
+    background: #1a2f3a;
+    border-color: #2a3f4d;
+    border-top-color: var(--accent-sand);
+}
+body.dark-mode .review-icon { background: #112233; }
+body.dark-mode .review-author span { color: var(--accent-sand); }
+body.dark-mode .carousel-nav-btn {
+    background: #1a2f3a;
+    border-color: #2a3f4d;
+    color: var(--accent-sand);
+}
+body.dark-mode .carousel-nav-btn:hover {
+    background: var(--accent-sand);
+    color: #0b1a26;
+    border-color: var(--accent-sand);
+}
+
+/* ========================================= */
 /* --- ТЁМНАЯ ТЕМА --- */
 /* ========================================= */
 body.dark-mode {
@@ -363,7 +573,7 @@ body.dark-mode .font-sizer button:hover { background: var(--accent-sand); color:
     nav { gap: 10px; }
     .reviews-container { flex-direction: column; }
     .review-form-wrapper { position: static; width: 100%; }
-    .reviews-list { width: 100%; }
+    .reviews-carousel-wrapper { width: 100%; margin-top: 30px; }
 }
 
 @media (max-width: 768px) {
@@ -396,6 +606,6 @@ body.dark-mode .font-sizer button:hover { background: var(--accent-sand); color:
     .font-sizer { margin-left: 2px; }
     .font-sizer button { width: 28px; height: 28px; font-size: 11px; }
 
-    .share-buttons { flex-direction: column; align-items: center; }
-    .share-btn { width: 100%; max-width: 300px; }
+    .review-card { flex: 0 0 100%; } 
+    .carousel-nav-btn { display: none; } 
 }
