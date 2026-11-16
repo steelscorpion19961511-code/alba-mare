@@ -36,30 +36,6 @@
         #progress-container { position: sticky; top: 0; width: 100%; height: 4px; background: rgba(0,0,0,0.1); z-index: 3002; }
         #progress-bar { height: 100%; background: var(--accent-red); width: 0%; transition: width 0.1s; }
 
-        .reader-header { 
-            position: sticky; top: 0; 
-            background: rgba(245, 240, 230, 0.95); 
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(194, 154, 91, 0.3); 
-            padding: 15px 5%; 
-            display: flex; justify-content: space-between; align-items: center; 
-            z-index: 3001; 
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        .reader-header .logo { font-family: 'Cinzel', serif; font-size: 22px; font-weight: 700; color: var(--accent-sea); letter-spacing: 2px; text-decoration: none; transition: color 0.3s; }
-        .reader-header .logo:hover { color: var(--accent-red); }
-        .reader-header .nav-right { display: flex; align-items: center; gap: 20px; }
-        .reader-header nav { display: flex; gap: 20px; }
-        .reader-header nav a { color: var(--text-main); text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 500; position: relative; padding-bottom: 4px; transition: color 0.3s; }
-        .reader-header nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background-color: var(--support-gold); transition: width 0.3s ease; }
-        .reader-header nav a:hover { color: var(--accent-sea); }
-        .reader-header nav a:hover::after { width: 100%; }
-        .reader-header nav a.support-link { color: var(--accent-red); font-weight: 700; }
-        .reader-header nav a.support-link::after { background-color: var(--accent-sand); }
-        
-        body.dark-mode .reader-header { background: rgba(17, 34, 51, 0.98); }
-        
         .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; z-index: 1001; }
         .burger span { display: block; width: 25px; height: 2px; background-color: var(--accent-sea); transition: 0.3s; }
 
@@ -228,31 +204,33 @@
 
     <div id="progress-container"><div id="progress-bar"></div></div>
 
-    <div class="reader-header">
+    <!-- Шапка -->
+    <header>
         <a href="index.html" class="logo">Альба-Маре</a>
         <div class="nav-right">
             <nav id="main-nav">
-                <a href="index.html#books" data-ru="Книги" data-en="Books">Книги</a>
-				     <a href="universe.html" style="color: var(--accent-sea); font-weight: 700;" data-ru="Вселенная" data-en="Universe">Вселенная</a>
+                <a href="universe.html" data-ru="Вселенная" data-en="Universe">Вселенная</a>
                 <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
                 <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
                 <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
                 <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
-         
+            
+            <!-- Кнопка "Читать" (ведет в библиотеку) -->
+            <a href="library.html" class="header-read-btn" data-ru="Читать" data-en="Read">Читать</a>
+            
             <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
                 <div id="lang-en">EN</div>
             </div>
             <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
-			
             <div class="burger" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </div>
         </div>
-    </div>
-
-    <!-- Панель инструментов -->
+    </header>
+	
+    <!-- Панель инструментов (парящая справа) -->
     <div class="floating-controls">
         <div class="left-zone">
             <span class="chapter-progress-label" id="chapter-progress-top"></span>

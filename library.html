@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека — Альба-Маре</title>
+    <meta name="description" content="Все книги вселенной Альба-Маре. Читать онлайн бесплатно.">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <a href="index.html" class="logo">Альба-Маре</a>
+        <div class="nav-right">
+            <nav id="main-nav">
+                <a href="universe.html" data-ru="Вселенная" data-en="Universe">Вселенная</a>
+                <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
+                <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
+                <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
+                <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
+            </nav>
+            
+            <!-- НОВАЯ КНОПКА "ЧИТАТЬ" -->
+            <a href="library.html" class="header-read-btn" data-ru="Читать" data-en="Read">Читать</a>
+            
+            <div class="lang-switch" onclick="toggleLang()">
+                <div id="lang-ru" class="active">RU</div>
+                <div id="lang-en">EN</div>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
+            <div class="burger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Секция: Библиотека -->
+    <section id="library" style="padding-top: 150px;">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="serif" data-ru="Библиотека" data-en="Library">Библиотека</h2>
+            <p data-ru="Все истории вселенной Альба-Маре в одном месте" data-en="All stories of the Alba-Mare universe in one place">Все истории вселенной Альба-Маре в одном месте</p>
+        </div>
+        
+        <div class="books-container" style="max-width: 1200px; margin: 0 auto;">
+            <!-- Книга 1 -->
+            <div class="book-card" data-aos="fade-up" data-aos-delay="100" style="width: 320px;">
+                <img src="images/cover.png" alt="August Fjord" class="book-cover">
+                <span class="book-status" data-ru="Доступна" data-en="Available">Доступна</span>
+                <h3>Август Фьорд</h3>
+                <p data-ru="Первая книга цикла. История о музыке, потере и обретении дома." data-en="The first book of the series. A story about music, loss, and finding home.">Первая книга цикла. История о музыке, потере и обретении дома.</p>
+                <a href="reader.html" class="btn btn-red" style="width: 100%; margin-top: auto;" data-ru="Читать онлайн" data-en="Read online">Читать онлайн</a>
+            </div>
+
+            <!-- Книга 2 -->
+            <div class="book-card" data-aos="fade-up" data-aos-delay="200" style="width: 320px; opacity: 0.8;">
+                <img src="images/cover2.png" alt="East Wind" class="book-cover" style="filter: grayscale(50%);">
+                <span class="book-status coming" data-ru="Скоро" data-en="Coming Soon">Скоро</span>
+                <h3>Восточный ветер</h3>
+                <p data-ru="Вторая книга цикла. Продолжение истории Августа." data-en="The second book of the series. Continuation of August's story.">Вторая книга цикла. Продолжение истории Августа.</p>
+                <button class="btn" style="width: 100%; margin-top: auto; pointer-events: none; opacity: 0.5;" data-ru="Скоро" data-en="Soon">Скоро</button>
+            </div>
+
+            <!-- Книга 3 -->
+            <div class="book-card" data-aos="fade-up" data-aos-delay="300" style="width: 320px; opacity: 0.8;">
+                <img src="images/cover3.png" alt="Where the Cold is Born" class="book-cover" style="filter: grayscale(50%);">
+                <span class="book-status coming" data-ru="Скоро" data-en="Coming Soon">Скоро</span>
+                <h3>Там, где рождается холод</h3>
+                <p data-ru="Третья книга цикла. Завершение истории." data-en="The third book of the series. The end of the story.">Третья книга цикла. Завершение истории.</p>
+                <button class="btn" style="width: 100%; margin-top: auto; pointer-events: none; opacity: 0.5;" data-ru="Скоро" data-en="Soon">Скоро</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Дмитрий Иванов / Dmitry Ivanov</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Переключение тем и языков (копия из index)
+        let currentLang = localStorage.getItem('alba-mare-lang') || 'ru';
+        function applyLang() {
+            document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
+            document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
+            document.querySelectorAll('[data-ru]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerHTML = text;
+            });
+            document.documentElement.lang = currentLang;
+        }
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            localStorage.setItem('alba-mare-lang', currentLang);
+            applyLang();
+        }
+        function toggleMenu() {
+            document.getElementById('main-nav').classList.toggle('active');
+        }
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('theme-btn');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.innerText = '☀️';
+                localStorage.setItem('alba-mare-theme', 'dark');
+            } else {
+                btn.innerText = '🌙';
+                localStorage.setItem('alba-mare-theme', 'light');
+            }
+        }
+        (function applyTheme() {
+            if (localStorage.getItem('alba-mare-theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                const btn = document.getElementById('theme-btn');
+                if (btn) btn.innerText = '☀️';
+            }
+        })();
+        document.addEventListener('DOMContentLoaded', applyLang);
+    </script>
+</body>
+</html>
