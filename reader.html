@@ -119,7 +119,15 @@
         .card-item.locked .card-image { background-color: #ccc; }
         .card-item.locked .card-image::after { content: '?'; font-size: 40px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%; }
         .card-item.unlocked { border-color: var(--support-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .card-image { width: 100%; height: 200px; background-color: var(--bg-sand); background-size: cover; background-position: center; position: relative; }
+     .card-image {
+    width: 100%;
+    height: 200px;
+    background-color: var(--bg-sand);
+    background-size: contain; /* Вписываем картинку полностью */
+    background-position: center;
+    background-repeat: no-repeat; /* Не повторять */
+    position: relative;
+}
         .card-info { padding: 15px; }
         .card-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
         .card-role { font-size: 11px; text-transform: uppercase; color: var(--accent-red); letter-spacing: 1px; font-weight: 600; margin-bottom: 10px; display: block; }
