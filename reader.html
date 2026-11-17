@@ -55,19 +55,119 @@
         .hidden-artifact span { font-size: 40px; display: inline-block; filter: grayscale(100%); transition: filter 0.3s; }
         .hidden-artifact:hover span, .hidden-artifact.found span { filter: grayscale(0%); }
 
-        .character-inline-card, .artifact-inline-card, .city-inline-card, .place-inline-card { float: left; width: 220px; margin: 0 25px 15px 0; background: var(--bg-paper); border: 2px solid var(--accent-sand); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+        /* ========================================= */
+        /* --- КАРТОЧКИ В ТЕКСТЕ (обтекание) --- */
+        /* ========================================= */
+        .character-inline-card,
+        .artifact-inline-card,
+        .city-inline-card,
+        .place-inline-card {
+            float: left;
+            width: 220px;
+            margin: 0 25px 20px 0;
+            background: var(--bg-paper);
+            border: 2px solid var(--accent-sand);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
         .artifact-inline-card { border-color: var(--accent-sea); }
         .city-inline-card { border-color: var(--accent-red); }
         .place-inline-card { border-color: var(--shop-green); }
-        .character-inline-card:hover, .artifact-inline-card:hover, .city-inline-card:hover, .place-inline-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-        .character-inline-card img, .city-inline-card img, .place-inline-card img { width: 100%; height: auto; display: block; }
-        .artifact-inline-card .card-icon { font-size: 80px; display: block; padding: 20px 0; background: var(--bg-sand); filter: grayscale(100%); transition: filter 0.3s; }
+
+        .character-inline-card:hover,
+        .artifact-inline-card:hover,
+        .city-inline-card:hover,
+        .place-inline-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .character-inline-card img,
+        .city-inline-card img,
+        .place-inline-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+        }
+
+        .artifact-inline-card .card-icon {
+            font-size: 80px;
+            display: block;
+            padding: 20px 0;
+            background: var(--bg-sand);
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
         .artifact-inline-card:hover .card-icon { filter: grayscale(0%); }
-        .character-inline-card .card-name, .artifact-inline-card .card-name, .city-inline-card .card-name, .place-inline-card .card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--accent-sea); padding: 10px; background: var(--bg-paper); }
-        .character-inline-card .card-hint, .artifact-inline-card .card-hint, .city-inline-card .card-hint, .place-inline-card .card-hint { font-family: 'Montserrat', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--support-gold); padding: 0 10px 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .character-inline-card .card-hint span, .artifact-inline-card .card-hint span, .city-inline-card .card-hint span, .place-inline-card .card-hint span { animation: pulse-icon 2s infinite; display: inline-block; }
-        @keyframes pulse-icon { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
-        @media (max-width: 768px) { .character-inline-card, .artifact-inline-card, .city-inline-card, .place-inline-card { float: none; width: 100%; max-width: 250px; margin: 20px auto; } }
+
+        .character-inline-card .card-name,
+        .artifact-inline-card .card-name,
+        .city-inline-card .card-name,
+        .place-inline-card .card-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-sea);
+            padding: 10px 10px 6px;
+            background: var(--bg-paper);
+            line-height: 1.2;
+        }
+
+        .character-inline-card .card-hint,
+        .artifact-inline-card .card-hint,
+        .city-inline-card .card-hint,
+        .place-inline-card .card-hint {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--support-gold);
+            padding: 6px 10px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: var(--bg-paper);
+            margin-top: auto;
+        }
+
+        .character-inline-card .card-hint span,
+        .artifact-inline-card .card-hint span,
+        .city-inline-card .card-hint span,
+        .place-inline-card .card-hint span {
+            animation: pulse-icon 2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse-icon {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @media (max-width: 768px) {
+            .character-inline-card,
+            .artifact-inline-card,
+            .city-inline-card,
+            .place-inline-card {
+                float: none;
+                width: 100%;
+                max-width: 260px;
+                margin: 20px auto;
+            }
+        }
 
         .reader-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-sand); z-index: 3500; overflow-y: auto; padding: 40px 20px; animation: fadeIn 0.3s ease; }
         .reader-page.active { display: block; }
@@ -113,27 +213,131 @@
         .tab-content { display: none; max-width: 900px; margin: 0 auto; }
         .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
 
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; }
-        .card-item { background: var(--bg-paper); border: 2px solid var(--border-color); border-radius: 8px; overflow: hidden; text-align: center; transition: all 0.3s; position: relative; }
-        .card-item.locked { opacity: 0.5; filter: grayscale(100%); }
-        .card-item.locked .card-image { background-color: #ccc; }
-        .card-item.locked .card-image::after { content: '?'; font-size: 40px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%; }
-        .card-item.unlocked { border-color: var(--support-gold); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-     .card-image {
-    width: 100%;
-    height: 200px;
-    background-color: var(--bg-sand);
-    background-size: contain; /* Вписываем картинку полностью */
-    background-position: center;
-    background-repeat: no-repeat; /* Не повторять */
-    position: relative;
-}
-        .card-info { padding: 15px; }
-        .card-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
-        .card-role { font-size: 11px; text-transform: uppercase; color: var(--accent-red); letter-spacing: 1px; font-weight: 600; margin-bottom: 10px; display: block; }
-        .card-quote { font-size: 13px; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 10px; margin-top: 10px; }
-        .card-status { position: absolute; top: 10px; right: 10px; background: var(--support-gold); color: white; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: bold; display: none; }
+        /* ========================================= */
+        /* --- КОЛЛЕКЦИЯ: карточки как в читалке --- */
+        /* ========================================= */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .card-item {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        /* Рамка — только вокруг картинки + имени */
+        .card-frame {
+            background: var(--bg-paper);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .card-item.unlocked .card-frame {
+            border-color: var(--support-gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .card-item.locked .card-frame {
+            opacity: 0.55;
+            filter: grayscale(100%);
+        }
+
+        /* Картинка */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--bg-sand);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: block;
+        }
+
+        .card-item.locked .card-image {
+            background-color: #ccc;
+            background-image: none !important;
+        }
+        .card-item.locked .card-image::after {
+            content: '?';
+            font-size: 40px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        /* Имя — внутри рамки, под картинкой */
+        .card-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-sea);
+            padding: 10px 10px 12px;
+            background: var(--bg-paper);
+            line-height: 1.2;
+        }
+
+        /* Бейдж «Открыт» — поверх картинки */
+        .card-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--support-gold);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            display: none;
+            z-index: 2;
+        }
         .card-item.unlocked .card-status { display: block; }
+
+        /* Подпись — ВНЕ рамки, ниже */
+        .card-caption {
+            padding: 10px 4px 0;
+        }
+
+        .card-role {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--accent-red);
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-quote {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-muted);
+            border-top: 1px dashed var(--border-color);
+            padding-top: 10px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+
+        /* Тёмная тема для коллекции */
+        body.dark-mode .card-frame { background: #1a2f3a; border-color: #2a3f4d; }
+        body.dark-mode .card-item.unlocked .card-frame { border-color: var(--support-gold); }
+        body.dark-mode .card-name { background: #1a2f3a; color: var(--accent-sand); }
+        body.dark-mode .card-quote { border-top-color: #2a3f4d; color: #8899a6; }
+        body.dark-mode .card-role { color: var(--accent-sand); }
 
         .chapter-nav { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color); margin-bottom: 30px; }
         .chapter-nav button { background: none; border: none; font-size: 18px; color: var(--accent-sea); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; }
@@ -634,10 +838,12 @@
                 const item = document.createElement('div');
                 item.className = `card-item ${isOpen ? 'unlocked' : 'locked'}`;
                 item.innerHTML = `
-                    <div class="card-image" style="background-image: url('${image}');"></div>
-                    <div class="card-info">
+                    <div class="card-frame">
                         <div class="card-status">✓ ${currentLang === 'ru' ? 'Открыт' : 'Unlocked'}</div>
+                        <div class="card-image" style="background-image: url('${image}');"></div>
                         <div class="card-name">${isOpen ? name : '???'}</div>
+                    </div>
+                    <div class="card-caption">
                         <span class="card-role">${isOpen ? role : (currentLang === 'ru' ? 'Неизвестно' : 'Unknown')}</span>
                         <div class="card-quote">${isOpen ? desc : emptyText}</div>
                     </div>
