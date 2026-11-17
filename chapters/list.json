@@ -20,5 +20,49 @@
         "characters": ["matteo"],
         "cities": [],
         "places": ["market-square"]
+    },
+    {
+        "id": 3,
+        "title": "Глава 3. Тишина",
+        "titleEn": "Chapter 3. Silence",
+        "file": "chapter3.html",
+        "fileEn": "chapter3_en.html",
+        "mapCoord": { "x": 42, "y": 58 },
+        "characters": [],
+        "cities": [],
+        "places": []
+    },
+    {
+        "id": 4,
+        "title": "Глава 4. Страж",
+        "titleEn": "Chapter 4. The Guard",
+        "file": "chapter4.html",
+        "fileEn": "chapter4_en.html",
+        "mapCoord": { "x": 48, "y": 62 },
+        "characters": [],
+        "cities": [],
+        "places": []
+    },
+    {
+        "id": 5,
+        "title": "Глава 5. Пыль на струнах",
+        "titleEn": "Chapter 5. Dust on the Strings",
+        "file": "chapter5.html",
+        "fileEn": "chapter5_en.html",
+        "mapCoord": { "x": 52, "y": 58 },
+        "characters": [],
+        "cities": [],
+        "places": []
+    },
+    {
+        "id": 6,
+        "title": "Глава 6. Бухта",
+        "titleEn": "Chapter 6. The Cove",
+        "file": "chapter6.html",
+        "fileEn": "chapter6_en.html",
+        "mapCoord": { "x": 45, "y": 66 },
+        "characters": [],
+        "cities": [],
+        "places": ["hidden-cove"]
     }
 ]
