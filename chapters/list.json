@@ -5,10 +5,17 @@
         "titleEn": "Chapter 1. Alba-Mare",
         "file": "chapter1.html",
         "fileEn": "chapter1_en.html",
-        "mapCoord": { "x": 20, "y": 70 },
+        "mapCoord": {
+            "x": 20,
+            "y": 70
+        },
         "characters": [],
-        "cities": ["alba-mare"],
-        "places": ["old-pier"]
+        "cities": [
+            "alba-mare"
+        ],
+        "places": [
+            "old-pier"
+        ]
     },
     {
         "id": 2,
@@ -16,10 +23,17 @@
         "titleEn": "Chapter 2. The Voice of the Wind",
         "file": "chapter2.html",
         "fileEn": "chapter2_en.html",
-        "mapCoord": { "x": 25, "y": 65 },
-        "characters": ["matteo"],
+        "mapCoord": {
+            "x": 25,
+            "y": 65
+        },
+        "characters": [
+            "matteo"
+        ],
         "cities": [],
-        "places": ["market-square"]
+        "places": [
+            "market-square"
+        ]
     },
     {
         "id": 3,
@@ -27,7 +41,10 @@
         "titleEn": "Chapter 3. Silence",
         "file": "chapter3.html",
         "fileEn": "chapter3_en.html",
-        "mapCoord": { "x": 42, "y": 58 },
+        "mapCoord": {
+            "x": 42,
+            "y": 58
+        },
         "characters": [],
         "cities": [],
         "places": []
@@ -38,7 +55,10 @@
         "titleEn": "Chapter 4. The Guard",
         "file": "chapter4.html",
         "fileEn": "chapter4_en.html",
-        "mapCoord": { "x": 48, "y": 62 },
+        "mapCoord": {
+            "x": 48,
+            "y": 62
+        },
         "characters": [],
         "cities": [],
         "places": []
@@ -49,7 +69,10 @@
         "titleEn": "Chapter 5. Dust on the Strings",
         "file": "chapter5.html",
         "fileEn": "chapter5_en.html",
-        "mapCoord": { "x": 52, "y": 58 },
+        "mapCoord": {
+            "x": 52,
+            "y": 58
+        },
         "characters": [],
         "cities": [],
         "places": []
@@ -60,9 +83,683 @@
         "titleEn": "Chapter 6. The Cove",
         "file": "chapter6.html",
         "fileEn": "chapter6_en.html",
-        "mapCoord": { "x": 45, "y": 66 },
+        "mapCoord": {
+            "x": 45,
+            "y": 66
+        },
         "characters": [],
         "cities": [],
-        "places": ["hidden-cove"]
+        "places": [
+            "hidden-cove"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Глава 7. Пепел",
+        "titleEn": "Chapter 7. Ashes",
+        "file": "chapter7.html",
+        "fileEn": "chapter7_en.html",
+        "mapCoord": {
+            "x": 42,
+            "y": 63
+        },
+        "characters": [],
+        "cities": [
+            "alba-mare"
+        ],
+        "places": [
+            "old-pier"
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Глава 8. Дорога",
+        "titleEn": "Chapter 8. The Road",
+        "file": "chapter8.html",
+        "fileEn": "chapter8_en.html",
+        "mapCoord": {
+            "x": 50,
+            "y": 60
+        },
+        "characters": [
+            "matteo"
+        ],
+        "cities": [],
+        "places": [
+            "south-road"
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Глава 9. Чужой город",
+        "titleEn": "Chapter 9. A Foreign City",
+        "file": "chapter9.html",
+        "fileEn": "chapter9_en.html",
+        "mapCoord": {
+            "x": 56,
+            "y": 58
+        },
+        "characters": [],
+        "cities": [
+            "wistaria"
+        ],
+        "places": [
+            "wistaria-gates"
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Глава 10. Тихие вечера",
+        "titleEn": "Chapter 10. Quiet Evenings",
+        "file": "chapter10.html",
+        "fileEn": "chapter10_en.html",
+        "mapCoord": {
+            "x": 57,
+            "y": 57
+        },
+        "characters": [
+            "matteo"
+        ],
+        "cities": [],
+        "places": [
+            "wistaria-street"
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Глава 11. Причал и одинокая лодка",
+        "titleEn": "Chapter 11. The Pier and the Lonely Boat",
+        "file": "chapter11.html",
+        "fileEn": "chapter11_en.html",
+        "mapCoord": {
+            "x": 58,
+            "y": 56
+        },
+        "characters": [
+            "arno"
+        ],
+        "cities": [],
+        "places": [
+            "wistaria-pier"
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Глава 12. Берег тишины",
+        "titleEn": "Chapter 12. The Shore of Silence",
+        "file": "chapter12.html",
+        "fileEn": "chapter12_en.html",
+        "mapCoord": {
+            "x": 60,
+            "y": 55
+        },
+        "characters": [
+            "arno"
+        ],
+        "cities": [],
+        "places": [
+            "quiet-shore"
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Глава 13. Портовый город",
+        "titleEn": "Chapter 13. The Port City",
+        "file": "chapter13.html",
+        "fileEn": "chapter13_en.html",
+        "mapCoord": {
+            "x": 66,
+            "y": 53
+        },
+        "characters": [
+            "arno"
+        ],
+        "cities": [
+            "seacliff"
+        ],
+        "places": [
+            "seacliff-port"
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Глава 14. Голос за бортом",
+        "titleEn": "Chapter 14. The Voice Over the Side",
+        "file": "chapter14.html",
+        "fileEn": "chapter14_en.html",
+        "mapCoord": {
+            "x": 68,
+            "y": 52
+        },
+        "characters": [
+            "arno"
+        ],
+        "cities": [],
+        "places": [
+            "seacliff-port"
+        ]
+    },
+    {
+        "id": 15,
+        "title": "Глава 15. Земля под ногами",
+        "titleEn": "Chapter 15. Land Underfoot",
+        "file": "chapter15.html",
+        "fileEn": "chapter15_en.html",
+        "mapCoord": {
+            "x": 72,
+            "y": 50
+        },
+        "characters": [
+            "arno"
+        ],
+        "cities": [],
+        "places": [
+            "strait-shore"
+        ]
+    },
+    {
+        "id": 16,
+        "title": "Глава 16. Пролив",
+        "titleEn": "Chapter 16. The Strait",
+        "file": "chapter16.html",
+        "fileEn": "chapter16_en.html",
+        "mapCoord": {
+            "x": 76,
+            "y": 48
+        },
+        "characters": [
+            "arno"
+        ],
+        "cities": [],
+        "places": [
+            "the-strait"
+        ]
+    },
+    {
+        "id": 17,
+        "title": "Глава 17. Берег",
+        "titleEn": "Chapter 17. The Shore",
+        "file": "chapter17.html",
+        "fileEn": "chapter17_en.html",
+        "mapCoord": {
+            "x": 80,
+            "y": 47
+        },
+        "characters": [
+            "lis"
+        ],
+        "cities": [],
+        "places": [
+            "eastern-shore"
+        ]
+    },
+    {
+        "id": 18,
+        "title": "Глава 18. Отдых",
+        "titleEn": "Chapter 18. Rest",
+        "file": "chapter18.html",
+        "fileEn": "chapter18_en.html",
+        "mapCoord": {
+            "x": 82,
+            "y": 46
+        },
+        "characters": [],
+        "cities": [
+            "wistaria"
+        ],
+        "places": [
+            "wistaria-house"
+        ]
+    },
+    {
+        "id": 19,
+        "title": "Глава 19. Мать",
+        "titleEn": "Chapter 19. Mother",
+        "file": "chapter19.html",
+        "fileEn": "chapter19_en.html",
+        "mapCoord": {
+            "x": 83,
+            "y": 45
+        },
+        "characters": [
+            "lis"
+        ],
+        "cities": [],
+        "places": [
+            "wistaria-house"
+        ]
+    },
+    {
+        "id": 20,
+        "title": "Глава 20. Попутчик",
+        "titleEn": "Chapter 20. The Traveler",
+        "file": "chapter20.html",
+        "fileEn": "chapter20_en.html",
+        "mapCoord": {
+            "x": 85,
+            "y": 44
+        },
+        "characters": [
+            "lis"
+        ],
+        "cities": [],
+        "places": []
+    },
+    {
+        "id": 21,
+        "title": "Глава 21. Площадь",
+        "titleEn": "Chapter 21. The Square",
+        "file": "chapter21.html",
+        "fileEn": "chapter21_en.html",
+        "mapCoord": {
+            "x": 87,
+            "y": 43
+        },
+        "characters": [],
+        "cities": [
+            "wistaria"
+        ],
+        "places": [
+            "imperial-baths"
+        ]
+    },
+    {
+        "id": 22,
+        "title": "Глава 22. Город, который принял",
+        "titleEn": "Chapter 22. The Town That Took Him In",
+        "file": "chapter22.html",
+        "fileEn": "chapter22_en.html",
+        "mapCoord": {
+            "x": 89,
+            "y": 42
+        },
+        "characters": [
+            "lis"
+        ],
+        "cities": [
+            "wistaria"
+        ],
+        "places": [
+            "wistaria-square"
+        ]
+    },
+    {
+        "id": 23,
+        "title": "Глава 23. Северный ветер",
+        "titleEn": "Chapter 23. The North Wind",
+        "file": "chapter23.html",
+        "fileEn": "chapter23_en.html",
+        "mapCoord": {
+            "x": 90,
+            "y": 40
+        },
+        "characters": [],
+        "cities": [],
+        "places": [
+            "north-road"
+        ]
+    },
+    {
+        "id": 24,
+        "title": "Глава 24. Чужая постель",
+        "titleEn": "Chapter 24. A Stranger's Bed",
+        "file": "chapter24.html",
+        "fileEn": "chapter24_en.html",
+        "mapCoord": {
+            "x": 88,
+            "y": 36
+        },
+        "characters": [
+            "elsa"
+        ],
+        "cities": [],
+        "places": [
+            "healers-house"
+        ]
+    },
+    {
+        "id": 25,
+        "title": "Глава 25. Деревня Старый Мост",
+        "titleEn": "Chapter 25. The Village of Old Bridge",
+        "file": "chapter25.html",
+        "fileEn": "chapter25_en.html",
+        "mapCoord": {
+            "x": 86,
+            "y": 33
+        },
+        "characters": [
+            "elsa"
+        ],
+        "cities": [
+            "old-bridge"
+        ],
+        "places": [
+            "old-bridge-village"
+        ]
+    },
+    {
+        "id": 26,
+        "title": "Глава 26. Тёплые вещи",
+        "titleEn": "Chapter 26. Warm Things",
+        "file": "chapter26.html",
+        "fileEn": "chapter26_en.html",
+        "mapCoord": {
+            "x": 85,
+            "y": 30
+        },
+        "characters": [
+            "elsa"
+        ],
+        "cities": [],
+        "places": []
+    },
+    {
+        "id": 27,
+        "title": "Глава 27. Северный собеседник",
+        "titleEn": "Chapter 27. A Northern Interlocutor",
+        "file": "chapter27.html",
+        "fileEn": "chapter27_en.html",
+        "mapCoord": {
+            "x": 84,
+            "y": 27
+        },
+        "characters": [
+            "heimrir"
+        ],
+        "cities": [],
+        "places": [
+            "heimrirs-garden"
+        ]
+    },
+    {
+        "id": 28,
+        "title": "Глава 28. Прощание с лекарем",
+        "titleEn": "Chapter 28. Farewell to the Healer",
+        "file": "chapter28.html",
+        "fileEn": "chapter28_en.html",
+        "mapCoord": {
+            "x": 83,
+            "y": 24
+        },
+        "characters": [
+            "elsa",
+            "heimrir"
+        ],
+        "cities": [],
+        "places": []
+    },
+    {
+        "id": 29,
+        "title": "Глава 29. Встреча с музыкантами",
+        "titleEn": "Chapter 29. A Meeting with Musicians",
+        "file": "chapter29.html",
+        "fileEn": "chapter29_en.html",
+        "mapCoord": {
+            "x": 82,
+            "y": 21
+        },
+        "characters": [
+            "mira"
+        ],
+        "cities": [],
+        "places": [
+            "fair-ground"
+        ]
+    },
+    {
+        "id": 30,
+        "title": "Глава 30. Первый снег",
+        "titleEn": "Chapter 30. The First Snow",
+        "file": "chapter30.html",
+        "fileEn": "chapter30_en.html",
+        "mapCoord": {
+            "x": 80,
+            "y": 17
+        },
+        "characters": [
+            "heimrir"
+        ],
+        "cities": [],
+        "places": [
+            "northern-hills"
+        ]
+    },
+    {
+        "id": 31,
+        "title": "Глава 31. Земля Железных Утёсов",
+        "titleEn": "Chapter 31. The Land of the Iron Cliffs",
+        "file": "chapter31.html",
+        "fileEn": "chapter31_en.html",
+        "mapCoord": {
+            "x": 78,
+            "y": 13
+        },
+        "characters": [
+            "einar"
+        ],
+        "cities": [
+            "iron-cliffs"
+        ],
+        "places": [
+            "iron-cliffs-land"
+        ]
+    },
+    {
+        "id": 32,
+        "title": "Глава 32. Голос севера",
+        "titleEn": "Chapter 32. The Voice of the North",
+        "file": "chapter32.html",
+        "fileEn": "chapter32_en.html",
+        "mapCoord": {
+            "x": 75,
+            "y": 10
+        },
+        "characters": [
+            "einar"
+        ],
+        "cities": [],
+        "places": [
+            "einars-house"
+        ]
+    },
+    {
+        "id": 33,
+        "title": "Глава 33. Прощание у костра",
+        "titleEn": "Chapter 33. Farewell by the Fire",
+        "file": "chapter33.html",
+        "fileEn": "chapter33_en.html",
+        "mapCoord": {
+            "x": 74,
+            "y": 9
+        },
+        "characters": [
+            "einar"
+        ],
+        "cities": [],
+        "places": [
+            "campfire"
+        ]
+    },
+    {
+        "id": 34,
+        "title": "Глава 34. Торговое селение",
+        "titleEn": "Chapter 34. The Trading Village",
+        "file": "chapter34.html",
+        "fileEn": "chapter34_en.html",
+        "mapCoord": {
+            "x": 70,
+            "y": 8
+        },
+        "characters": [
+            "heimrir"
+        ],
+        "cities": [
+            "northern-village"
+        ],
+        "places": [
+            "trade-square"
+        ]
+    },
+    {
+        "id": 35,
+        "title": "Глава 35. Вечер в таверне",
+        "titleEn": "Chapter 35. An Evening at the Tavern",
+        "file": "chapter35.html",
+        "fileEn": "chapter35_en.html",
+        "mapCoord": {
+            "x": 66,
+            "y": 7
+        },
+        "characters": [
+            "heimrir"
+        ],
+        "cities": [],
+        "places": [
+            "tavern"
+        ]
+    },
+    {
+        "id": 36,
+        "title": "Глава 36. Метель",
+        "titleEn": "Chapter 36. The Blizzard",
+        "file": "chapter36.html",
+        "fileEn": "chapter36_en.html",
+        "mapCoord": {
+            "x": 62,
+            "y": 6
+        },
+        "characters": [],
+        "cities": [],
+        "places": [
+            "blizzard-pass"
+        ]
+    },
+    {
+        "id": 37,
+        "title": "Глава 37. Северный берег",
+        "titleEn": "Chapter 37. The Northern Shore",
+        "file": "chapter37.html",
+        "fileEn": "chapter37_en.html",
+        "mapCoord": {
+            "x": 58,
+            "y": 5
+        },
+        "characters": [
+            "heimrir"
+        ],
+        "cities": [],
+        "places": [
+            "northern-shore"
+        ]
+    },
+    {
+        "id": 38,
+        "title": "Глава 38. У северного очага",
+        "titleEn": "Chapter 38. By the Northern Hearth",
+        "file": "chapter38.html",
+        "fileEn": "chapter38_en.html",
+        "mapCoord": {
+            "x": 55,
+            "y": 4
+        },
+        "characters": [
+            "heimrir"
+        ],
+        "cities": [],
+        "places": [
+            "northern-hearth"
+        ]
+    },
+    {
+        "id": 39,
+        "title": "Глава 39. Праздник охоты",
+        "titleEn": "Chapter 39. Feast of the Hunt",
+        "file": "chapter39.html",
+        "fileEn": "chapter39_en.html",
+        "mapCoord": {
+            "x": 52,
+            "y": 5
+        },
+        "characters": [
+            "heimrir"
+        ],
+        "cities": [],
+        "places": [
+            "hunting-grounds"
+        ]
+    },
+    {
+        "id": 40,
+        "title": "Глава 40. Зимний поход в горы",
+        "titleEn": "Chapter 40. The Winter March",
+        "file": "chapter40.html",
+        "fileEn": "chapter40_en.html",
+        "mapCoord": {
+            "x": 50,
+            "y": 6
+        },
+        "characters": [
+            "bjorn"
+        ],
+        "cities": [],
+        "places": [
+            "mountain-pass"
+        ]
+    },
+    {
+        "id": 41,
+        "title": "Глава 41. Старейшина",
+        "titleEn": "Chapter 41. The Elder",
+        "file": "chapter41.html",
+        "fileEn": "chapter41_en.html",
+        "mapCoord": {
+            "x": 49,
+            "y": 7
+        },
+        "characters": [
+            "bjorn"
+        ],
+        "cities": [],
+        "places": [
+            "elders-hall"
+        ]
+    },
+    {
+        "id": 42,
+        "title": "Глава 42. Северное сияние",
+        "titleEn": "Chapter 42. The Northern Lights",
+        "file": "chapter42.html",
+        "fileEn": "chapter42_en.html",
+        "mapCoord": {
+            "x": 48,
+            "y": 8
+        },
+        "characters": [
+            "bjorn",
+            "signe"
+        ],
+        "cities": [],
+        "places": [
+            "aurora-field"
+        ]
+    },
+    {
+        "id": 43,
+        "title": "Глава 43. Август Фьорд",
+        "titleEn": "Chapter 43. August Fjord",
+        "file": "chapter43.html",
+        "fileEn": "chapter43_en.html",
+        "mapCoord": {
+            "x": 47,
+            "y": 9
+        },
+        "characters": [
+            "bjorn",
+            "signe"
+        ],
+        "cities": [],
+        "places": [
+            "new-shore"
+        ]
     }
 ]
