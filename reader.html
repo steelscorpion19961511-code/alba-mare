@@ -527,13 +527,14 @@
             <h2 data-ru="Продолжение следует..." data-en="To be continued...">Продолжение следует...</h2>
             <div class="teaser-text" data-ru="Вторая книга цикла «Альба-Маре» уже пишется." data-en="The second book of the Alba-Mare series is already being written.">Вторая книга цикла «Альба-Маре» уже пишется.</div>
             <div class="teaser-cover">
-  <img src="img/images/cover2.png" alt="Книга вторая - Восточный ветер" width="300" height="450">
+  <img src="images/cover2.png" alt="Книга вторая - Восточный ветер" width="300" height="450">
             <p style="font-size: 16px; color: #a0b2c6; margin-bottom: 20px;" data-ru="Оставьте свой Email, чтобы первыми узнать о выходе:" data-en="Leave your Email to be the first to know about the release:">Оставьте свой Email, чтобы первыми узнать о выходе:</p>
             <form class="teaser-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы сообщим вам о выходе.'); this.reset();">
                 <input type="email" placeholder="your@email.com" required>
                 <button type="submit" data-ru="Хочу узнать о выходе" data-en="Notify me">Хочу узнать о выходе</button>
             </form>
         </div>
+    </div>
     </div>
 
     <!-- Модалки -->
@@ -568,10 +569,10 @@
         // 1. ДАННЫЕ КОЛЛЕКЦИИ
         // ==========================================
         const artifactsData = {
-            'guitar':  { icon: 'image: 'images/artifacts/guitar.jpg', titleRu: 'Гитара',        titleEn: "Guitar",          descRu: 'Инструмент, оставленный купцом.',   descEn: 'The instrument left by merchant.' },
-            'sword':   { icon: 'image: '', titleRu: 'Клинок отца',          titleEn: "Father's Blade",           descRu: 'Прямой меч с потертой рукоятью.',           descEn: 'A straight sword with a worn hilt.' },
-            'compass': { icon: 'image: '', titleRu: 'Старый компас',        titleEn: 'Old Compass',              descRu: 'Стрелка дрожит, указывая путь на север.',   descEn: 'The needle trembles, pointing north.' },
-            'map':     { icon: 'image: '', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds the secrets of the fjords.' }
+            'guitar':  { image: 'images/artifacts/guitar.jpg', titleRu: 'Гитара',        titleEn: "Guitar",          descRu: 'Инструмент, оставленный купцом.',   descEn: 'The instrument left by merchant.' },
+            'sword':   { image: '', titleRu: 'Клинок отца',          titleEn: "Father's Blade",           descRu: 'Прямой меч с потертой рукоятью.',           descEn: 'A straight sword with a worn hilt.' },
+            'compass': { image: '', titleRu: 'Старый компас',        titleEn: 'Old Compass',              descRu: 'Стрелка дрожит, указывая путь на север.',   descEn: 'The needle trembles, pointing north.' },
+            'map':     { image: '', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds the secrets of the fjords.' }
         };
 
         const charactersData = {
