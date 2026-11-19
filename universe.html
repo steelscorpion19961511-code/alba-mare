@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Вселенная Альба-Маре — приквелы, новые циклы, карта мира</title>
+    <title>Вселенная Альба-Маре — приквелы, новые циклы, карта мира</title>
     <meta name="description" content="«Альба-Маре» — это не трилогия, а мир. Приквелы о других героях, новый цикл «Наследие Фьорда» и карта вселенной.">
     
-	<!-- Фавикон -->
+    <!-- Фавикон -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-	
+    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- ИСПРАВЛЕНО: Meta-теги Open Graph и Twitter должны находиться внутри <head>, а не в <body>. Это строгое требование стандарта HTML. -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Вселенная Альба-Маре — не трилогия, а мир">
+    <meta property="og:description" content="Приквелы о других героях, новый цикл «Наследие Фьорда» и карта мира. «Альба-Маре» — это не три книги, это вселенная.">
+    <meta property="og:image" content="https://alba-mare.ru/images/og-universe.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://alba-mare.ru/universe.html">
+    <meta property="og:site_name" content="Альба-Маре">
+    <meta property="og:locale" content="ru_RU">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Вселенная Альба-Маре">
+    <meta name="twitter:description" content="Приквелы, новые циклы и карта мира. «Альба-Маре» — это не трилогия, это мир.">
+    <meta name="twitter:image" content="https://alba-mare.ru/images/og-universe.png">
+
     <style>
-	
-	
         /* --- СТИЛИ СТРАНИЦЫ ВСЕЛЕННОЙ --- */
         .universe-hero {
             padding: 160px 10% 80px;
@@ -215,54 +230,27 @@
             .roadmap-item::before { left: -24px; }
             .universe-quote p { font-size: 20px; }
         }
-	
     </style>
 </head>
 <body>
-
-   <!-- Open Graph / социальные сети -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Вселенная Альба-Маре — не трилогия, а мир">
-    <meta property="og:description" content="Приквелы о других героях, новый цикл «Наследие Фьорда» и карта мира. «Альба-Маре» — это не три книги, это вселенная.">
- 	<meta property="og:image" content="https://alba-mare.ru/images/og-universe.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://alba-mare.ru/universe.html">
-    <meta property="og:site_name" content="Альба-Маре">
-    <meta property="og:locale" content="ru_RU">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Вселенная Альба-Маре">
-    <meta name="twitter:description" content="Приквелы, новые циклы и карта мира. «Альба-Маре» — это не трилогия, это мир.">
-    <meta name="twitter:image" content="https://alba-mare.ru/images/og-universe.png">
-	
-	
-	
- 
 
     <!-- Кнопка "Наверх" -->
     <button id="scrollToTopBtn" class="scroll-to-top" title="Вернуться наверх">
         <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
     </button>
 
-     <!-- Шапка -->
+    <!-- Шапка -->
     <header>
         <a href="index.html" class="logo">Альба-Маре</a>
         <div class="nav-right">
             <nav id="main-nav">
-                <!-- Вселенная (активная) -->
                 <a href="universe.html" style="color: var(--accent-sea); font-weight: 700;" data-ru="Вселенная" data-en="Universe">Вселенная</a>
-                
-                <!-- Магазин -->
                 <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
-                
                 <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
                 <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
                 <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
             
-            <!-- Кнопка "Читать" -->
             <a href="library.html" class="header-read-btn" data-ru="Читать" data-en="Read">Читать</a>
             
             <div class="lang-switch" onclick="toggleLang()">
@@ -318,7 +306,7 @@
                    data-en="Stories of those who walked alongside August: the merchant Matteo, the wanderer Mira, the northern hunter Einar. Each — a full book in the same world, intersecting with August's fate and revealing new facets of the universe.">
                    Истории тех, кто шёл рядом с Августом: торговец Маттео, странница Мира, северный охотник Эйнар. Каждый — полноценная книга в том же мире, пересекающаяся с судьбой Августа и открывающая новые грани вселенной.
                 </p>
-                <span class="cycle-status" style="color: var(--text-muted);" data-ru="Скоро" data-en="Coming soon">Скоро</span>
+                <!-- ИСПРАВЛЕНО: Удалён дублирующий span "Скоро" внизу карточки, так как статус уже задан выше. Это устраняет артефакт "склеивания" при парсинге текста. -->
             </div>
 
             <!-- Новый цикл -->
@@ -331,7 +319,7 @@
                    data-en="August's daughter grew up on his songs and tales of distant shores. She sets out not because she lost her home — but because she wants to see the world her father sang about. Not a search for self. An exploration of the world. A new cycle, a new heroine, a new road — in the same world.">
                    Дочь Августа выросла на его песнях и рассказах о дальних берегах. Она отправляется в путь не потому, что потеряла дом — а потому, что хочет увидеть мир, о котором пел отец. Не поиск себя. Исследование мира. Новый цикл, новая героиня, новая дорога — в том же мире.
                 </p>
-                <span class="cycle-status" style="color: var(--text-muted);" data-ru="В разработке" data-en="In development">В разработке</span>
+                <!-- ИСПРАВЛЕНО: Удалён дублирующий span "В разработке" внизу карточки по той же причине. -->
             </div>
         </div>
     </section>
@@ -343,7 +331,9 @@
             <p data-ru="Все истории вселенной Альба-Маре в одном месте" data-en="All stories of the Alba-Mare universe in one place">Все истории вселенной Альба-Маре в одном месте</p>
         </div>
         
-        <div class="books-container" style="max-width: 1200px; margin: 0 auto;">
+        <div class="books-container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+            <!-- ИСПРАВЛЕНО: Добавлен flex-wrap и gap для корректного отображения карточек, так как inline-стили width без обёртки могут ломать сетку -->
+            
             <!-- Книга 1 -->
             <div class="book-card" data-aos="fade-up" data-aos-delay="100" style="width: 320px;">
                 <img src="images/cover.png" alt="August Fjord" class="book-cover">
@@ -452,7 +442,7 @@
                 if (btn) btn.innerText = '☀️';
             }
         })();
-		
+        
         document.addEventListener('DOMContentLoaded', applyLang);
     </script>
 </body>
