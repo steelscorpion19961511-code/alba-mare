@@ -58,11 +58,12 @@
 
 <p>— My name is Matteo, — he said. — What should I call you?</p>
 
-<!-- Matteo card (text wrap) -->
-<div class="character-inline-card" onclick="unlockCharacter('matteo', this)" style="display: flex; flex-direction: column; float: left; margin: 10px 25px 15px 0; width: 220px;">
-    <img src="images/matteo.jpg" alt="Matteo" style="width: 100%; height: 220px; object-fit: contain; background: var(--bg-sand); display: block;">
-    <div class="card-name" style="padding: 10px; font-size: 18px;">Matteo</div>
-    <div class="card-hint" style="padding: 0 10px 15px;"><span>🔓</span> Click to unlock</div>
+<div class="character-inline-card" onclick="unlockCharacter('matteo', this)">
+    <img src="images/characters/matteo.jpg" alt="Matteo">
+    <div class="card-overlay">
+        <div class="card-name">Matteo</div>
+        <div class="card-hint"><span>🔓</span> Click to unlock</div>
+    </div>
 </div>
 
 <p>— August, — he answered.</p>
@@ -99,12 +100,14 @@
 
 <p>— Then take it.</p>
 
-<!-- Artifact card: Guitar -->
-<div class="artifact-inline-card" onclick="collectArtifact('guitar', this)" style="display: flex; flex-direction: column; float: left; margin: 10px 25px 15px 0; width: 220px;">
-    <img src="images/guitar.jpg" alt="Matteo's Guitar" style="width: 100%; height: 220px; object-fit: contain; background: var(--bg-sand); display: block;">
-    <div class="card-name" style="padding: 10px; font-size: 18px;">Matteo's Guitar</div>
-    <div class="card-hint" style="padding: 0 10px 15px;"><span>🔓</span> Click to collect</div>
+<div class="artifact-inline-card" onclick="collectArtifact('guitar', this)">
+    <img src="images/artifacts/guitar.jpg" alt="Guitar">
+    <div class="card-overlay">
+        <div class="card-name">Guitar</div>
+        <div class="card-hint"><span>🔓</span> Click to collect</div>
+    </div>
 </div>
+
 
 <p>The guitar lay in his hands — warm, as if alive. In the rays of the setting sun, golden reflections played on the soundboard. Taking it, August felt the ground go out from under his feet. He could not find words.</p>
 
