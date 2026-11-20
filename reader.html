@@ -553,7 +553,7 @@
             <span class="book-label" data-ru="Восточный ветер" data-en="East Wind">Восточный ветер</span>
         </button>
         <button class="book-switcher-btn" data-book="3" onclick="switchBook(3)">
-            <span class="num">3</span>
+            <span class="book-num">3</span>
             <span class="book-label" data-ru="Там, где рождается холод" data-en="Where the Cold is Born">Там, где рождается холод</span>
         </button>
     </div>
@@ -682,7 +682,7 @@
         const BOOKS = {
             1: { listFile: 'chapters/list.json',  progressKey: 'alba-mare-progress-1', titleRu: 'Август Фьорд',        titleEn: 'August Fjord' },
             2: { listFile: 'chapters/list2.json', progressKey: 'alba-mare-progress-2', titleRu: 'Восточный ветер',    titleEn: 'East Wind' },
-            3: { listFile: 'chapters/list3.json', progressKey: 'alba-mare-progress-3', titleRu: 'Где рождается холод', titleEn: 'Where the Cold is Born' }
+            3: { listFile: 'chapters/list3.json', progressKey: 'alba-mare-progress-3', titleRu: 'Там, где рождается холод', titleEn: 'Where the Cold is Born' }
         };
 
         let currentBook = parseInt(localStorage.getItem('alba-mare-current-book') || '1');
@@ -741,7 +741,7 @@
         }
 
         let foundArtifacts = loadSet('alba-mare-artifacts');
-        let readChapters = loadSet('alba-mare-read-chapters');
+        let readChapters = loadSet('alba-mare-read-chapters-' + currentBook);
         let unlockedCharacters = loadSet('alba-mare-characters');
         let unlockedCities = loadSet('alba-mare-cities');
         let unlockedPlaces = loadSet('alba-mare-places');
@@ -756,6 +756,7 @@
             updateBookSwitcherUI();
             bookChapters = [];
             currentChapter = 0;
+            readChapters = loadSet('alba-mare-read-chapters-' + currentBook);
 
             // Сброс на первую главу или сохранённый прогресс для этой книги
             const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
@@ -781,6 +782,7 @@
                 currentChapter = Math.min(startChapter, bookChapters.length - 1);
                 if (currentChapter < 0) currentChapter = 0;
                 renderChapter();
+                return true;
             } catch (error) {
                 console.error('Ошибка загрузки списка глав книги', currentBook, error);
                 bookChapters = [];
@@ -799,6 +801,7 @@
                 document.getElementById('btn-prev').disabled = true;
                 document.getElementById('btn-next').disabled = true;
                 document.getElementById('book-teaser').classList.remove('active');
+                return false;
             }
         }
 
@@ -837,7 +840,7 @@
 
                 if (!readChapters.has(currentChapter)) {
                     readChapters.add(currentChapter);
-                    saveSet('alba-mare-read-chapters', readChapters);
+                    saveSet('alba-mare-read-chapters-' + currentBook, readChapters);
                 }
 
                 document.querySelectorAll('.hidden-artifact').forEach(el => {
@@ -1034,8 +1037,9 @@
                 const isCheckpoint = (savedChapter !== null && parseInt(savedChapter) === index) || isCurrent;
                 const item = document.createElement('div'); item.className = `toc-item ${isCurrent ? 'active' : ''} ${isRead ? 'read' : ''}`;
                 item.onclick = () => { currentChapter = index; renderChapter(); hideAllPages(); };
-                const title = currentLang === 'ru' ? chapter.title : (chapter.titleEn || chapter.title);
-                item.innerHTML = `<div class="toc-item-left"><span class="toc-number">${index + 1}.</span><span class="toc-title">${title}</span></div><div class="toc-item-right">${isCheckpoint ? '<span class="toc-icon" title="Вы остановились здесь">⭐</span>' : ''}<span class="toc-check">✓</span></div>`;
+                const rawTitle = currentLang === 'ru' ? chapter.title : (chapter.titleEn || chapter.title);
+                const cleanTitle = rawTitle.replace(/^(Глава|Chapter)\s*\d+\.?\s*/i, '');
+                item.innerHTML = `<div class="toc-item-left"><span class="toc-number">${index + 1}.</span><span class="toc-title">${cleanTitle}</span></div><div class="toc-item-right">${isCheckpoint ? '<span class="toc-icon" title="Вы остановились здесь">⭐</span>' : ''}<span class="toc-check">✓</span></div>`;
                 list.appendChild(item);
             });
         }
@@ -1163,7 +1167,7 @@
         // ==========================================
         // 12. ИНИЦИАЛИЗАЦИЯ
         // ==========================================
-        window.onload = function() {
+        window.onload = async function() {
             // Язык
             const savedLang = localStorage.getItem('alba-mare-lang');
             if (savedLang && savedLang !== currentLang) {
@@ -1186,12 +1190,16 @@
             // Книга
             updateBookSwitcherUI();
             const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
-            loadChapterList(savedChapter !== null ? parseInt(savedChapter) : 0);
+            const startChapter = (savedChapter !== null && parseInt(savedChapter) > 0) ? parseInt(savedChapter) : 0;
+            const loaded = await loadChapterList(startChapter);
+            if (loaded && startChapter > 0) {
+                showResumeModal(startChapter);
+            }
         };
     </script>
 	
     <footer>
-        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Yu.</p>
+        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Ю.</p>
     </footer>
 </body>
 </html>
