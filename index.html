@@ -251,6 +251,72 @@
 
     <footer>
               <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Yu.</p>
+		
+<!-- ===== Декоративные морские волны (статичный блок) ===== -->
+<style>
+  .deco-waves {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    line-height: 0;
+  }
+  .deco-waves svg { display: block; width: 100%; height: auto; }
+  /* три слоя волн плывут с разной скоростью — так возникает эффект глубины */
+  .deco-waves .wave-back  { animation: deco-wave-drift-back 14s linear infinite; }
+  .deco-waves .wave-mid   { animation: deco-wave-drift-mid 10s linear infinite; }
+  .deco-waves .wave-front { animation: deco-wave-drift-front 7s linear infinite; }
+  /* пена на гребнях мерцает */
+  .deco-waves .foam { animation: deco-wave-foam 3.5s ease-in-out infinite; }
+  .deco-waves .foam:nth-of-type(2) { animation-delay: 1.2s; }
+  .deco-waves .foam:nth-of-type(3) { animation-delay: 2.4s; }
+  @keyframes deco-wave-drift-back {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-200px); }
+  }
+  @keyframes deco-wave-drift-mid {
+    from { transform: translateX(-200px); }
+    to   { transform: translateX(0); }
+  }
+  @keyframes deco-wave-drift-front {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-200px); }
+  }
+  @keyframes deco-wave-foam {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 0.9; }
+  }
+</style>
+
+<div class="deco-waves" aria-hidden="true">
+  <svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+    <!-- дальний слой -->
+    <g class="wave-back" fill="#5fb3bd" opacity="0.45">
+      <path d="M-200 60 Q-175 50 -150 60 T-100 60 T-50 60 T0 60 T50 60 T100 60 T150 60 T200 60 T250 60 T300 60 T350 60 T400 60 T450 60 T500 60 L500 120 L-200 120 Z"/>
+    </g>
+    <!-- средний слой (плывёт в другую сторону) -->
+    <g class="wave-mid" fill="#3399a6" opacity="0.6">
+      <path d="M-250 74 Q-225 64 -200 74 T-150 74 T-100 74 T-50 74 T0 74 T50 74 T100 74 T150 74 T200 74 T250 74 T300 74 T350 74 T400 74 L400 120 L-250 120 Z"/>
+    </g>
+    <!-- пенка на гребнях -->
+    <g class="foam" fill="#f5f0e6">
+      <circle cx="70"  cy="72" r="2.5"/>
+      <circle cx="190" cy="70" r="2"/>
+      <circle cx="320" cy="73" r="2.5"/>
+    </g>
+    <!-- передний слой -->
+    <g class="wave-front" fill="#2a7f8f">
+      <path d="M-200 88 Q-175 78 -150 88 T-100 88 T-50 88 T0 88 T50 88 T100 88 T150 88 T200 88 T250 88 T300 88 T350 88 T400 88 T450 88 T500 88 L500 120 L-200 120 Z"/>
+      <path d="M-200 88 Q-175 78 -150 88 T-100 88 T-50 88 T0 88 T50 88 T100 88 T150 88 T200 88 T250 88 T300 88 T350 88 T400 88 T450 88 T500 88" fill="none" stroke="#7fd4de" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+    </g>
+    <!-- блики лунного/солнечного света на переднем слое -->
+    <g fill="#f5e0a0" opacity="0.35">
+      <ellipse cx="120" cy="100" rx="14" ry="2.5"/>
+      <ellipse cx="250" cy="106" rx="10" ry="2"/>
+      <ellipse cx="340" cy="98"  rx="12" ry="2.5"/>
+    </g>
+  </svg>
+</div>
+
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
