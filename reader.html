@@ -56,6 +56,104 @@
         .hidden-artifact:hover span, .hidden-artifact.found span { filter: grayscale(0%); }
 
         /* ========================================= */
+        /* --- БОКОВАЯ ПАНЕЛЬ ВЫБОРА КНИГИ --- */
+        /* ========================================= */
+        .book-switcher {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            z-index: 2900;
+            background: var(--bg-paper);
+            border: 2px solid var(--accent-sand);
+            border-radius: 12px;
+            padding: 12px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        .book-switcher-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .book-switcher-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: var(--bg-sand);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            transition: all 0.3s;
+            padding: 6px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .book-switcher-btn:hover { border-color: var(--accent-sand); transform: translateX(3px); }
+        .book-switcher-btn.active {
+            border-color: var(--accent-sea);
+            background: rgba(42, 127, 143, 0.1);
+            box-shadow: 0 0 0 2px rgba(42, 127, 143, 0.2);
+        }
+        .book-switcher-btn .book-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent-sea);
+            line-height: 1;
+        }
+        .book-switcher-btn .book-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+        .book-switcher-btn.active .book-label { color: var(--accent-sea); font-weight: 700; }
+
+        body.dark-mode .book-switcher { background: #1a2f3a; border-color: #2a3f4d; }
+        body.dark-mode .book-switcher-btn { background: #112233; border-color: #2a3f4d; color: #e0e0e0; }
+        body.dark-mode .book-switcher-btn.active { border-color: var(--accent-sand); background: #0e2130; }
+        body.dark-mode .book-switcher-btn .book-num { color: var(--accent-sand); }
+        body.dark-mode .book-switcher-btn.active .book-label { color: var(--accent-sand); }
+
+        /* На мобильных — горизонтальная полоска под шапкой */
+        @media (max-width: 992px) {
+            .book-switcher {
+                top: auto;
+                bottom: 15px;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+                flex-direction: row;
+                padding: 8px;
+                gap: 6px;
+            }
+            .book-switcher-title { display: none; }
+            .book-switcher-btn {
+                width: 50px;
+                height: 50px;
+                flex-direction: row;
+                gap: 0;
+            }
+            .book-switcher-btn .book-num { font-size: 18px; }
+            .book-switcher-btn .book-label { display: none; }
+        }
+
+        /* ========================================= */
         /* --- INLINE-КАРТОЧКИ В ТЕКСТЕ (обтекание) --- */
         /* ========================================= */
         .character-inline-card,
@@ -254,7 +352,6 @@
             position: relative;
         }
 
-        /* Рамка — только вокруг картинки, картинка на всю площадь */
         .card-frame {
             background: var(--bg-sand);
             border: 2px solid var(--border-color);
@@ -278,7 +375,6 @@
             filter: grayscale(100%);
         }
 
-        /* Картинка — на всю рамку */
         .card-image {
             width: 100%;
             height: 100%;
@@ -305,10 +401,7 @@
             height: 100%;
         }
 
-        /* Подпись — ВНЕ рамки */
-        .card-caption {
-            padding: 10px 4px 0;
-        }
+        .card-caption { padding: 10px 4px 0; }
 
         .card-name {
             font-family: 'Cormorant Garamond', serif;
@@ -339,7 +432,6 @@
             line-height: 1.5;
         }
 
-        /* Тёмная тема для коллекции */
         body.dark-mode .card-frame { background: #1a2f3a; border-color: #2a3f4d; }
         body.dark-mode .card-item.unlocked .card-frame { border-color: var(--support-gold); }
         body.dark-mode .card-name { color: var(--accent-sand); }
@@ -365,7 +457,8 @@
         .book-teaser.active { display: block; }
         .book-teaser h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--support-gold); margin-bottom: 10px; }
         .book-teaser .teaser-text { font-size: 18px; color: #a0b2c6; margin-bottom: 30px; font-style: italic; }
-        .teaser-cover { width: 100%; max-width: 250px; height: 350px; background: rgba(255,255,255,0.1); border: 2px dashed rgba(255,255,255,0.3); margin: 0 auto 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #a0b2c6; font-family: 'Cormorant Garamond', serif; font-size: 20px; }
+        .teaser-cover { width: 100%; max-width: 250px; height: 350px; background: rgba(255,255,255,0.1); border: 2px dashed rgba(255,255,255,0.3); margin: 0 auto 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #a0b2c6; font-family: 'Cormorant Garamond', serif; font-size: 20px; overflow: hidden; }
+        .teaser-cover img { width: 100%; height: 100%; object-fit: cover; }
         .teaser-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
         .teaser-form input { padding: 15px; border-radius: 4px; border: 1px solid var(--support-gold); background: rgba(0,0,0,0.2); color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; }
         .teaser-form input:focus { outline: none; border-color: #fff; }
@@ -388,6 +481,7 @@
         @media (max-width: 992px) {
             .reader-header nav { gap: 12px; }
             .reader-header nav a { font-size: 11px; }
+            .reader-content { max-width: 100%; }
         }
 
         @media (max-width: 768px) {
@@ -434,7 +528,7 @@
                 <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
             
-            <a href="reader.html" class="header-read-btn" data-ru="Читать" data-en="Read">Читать</a>
+            <a href="#" class="header-read-btn" id="header-read-btn" onclick="scrollToReader(); return false;" data-ru="Читать" data-en="Read">Читать</a>
             
             <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
@@ -446,6 +540,23 @@
             </div>
         </div>
     </header>
+
+    <!-- Боковая панель выбора книги -->
+    <div class="book-switcher" id="book-switcher">
+        <div class="book-switcher-title" data-ru="Книга" data-en="Book">Книга</div>
+        <button class="book-switcher-btn active" data-book="1" onclick="switchBook(1)">
+            <span class="book-num">1</span>
+            <span class="book-label" data-ru="Август Фьорд" data-en="August Fjord">Август Фьорд</span>
+        </button>
+        <button class="book-switcher-btn" data-book="2" onclick="switchBook(2)">
+            <span class="book-num">2</span>
+            <span class="book-label" data-ru="Восточный ветер" data-en="East Wind">Восточный ветер</span>
+        </button>
+        <button class="book-switcher-btn" data-book="3" onclick="switchBook(3)">
+            <span class="num">3</span>
+            <span class="book-label" data-ru="Где рождается холод" data-en="Where the Cold is Born">Где рождается холод</span>
+        </button>
+    </div>
 	
     <!-- Панель инструментов -->
     <div class="floating-controls">
@@ -527,14 +638,14 @@
             <h2 data-ru="Продолжение следует..." data-en="To be continued...">Продолжение следует...</h2>
             <div class="teaser-text" data-ru="Вторая книга цикла «Альба-Маре» уже пишется." data-en="The second book of the Alba-Mare series is already being written.">Вторая книга цикла «Альба-Маре» уже пишется.</div>
             <div class="teaser-cover">
-  <img src="images/cover2.png" alt="Книга вторая - Восточный ветер" width="300" height="450">
+                <img src="images/cover2.png" alt="Книга вторая - Восточный ветер">
+            </div>
             <p style="font-size: 16px; color: #a0b2c6; margin-bottom: 20px;" data-ru="Оставьте свой Email, чтобы первыми узнать о выходе:" data-en="Leave your Email to be the first to know about the release:">Оставьте свой Email, чтобы первыми узнать о выходе:</p>
             <form class="teaser-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы сообщим вам о выходе.'); this.reset();">
                 <input type="email" placeholder="your@email.com" required>
                 <button type="submit" data-ru="Хочу узнать о выходе" data-en="Notify me">Хочу узнать о выходе</button>
             </form>
         </div>
-    </div>
     </div>
 
     <!-- Модалки -->
@@ -566,7 +677,18 @@
 
     <script>
         // ==========================================
-        // 1. ДАННЫЕ КОЛЛЕКЦИИ
+        // 1. КНИГИ
+        // ==========================================
+        const BOOKS = {
+            1: { listFile: 'chapters/list.json',  progressKey: 'alba-mare-progress-1', titleRu: 'Август Фьорд',        titleEn: 'August Fjord' },
+            2: { listFile: 'chapters/list2.json', progressKey: 'alba-mare-progress-2', titleRu: 'Восточный ветер',    titleEn: 'East Wind' },
+            3: { listFile: 'chapters/list3.json', progressKey: 'alba-mare-progress-3', titleRu: 'Где рождается холод', titleEn: 'Where the Cold is Born' }
+        };
+
+        let currentBook = parseInt(localStorage.getItem('alba-mare-current-book') || '1');
+
+        // ==========================================
+        // 2. ДАННЫЕ КОЛЛЕКЦИИ
         // ==========================================
         const artifactsData = {
             'guitar':  { image: 'images/artifacts/guitar.jpg', titleRu: 'Гитара',        titleEn: "Guitar",          descRu: 'Инструмент, оставленный купцом.',   descEn: 'The instrument left by merchant.' },
@@ -592,7 +714,7 @@
         };
 
         // ==========================================
-        // 2. СОСТОЯНИЕ (с сохранением в localStorage)
+        // 3. СОСТОЯНИЕ
         // ==========================================
         let bookChapters = [];
         let currentChapter = 0;
@@ -625,59 +747,75 @@
         let unlockedPlaces = loadSet('alba-mare-places');
 
         // ==========================================
-        // 3. ЗАГРУЗКА СПИСКА ГЛАВ
+        // 4. ПЕРЕКЛЮЧЕНИЕ КНИГИ
         // ==========================================
-        async function loadChapterList() {
+        function switchBook(bookNum) {
+            if (bookNum === currentBook) return;
+            currentBook = bookNum;
+            localStorage.setItem('alba-mare-current-book', bookNum);
+            updateBookSwitcherUI();
+            bookChapters = [];
+            currentChapter = 0;
+
+            // Сброс на первую главу или сохранённый прогресс для этой книги
+            const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
+            loadChapterList(savedChapter !== null ? parseInt(savedChapter) : 0);
+        }
+
+        function updateBookSwitcherUI() {
+            document.querySelectorAll('.book-switcher-btn').forEach(btn => {
+                btn.classList.toggle('active', parseInt(btn.dataset.book) === currentBook);
+            });
+        }
+
+        // ==========================================
+        // 5. ЗАГРУЗКА СПИСКА ГЛАВ
+        // ==========================================
+        async function loadChapterList(startChapter = 0) {
+            const book = BOOKS[currentBook];
             try {
-                const response = await fetch('chapters/list.json');
+                const response = await fetch(book.listFile);
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 const data = await response.json();
                 bookChapters = data;
-                initReader();
-            } catch (error) {
-                console.error('Ошибка загрузки списка глав:', error);
-                document.getElementById('reader-text').innerHTML = '<h1>Ошибка</h1><p style="text-align:center;">Не удалось загрузить список глав. Проверьте файл chapters/list.json</p>';
-            }
-        }
-
-        // ==========================================
-        // 4. ИНИЦИАЛИЗАЦИЯ
-        // ==========================================
-        function initReader() {
-            const savedLang = localStorage.getItem('alba-mare-lang');
-            if (savedLang && savedLang !== currentLang) {
-                toggleLang(true);
-            }
-
-            const savedChapter = localStorage.getItem('alba-mare-progress');
-            if (savedChapter !== null && parseInt(savedChapter) > 0) {
-                showResumeModal(parseInt(savedChapter));
-            } else {
+                currentChapter = Math.min(startChapter, bookChapters.length - 1);
+                if (currentChapter < 0) currentChapter = 0;
                 renderChapter();
+            } catch (error) {
+                console.error('Ошибка загрузки списка глав книги', currentBook, error);
+                bookChapters = [];
+                document.getElementById('reader-text').innerHTML = `
+                    <h1>${book.titleRu}</h1>
+                    <h2>${book.titleEn}</h2>
+                    <p style="text-align:center; padding: 40px 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text-muted);">
+                        ${currentLang === 'ru' ? 'Эта книга ещё в работе. Скоро здесь появятся главы.' : 'This book is still in progress. Chapters will appear here soon.'}
+                    </p>
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="index.html#support" class="btn btn-red" data-ru="Поддержать проект" data-en="Support the project">Поддержать проект</a>
+                    </div>
+                `;
+                document.getElementById('chapter-indicator').innerText = '';
+                document.getElementById('chapter-progress-top').innerText = '';
+                document.getElementById('btn-prev').disabled = true;
+                document.getElementById('btn-next').disabled = true;
+                document.getElementById('book-teaser').classList.remove('active');
             }
-
-            const savedTheme = localStorage.getItem('alba-mare-theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                document.getElementById('theme-btn').innerText = '☀️';
-            }
-
-            updateProgressBar();
-            refreshCollectionIfOpen();
         }
 
         // ==========================================
-        // 5. ОТРИСОВКА ГЛАВЫ
+        // 6. ОТРИСОВКА ГЛАВЫ
         // ==========================================
         async function renderChapter() {
             if (bookChapters.length === 0) return;
 
             const chapterInfo = bookChapters[currentChapter];
+            const book = BOOKS[currentBook];
+            const bookTitle = currentLang === 'ru' ? book.titleRu : book.titleEn;
             const chapterTitle = currentLang === 'ru' ? chapterInfo.title : (chapterInfo.titleEn || chapterInfo.title);
             const chapterFile = currentLang === 'ru' ? chapterInfo.file : (chapterInfo.fileEn || chapterInfo.file);
             
             document.getElementById('reader-text').innerHTML = `
-                <h1>${currentLang === 'ru' ? 'Август Фьорд' : 'August Fjord'}</h1>
+                <h1>${bookTitle}</h1>
                 <h2>${chapterTitle}</h2>
                 <div class="reading-time">⏱️ ${currentLang === 'ru' ? 'Загрузка...' : 'Loading...'}</div>
             `;
@@ -691,7 +829,7 @@
                 const readingTime = Math.ceil(wordCount / 200);
 
                 document.getElementById('reader-text').innerHTML = `
-                    <h1>${currentLang === 'ru' ? 'Август Фьорд' : 'August Fjord'}</h1>
+                    <h1>${bookTitle}</h1>
                     <h2>${chapterTitle}</h2>
                     <div class="reading-time">⏱️ ${currentLang === 'ru' ? 'Примерное время чтения:' : 'Estimated reading time:'} ~${readingTime} ${currentLang === 'ru' ? 'мин.' : 'min.'}</div>
                     ${textHtml}
@@ -719,7 +857,7 @@
                     document.getElementById('book-teaser').classList.remove('active');
                 }
 
-                localStorage.setItem('alba-mare-progress', currentChapter);
+                localStorage.setItem(book.progressKey, currentChapter);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 setTimeout(updateProgressBar, 100);
 
@@ -730,7 +868,7 @@
         }
 
         // ==========================================
-        // 6. РАЗБЛОКИРОВКА КАРТОЧЕК
+        // 7. РАЗБЛОКИРОВКА КАРТОЧЕК
         // ==========================================
         function collectArtifact(id, element) {
             if (foundArtifacts.has(id)) return;
@@ -778,23 +916,12 @@
         function markInlineCardCollected(element) {
             if (!element) return;
             element.style.borderColor = 'var(--support-gold)';
-            const overlay = element.querySelector('.card-overlay');
-            if (overlay) {
-                const hint = overlay.querySelector('.card-hint');
-                if (hint) {
-                    hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Получено' : 'Collected');
-                    hint.style.color = 'var(--shop-green)';
-                    const span = hint.querySelector('span');
-                    if (span) span.style.animation = 'none';
-                }
-            } else {
-                const hint = element.querySelector('.card-hint');
-                if (hint) {
-                    hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Получено' : 'Collected');
-                    hint.style.color = 'var(--shop-green)';
-                    const span = hint.querySelector('span');
-                    if (span) span.style.animation = 'none';
-                }
+            const hint = element.querySelector('.card-hint');
+            if (hint) {
+                hint.innerHTML = '✓ ' + (currentLang === 'ru' ? 'Получено' : 'Collected');
+                hint.style.color = 'var(--shop-green)';
+                const span = hint.querySelector('span');
+                if (span) span.style.animation = 'none';
             }
         }
 
@@ -815,7 +942,7 @@
         }
 
         // ==========================================
-        // 7. КОЛЛЕКЦИЯ
+        // 8. КОЛЛЕКЦИЯ
         // ==========================================
         function renderCollection() {
             const activeTab = document.querySelector('.tab-btn.active');
@@ -872,7 +999,7 @@
         }
 
         // ==========================================
-        // 8. НАВИГАЦИЯ ПО ГЛАВАМ
+        // 9. НАВИГАЦИЯ ПО ГЛАВАМ
         // ==========================================
         function showResumeModal(chapterIndex) {
             const modal = document.getElementById('resume-modal');
@@ -902,7 +1029,8 @@
             bookChapters.forEach((chapter, index) => {
                 const isCurrent = index === currentChapter;
                 const isRead = readChapters.has(index);
-                const savedChapter = localStorage.getItem('alba-mare-progress');
+                const book = BOOKS[currentBook];
+                const savedChapter = localStorage.getItem(book.progressKey);
                 const isCheckpoint = (savedChapter !== null && parseInt(savedChapter) === index) || isCurrent;
                 const item = document.createElement('div'); item.className = `toc-item ${isCurrent ? 'active' : ''} ${isRead ? 'read' : ''}`;
                 item.onclick = () => { currentChapter = index; renderChapter(); hideAllPages(); };
@@ -935,8 +1063,12 @@
             document.getElementById('main-nav').classList.toggle('active');
         }
 
+        function scrollToReader() {
+            document.getElementById('reader-text').scrollIntoView({ behavior: 'smooth' });
+        }
+
         // ==========================================
-        // 9. ОСТАЛЬНОЕ
+        // 10. ОСТАЛЬНОЕ
         // ==========================================
         function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
         function closeFeedbackModal(event) { if (!event || event.target.id === 'feedback-modal' || event.target.classList.contains('close-modal')) { document.getElementById('feedback-modal').style.display = 'none'; } }
@@ -955,7 +1087,7 @@
             document.documentElement.lang = currentLang; 
             localStorage.setItem('alba-mare-lang', currentLang);
             
-            if (!noRerender) {
+            if (!noRerender && bookChapters.length > 0) {
                 const scrollY = window.scrollY;
                 renderChapter().then(() => {
                     window.scrollTo({ top: scrollY, behavior: 'instant' });
@@ -968,7 +1100,7 @@
         }
 
         // ==========================================
-        // 10. ПОДЕЛИТЬСЯ
+        // 11. ПОДЕЛИТЬСЯ
         // ==========================================
         function toggleShareMenu() {
             const menu = document.getElementById('share-menu');
@@ -1028,11 +1160,38 @@
             });
         }
 
-        window.onload = loadChapterList;
+        // ==========================================
+        // 12. ИНИЦИАЛИЗАЦИЯ
+        // ==========================================
+        window.onload = function() {
+            // Язык
+            const savedLang = localStorage.getItem('alba-mare-lang');
+            if (savedLang && savedLang !== currentLang) {
+                currentLang = savedLang;
+                document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
+                document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
+                document.querySelectorAll('[data-ru]').forEach(el => { 
+                    const text = el.getAttribute(`data-${currentLang}`); 
+                    if (text) el.innerHTML = text; 
+                });
+                document.documentElement.lang = currentLang;
+            }
+
+            // Тема
+            if (localStorage.getItem('alba-mare-theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-btn').innerText = '☀️';
+            }
+
+            // Книга
+            updateBookSwitcherUI();
+            const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
+            loadChapterList(savedChapter !== null ? parseInt(savedChapter) : 0);
+        };
     </script>
 	
     <footer>
-              <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Yu.</p>
+        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Yu.</p>
     </footer>
 </body>
 </html>
