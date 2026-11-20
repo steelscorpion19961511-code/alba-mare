@@ -75,7 +75,6 @@ nav a.support-link:hover::after { width: 100%; }
 .burger:hover span { background: var(--accent-sea); }
 
 /* --- ГЛАВНЫЙ ЭКРАН --- */
-/* --- ГЛАВНЫЙ ЭКРАН --- */
 .hero {
     position: relative;
     padding: 150px 10% 100px;
@@ -435,149 +434,10 @@ body.dark-mode .universe-hero { background: linear-gradient(to bottom, rgba(11,2
 .artifact-inline-card:hover .card-icon { filter: grayscale(0%); }
 
 .character-inline-card .card-name, .artifact-inline-card .card-name, .city-inline-card .card-name, .place-inline-card .card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--accent-sea); padding: 10px; background: var(--bg-paper); }
-
 .character-inline-card .card-hint, .artifact-inline-card .card-hint, .city-inline-card .card-hint, .place-inline-card .card-hint { font-family: 'Montserrat', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--support-gold); padding: 0 10px 12px; display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: auto; }
 .character-inline-card .card-hint span, .artifact-inline-card .card-hint span, .city-inline-card .card-hint span, .place-inline-card .card-hint span { animation: pulse-icon 2s infinite; display: inline-block; }
 @keyframes pulse-icon { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
-
 @media (max-width: 768px) { .character-inline-card, .artifact-inline-card, .city-inline-card, .place-inline-card { float: none; width: 100%; max-width: 250px; margin: 20px auto; } }
-
-/* ========================================= */
-/* --- ВЫБОР ИКОНКИ В ФОРМЕ ОТЗЫВА --- */
-/* ========================================= */
-.icon-selector {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 5px;
-}
-
-.icon-radio {
-    display: none; /* Скрываем сами радио-кнопки */
-}
-
-.icon-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    font-size: 26px; /* Увеличиваем размер иконки, чтобы она заполняла кнопку */
-    background: var(--bg-sand);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-    line-height: 1; /* Убираем лишние отступы у шрифта */
-    padding: 0; /* Убираем внутренние отступы, чтобы эмодзи стоял по центру */
-}
-
-.icon-label:hover {
-    border-color: var(--accent-sea);
-    transform: scale(1.1);
-}
-
-/* Когда иконка выбрана */
-.icon-radio:checked + .icon-label {
-    background: var(--accent-sea);
-    border-color: var(--accent-sea);
-    transform: scale(1.05);
-    box-shadow: 0 0 0 3px rgba(42, 127, 143, 0.3);
-}
-
-body.dark-mode .icon-label {
-    background: #112233;
-    border-color: #2a3f4d;
-}
-body.dark-mode .icon-radio:checked + .icon-label {
-    background: var(--accent-sand);
-    border-color: var(--accent-sand);
-}
-
-/* ========================================= */
-/* --- ВЫБОР ИКОНКИ ДЛЯ ОТЗЫВА --- */
-/* ========================================= */
-.icon-selector {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 8px;
-}
-
-/* Скрываем сами radio, но оставляем доступными для клавиатуры */
-.icon-radio {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-}
-
-/* Иконка-кнопка */
-.icon-label {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    font-size: 26px;              /* размер эмодзи */
-    line-height: 1;
-    background: var(--bg-paper);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    user-select: none;
-    box-sizing: border-box;
-}
-
-.icon-label:hover {
-    transform: translateY(-2px);
-    border-color: var(--accent-sea);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-/* Выбранная иконка */
-.icon-radio:checked + .icon-label {
-    border-color: var(--accent-sea);
-    background: rgba(42, 127, 143, 0.12);
-    box-shadow: 0 0 0 3px rgba(42, 127, 143, 0.2);
-    transform: scale(1.05);
-}
-
-/* Фокус с клавиатуры */
-.icon-radio:focus-visible + .icon-label {
-    outline: 2px solid var(--accent-sand);
-    outline-offset: 2px;
-}
-
-/* Тёмная тема */
-body.dark-mode .icon-label {
-    background: #1a2f3a;
-    border-color: #2a3f4d;
-    color: #e0e0e0;
-}
-body.dark-mode .icon-label:hover {
-    border-color: var(--accent-sand);
-}
-body.dark-mode .icon-radio:checked + .icon-label {
-    border-color: var(--accent-sand);
-    background: rgba(194, 154, 91, 0.15);
-    box-shadow: 0 0 0 3px rgba(194, 154, 91, 0.25);
-}
-
-/* Мобильная версия — чуть меньше */
-@media (max-width: 768px) {
-    .icon-label {
-        width: 44px;
-        height: 44px;
-        font-size: 22px;
-    }
-    .icon-selector {
-        gap: 8px;
-    }
-}
 
 
 /* ========================================= */
