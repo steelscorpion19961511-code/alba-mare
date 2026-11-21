@@ -79,7 +79,38 @@
     <div class="hero">
         <div class="hero-text" data-aos="fade-right">
             <div class="hero-subtitle" data-ru="Приключенческая повесть. 16+" data-en="Adventure Fantasy">Приключенческая повесть. 16+ </div>
-            <h1 class="cinzel" data-ru="Альба-Маре" data-en="Alba-Mare">Альба-Маре</h1>
+            <h1 class="cinzel" data-ru="Альба-Маре" data-en="Alba-Mare"> <!-- ===== Декоративная пальма (статичная) ===== -->
+<style>
+  .deco-palm {
+    display: inline-block;
+    width: 110px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+  }
+  .deco-palm svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .deco-palm .crown { transform-origin: 55px 62px; animation: deco-palm-sway 6s ease-in-out infinite; }
+  @keyframes deco-palm-sway {
+    0%, 100% { transform: rotate(-4deg); }
+    50%      { transform: rotate(4deg); }
+  }
+  @media (max-width: 700px) { .deco-palm { width: 78px; } }
+</style>
+
+<div class="deco-palm" aria-hidden="true">
+  <svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 108 Q54 80 55 62 L60 62 Q60 82 58 108 Z" fill="#8a5a2b"/>
+    <path d="M53 104 L57 104 M53.5 92 L57.5 92 M54 80 L58 80" stroke="#6b4423" stroke-width="2" stroke-linecap="round"/>
+    <g class="crown">
+      <path d="M57 62 Q30 52 12 58 Q34 40 57 60 Z" fill="#2a7f8f"/>
+      <path d="M57 62 Q84 52 102 58 Q80 40 57 60 Z" fill="#2a7f8f"/>
+      <path d="M57 62 Q42 34 24 30 Q48 28 58 58 Z" fill="#3399a6"/>
+      <path d="M57 62 Q74 32 92 28 Q68 26 58 58 Z" fill="#3399a6"/>
+      <path d="M57 62 Q54 28 44 14 Q62 26 60 60 Z" fill="#2a7f8f"/>
+      <path d="M57 62 Q62 28 74 16 Q64 34 60 60 Z" fill="#3399a6"/>
+      <circle cx="52" cy="60" r="4" fill="#c29a5b"/>
+      <circle cx="62" cy="61" r="4" fill="#c29a5b"/>
+    </g>
+  </svg>
+</div> Альба-Маре</h1>
             <h2 class="serif" data-ru="Свет, рождённый морем" data-en="Light born of the sea">Свет, рождённый морем</h2>
 			
 <div class="hero-description">
