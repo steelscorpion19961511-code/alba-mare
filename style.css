@@ -566,7 +566,7 @@ body.dark-mode .status-badge.done { color: #7fd48a; border-color: rgba(127, 212,
     margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .scroll-to-top {
         display: none !important;
     }
