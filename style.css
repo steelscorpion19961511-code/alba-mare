@@ -561,3 +561,7 @@ body.dark-mode .status-badge.done { color: #7fd48a; border-color: rgba(127, 212,
 .hero-meta-line {
     display: block;
 }
+
+.hero-meta-line:first-child {
+    margin-bottom: 10px;
+}
