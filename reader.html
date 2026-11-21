@@ -56,7 +56,7 @@
         .hidden-artifact:hover span, .hidden-artifact.found span { filter: grayscale(0%); }
 
         /* ========================================= */
-        /* --- БОКОВАЯ ПАНЕЛЬ ВЫБОРА КНИГИ --- */
+        /* --- БОКОВАЯ ПАНЕЛЬ ВЫБОРА КНИГИ (в стиле правой панели) --- */
         /* ========================================= */
         .book-switcher {
             position: fixed;
@@ -64,14 +64,16 @@
             left: 20px;
             transform: translateY(-50%);
             z-index: 2900;
-            background: var(--bg-paper);
-            border: 2px solid var(--accent-sand);
-            border-radius: 12px;
-            padding: 12px 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background: rgba(252, 250, 245, 0.97);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 8px 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.3s;
         }
         .book-switcher-title {
@@ -82,55 +84,46 @@
             color: var(--text-muted);
             text-align: center;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .book-switcher-btn {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            background: var(--bg-sand);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
+            gap: 8px;
+            padding: 7px 14px;
+            border-radius: 20px;
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
-            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-sea);
+            background: var(--bg-paper);
+            border: 1px solid var(--border-color);
             transition: all 0.3s;
-            padding: 6px;
-            text-align: center;
-            line-height: 1.2;
+            white-space: nowrap;
+            text-align: left;
         }
-        .book-switcher-btn:hover { border-color: var(--accent-sand); transform: translateX(3px); }
-        .book-switcher-btn.active {
-            border-color: var(--accent-sea);
-            background: rgba(42, 127, 143, 0.1);
-            box-shadow: 0 0 0 2px rgba(42, 127, 143, 0.2);
-        }
+        .book-switcher-btn:hover { background: var(--accent-sea); color: white; border-color: var(--accent-sea); }
+        .book-switcher-btn.active { background: rgba(42, 127, 143, 0.1); border-color: var(--accent-sea); color: var(--accent-sea); }
         .book-switcher-btn .book-num {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
-            color: var(--accent-sea);
             line-height: 1;
+            min-width: 14px;
+            text-align: center;
         }
         .book-switcher-btn .book-label {
-            font-size: 8px;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--text-muted);
-            margin-top: 3px;
         }
-        .book-switcher-btn.active .book-label { color: var(--accent-sea); font-weight: 700; }
 
-        body.dark-mode .book-switcher { background: #1a2f3a; border-color: #2a3f4d; }
-        body.dark-mode .book-switcher-btn { background: #112233; border-color: #2a3f4d; color: #e0e0e0; }
-        body.dark-mode .book-switcher-btn.active { border-color: var(--accent-sand); background: #0e2130; }
-        body.dark-mode .book-switcher-btn .book-num { color: var(--accent-sand); }
-        body.dark-mode .book-switcher-btn.active .book-label { color: var(--accent-sand); }
+        body.dark-mode .book-switcher { background: rgba(17, 34, 51, 0.97); border-color: #2a3f4d; }
+        body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
+        body.dark-mode .book-switcher-btn.active { background: #0e2130; border-color: var(--accent-sand); color: var(--accent-sand); }
 
-        /* На мобильных — горизонтальная полоска под шапкой */
+        /* На мобильных — горизонтальная полоска внизу */
         @media (max-width: 992px) {
             .book-switcher {
                 top: auto;
@@ -139,17 +132,12 @@
                 right: auto;
                 transform: translateX(-50%);
                 flex-direction: row;
-                padding: 8px;
-                gap: 6px;
+                padding: 6px 8px;
+                gap: 5px;
+                border-radius: 20px;
             }
             .book-switcher-title { display: none; }
-            .book-switcher-btn {
-                width: 50px;
-                height: 50px;
-                flex-direction: row;
-                gap: 0;
-            }
-            .book-switcher-btn .book-num { font-size: 18px; }
+            .book-switcher-btn { padding: 6px 10px; font-size: 11px; }
             .book-switcher-btn .book-label { display: none; }
         }
 
@@ -189,7 +177,6 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        /* Картинка — на всю карточку */
         .character-inline-card img,
         .artifact-inline-card img,
         .city-inline-card img,
@@ -205,7 +192,6 @@
             inset: 0;
         }
 
-        /* Если картинки нет — эмодзи по центру */
         .artifact-inline-card .card-icon {
             font-size: 80px;
             display: flex;
@@ -219,7 +205,6 @@
         }
         .artifact-inline-card:hover .card-icon { filter: grayscale(0%); }
 
-        /* Имя и подсказка — поверх картинки, внизу */
         .character-inline-card .card-overlay,
         .artifact-inline-card .card-overlay,
         .city-inline-card .card-overlay,
@@ -313,6 +298,44 @@
         body.dark-mode .toc-number { color: var(--accent-sand); }
         body.dark-mode .toc-title { color: #e0e0e0; }
 
+        /* --- Плавающая кнопка «Вернуться» справа --- */
+        .back-to-reading-btn {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 3600;
+            background: var(--accent-sea);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .back-to-reading-btn:hover { background: var(--accent-red); transform: translateY(-50%) translateX(-3px); }
+        body.dark-mode .back-to-reading-btn { background: var(--accent-sand); color: #0b1a26; }
+
+        @media (max-width: 768px) {
+            .back-to-reading-btn {
+                top: auto;
+                bottom: 80px;
+                right: 15px;
+                transform: none;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+            .back-to-reading-btn:hover { transform: translateX(-3px); }
+        }
+
         .travel-map-container { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; padding-bottom: 60%; background-color: #e8e2d5; border-radius: 8px; border: 4px solid var(--accent-sand); box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; }
         .travel-point { position: absolute; width: 24px; height: 24px; background-color: var(--accent-sand); border: 3px solid white; border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.4s ease; z-index: 10; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold; }
         .travel-point.passed { background-color: var(--shop-green); opacity: 0.8; }
@@ -326,6 +349,30 @@
         .legend-dot.passed { background: var(--shop-green); }
         .legend-dot.current { background: var(--accent-red); animation: pulse 1.5s infinite; }
 
+        /* --- Крестик на карте (правый верхний угол) --- */
+        .map-close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 30;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(11, 26, 38, 0.85);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+            padding-bottom: 2px;
+        }
+        .map-close-btn:hover { background: var(--accent-red); border-color: white; transform: scale(1.1); }
+
         .collection-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; max-width: 900px; margin-left: auto; margin-right: auto; flex-wrap: wrap; }
         .tab-btn { background: none; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; color: var(--text-muted); transition: all 0.3s; position: relative; }
         .tab-btn:hover { color: var(--accent-sea); }
@@ -334,103 +381,18 @@
         .tab-content { display: none; max-width: 900px; margin: 0 auto; }
         .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
 
-        /* ========================================= */
-        /* --- КОЛЛЕКЦИЯ: карточки как в читалке --- */
-        /* ========================================= */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .card-item {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .card-frame {
-            background: var(--bg-sand);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-            position: relative;
-            aspect-ratio: 1 / 1;
-        }
-
-        .card-item.unlocked .card-frame {
-            border-color: var(--support-gold);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        .card-item.locked .card-frame {
-            opacity: 0.55;
-            filter: grayscale(100%);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 100%;
-            background-color: var(--bg-sand);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            display: block;
-            flex: 1;
-        }
-
-        .card-item.locked .card-image {
-            background-color: #ccc;
-            background-image: none !important;
-        }
-        .card-item.locked .card-image::after {
-            content: '?';
-            font-size: 40px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
+        .card-item { display: flex; flex-direction: column; align-items: stretch; text-align: center; transition: all 0.3s; position: relative; }
+        .card-frame { background: var(--bg-sand); border: 2px solid var(--border-color); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; aspect-ratio: 1 / 1; }
+        .card-item.unlocked .card-frame { border-color: var(--support-gold); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .card-item.locked .card-frame { opacity: 0.55; filter: grayscale(100%); }
+        .card-image { width: 100%; height: 100%; background-color: var(--bg-sand); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; display: block; flex: 1; }
+        .card-item.locked .card-image { background-color: #ccc; background-image: none !important; }
+        .card-item.locked .card-image::after { content: '?'; font-size: 40px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%; }
         .card-caption { padding: 10px 4px 0; }
-
-        .card-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--accent-sea);
-            line-height: 1.2;
-            margin-bottom: 6px;
-        }
-
-        .card-role {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--accent-red);
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .card-quote {
-            font-size: 13px;
-            font-style: italic;
-            color: var(--text-muted);
-            border-top: 1px dashed var(--border-color);
-            padding-top: 10px;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
+        .card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--accent-sea); line-height: 1.2; margin-bottom: 6px; }
+        .card-role { font-size: 11px; text-transform: uppercase; color: var(--accent-red); letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; display: block; }
+        .card-quote { font-size: 13px; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 10px; margin-top: 10px; line-height: 1.5; }
 
         body.dark-mode .card-frame { background: #1a2f3a; border-color: #2a3f4d; }
         body.dark-mode .card-item.unlocked .card-frame { border-color: var(--support-gold); }
@@ -452,18 +414,6 @@
         body.dark-mode .chapter-cta { background: #1a2f3a; border-color: #2a3f4d; }
         body.dark-mode .chapter-cta h4 { color: var(--accent-sand); }
         body.dark-mode .chapter-cta p { color: #8899a6; }
-
-        .book-teaser { display: none; background: #1a2f3a; color: #f5f0e6; padding: 50px 20px; text-align: center; border-radius: 12px; margin: 40px auto; max-width: 800px; border: 3px solid var(--support-gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .book-teaser.active { display: block; }
-        .book-teaser h2 { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--support-gold); margin-bottom: 10px; }
-        .book-teaser .teaser-text { font-size: 18px; color: #a0b2c6; margin-bottom: 30px; font-style: italic; }
-        .teaser-cover { width: 100%; max-width: 250px; height: 350px; background: rgba(255,255,255,0.1); border: 2px dashed rgba(255,255,255,0.3); margin: 0 auto 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #a0b2c6; font-family: 'Cormorant Garamond', serif; font-size: 20px; overflow: hidden; }
-        .teaser-cover img { width: 100%; height: 100%; object-fit: cover; }
-        .teaser-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-        .teaser-form input { padding: 15px; border-radius: 4px; border: 1px solid var(--support-gold); background: rgba(0,0,0,0.2); color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; }
-        .teaser-form input:focus { outline: none; border-color: #fff; }
-        .teaser-form button { background: var(--support-gold); color: #1a2f3a; border: none; padding: 15px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
-        .teaser-form button:hover { background: #fff; }
 
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 26, 38, 0.7); backdrop-filter: blur(5px); z-index: 4000; justify-content: center; align-items: center; }
         .modal-content { background: var(--bg-paper); padding: 40px; border-radius: 8px; max-width: 500px; width: 90%; text-align: center; position: relative; border: 1px solid var(--accent-sand); }
@@ -525,7 +475,7 @@
                 <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
                 <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
                 <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
-                <a href="index.html#support" class="support-link" data-ru="Поддержать" data-en="Support">Поддержать</a>
+                <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
             
             <a href="#" class="header-read-btn" id="header-read-btn" onclick="scrollToReader(); return false;" data-ru="Читать" data-en="Read">Читать</a>
@@ -541,7 +491,7 @@
         </div>
     </header>
 
-    <!-- Боковая панель выбора книги -->
+    <!-- Боковая панель выбора книги (в стиле правой панели) -->
     <div class="book-switcher" id="book-switcher">
         <div class="book-switcher-title" data-ru="Книга" data-en="Book">Книга</div>
         <button class="book-switcher-btn active" data-book="1" onclick="switchBook(1)">
@@ -578,7 +528,9 @@
     <div class="reader-page" id="toc-page">
         <div class="page-header"><h2 data-ru="Оглавление" data-en="Table of Contents">Оглавление</h2><p data-ru="Выберите главу для чтения" data-en="Select a chapter to read">Выберите главу для чтения</p></div>
         <div class="toc-list" id="toc-list"></div>
-        <div style="text-align: center; margin-top: 40px;"><button class="btn" onclick="hideAllPages()" data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</button></div>
+        <button class="back-to-reading-btn" onclick="hideAllPages()">
+            <span data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</span>
+        </button>
     </div>
 
     <!-- Коллекция -->
@@ -600,12 +552,13 @@
     <!-- Карта -->
     <div class="reader-page" id="map-page">
         <div class="page-header"><h2 data-ru="Карта путешествия" data-en="Travel Map">Карта путешествия</h2><p data-ru="Следите за путём Августа по Южному королевству" data-en="Follow August's journey across the Southern Kingdom">Следите за путём Августа по Южному королевству</p></div>
-        <div class="travel-map-container" id="travel-map"></div>
+        <div class="travel-map-container" id="travel-map">
+            <button class="map-close-btn" onclick="hideAllPages()" title="Закрыть">×</button>
+        </div>
         <div class="map-legend">
             <div class="legend-item"><div class="legend-dot passed"></div><span data-ru="Пройдено" data-en="Passed">Пройдено</span></div>
             <div class="legend-item"><div class="legend-dot current"></div><span data-ru="Вы здесь" data-en="You are here">Вы здесь</span></div>
         </div>
-        <div style="text-align: center; margin-top: 40px;"><button class="btn" onclick="hideAllPages()" data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</button></div>
     </div>
 
     <div class="reader-content" id="reader-text"></div>
@@ -632,19 +585,6 @@
                 <a href="#" onclick="shareTelegram(event)" class="share-btn share-tg" title="Telegram">Telegram</a>
                 <button onclick="copyLink(event)" class="share-btn share-copy" id="share-copy-btn" data-ru="Копировать ссылку" data-en="Copy link">Копировать ссылку</button>
             </div>
-        </div>
-
-        <div class="book-teaser" id="book-teaser">
-            <h2 data-ru="Продолжение следует..." data-en="To be continued...">Продолжение следует...</h2>
-            <div class="teaser-text" data-ru="Вторая книга цикла «Альба-Маре» уже пишется." data-en="The second book of the Alba-Mare series is already being written.">Вторая книга цикла «Альба-Маре» уже пишется.</div>
-            <div class="teaser-cover">
-                <img src="images/cover2.png" alt="Книга вторая - Восточный ветер">
-            </div>
-            <p style="font-size: 16px; color: #a0b2c6; margin-bottom: 20px;" data-ru="Оставьте свой Email, чтобы первыми узнать о выходе:" data-en="Leave your Email to be the first to know about the release:">Оставьте свой Email, чтобы первыми узнать о выходе:</p>
-            <form class="teaser-form" onsubmit="event.preventDefault(); alert('Спасибо! Мы сообщим вам о выходе.'); this.reset();">
-                <input type="email" placeholder="your@email.com" required>
-                <button type="submit" data-ru="Хочу узнать о выходе" data-en="Notify me">Хочу узнать о выходе</button>
-            </form>
         </div>
     </div>
 
@@ -758,7 +698,6 @@
             currentChapter = 0;
             readChapters = loadSet('alba-mare-read-chapters-' + currentBook);
 
-            // Сброс на первую главу или сохранённый прогресс для этой книги
             const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
             loadChapterList(savedChapter !== null ? parseInt(savedChapter) : 0);
         }
@@ -800,7 +739,6 @@
                 document.getElementById('chapter-progress-top').innerText = '';
                 document.getElementById('btn-prev').disabled = true;
                 document.getElementById('btn-next').disabled = true;
-                document.getElementById('book-teaser').classList.remove('active');
                 return false;
             }
         }
@@ -853,12 +791,6 @@
                 document.getElementById('chapter-progress-top').innerText = chapterLabel;
                 document.getElementById('btn-prev').disabled = currentChapter === 0;
                 document.getElementById('btn-next').disabled = currentChapter === bookChapters.length - 1;
-                
-                if (currentChapter === bookChapters.length - 1) {
-                    document.getElementById('book-teaser').classList.add('active');
-                } else {
-                    document.getElementById('book-teaser').classList.remove('active');
-                }
 
                 localStorage.setItem(book.progressKey, currentChapter);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1045,7 +977,9 @@
         }
 
         function renderMap() {
-            const mapContainer = document.getElementById('travel-map'); mapContainer.innerHTML = ''; 
+            const mapContainer = document.getElementById('travel-map');
+            // Удаляем старые точки, оставляем крестик
+            mapContainer.querySelectorAll('.travel-point').forEach(p => p.remove());
             bookChapters.forEach((chapter, index) => {
                 if (!chapter.mapCoord) return;
                 const isCurrent = index === currentChapter; const isPassed = index < currentChapter;
@@ -1168,7 +1102,6 @@
         // 12. ИНИЦИАЛИЗАЦИЯ
         // ==========================================
         window.onload = async function() {
-            // Язык
             const savedLang = localStorage.getItem('alba-mare-lang');
             if (savedLang && savedLang !== currentLang) {
                 currentLang = savedLang;
@@ -1181,13 +1114,11 @@
                 document.documentElement.lang = currentLang;
             }
 
-            // Тема
             if (localStorage.getItem('alba-mare-theme') === 'dark') {
                 document.body.classList.add('dark-mode');
                 document.getElementById('theme-btn').innerText = '☀️';
             }
 
-            // Книга
             updateBookSwitcherUI();
             const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
             const startChapter = (savedChapter !== null && parseInt(savedChapter) > 0) ? parseInt(savedChapter) : 0;
