@@ -727,7 +727,7 @@
         let unlockedCities = loadSet('alba-mare-cities');
         let unlockedPlaces = loadSet('alba-mare-places');
 
-        // ==========================================
+           // ==========================================
         // 4. ПЕРЕКЛЮЧЕНИЕ КНИГИ
         // ==========================================
         function switchBook(bookNum) {
@@ -740,7 +740,13 @@
             readChapters = loadSet('alba-mare-read-chapters-' + currentBook);
 
             const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
-            loadChapterList(savedChapter !== null ? parseInt(savedChapter) : 0);
+            const startChapter = (savedChapter !== null && parseInt(savedChapter) > 0) ? parseInt(savedChapter) : 0;
+
+            loadChapterList(startChapter).then((loaded) => {
+                if (loaded && startChapter > 0) {
+                    showResumeModal(startChapter);
+                }
+            });
         }
 
         function updateBookSwitcherUI() {
@@ -749,6 +755,41 @@
             });
         }
 
+        // ==========================================
+        // 5. ЗАГРУЗКА СПИСКА ГЛАВ
+        // ==========================================
+        async function loadChapterList(startChapter = 0) {
+            const book = BOOKS[currentBook];
+            currentChapter = 0;
+            try {
+                const response = await fetch(book.listFile);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                const data = await response.json();
+                bookChapters = data;
+                currentChapter = Math.min(startChapter, bookChapters.length - 1);
+                if (currentChapter < 0) currentChapter = 0;
+                renderChapter();
+                return true;
+            } catch (error) {
+                console.error('Ошибка загрузки списка глав книги', currentBook, error);
+                bookChapters = [];
+                document.getElementById('reader-text').innerHTML = `
+                    <h1>${book.titleRu}</h1>
+                    <h2>${book.titleEn}</h2>
+                    <p style="text-align:center; padding: 40px 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text-muted);">
+                        ${currentLang === 'ru' ? 'Эта книга ещё в работе. Скоро здесь появятся главы.' : 'This book is still in progress. Chapters will appear here soon.'}
+                    </p>
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="index.html#support" class="btn btn-red" data-ru="Поддержать проект" data-en="Support the project">Поддержать проект</a>
+                    </div>
+                `;
+                document.getElementById('chapter-indicator').innerText = '';
+                document.getElementById('chapter-progress-top').innerText = '';
+                document.getElementById('btn-prev').disabled = true;
+                document.getElementById('btn-next').disabled = true;
+                return false;
+            }
+        }
         // ==========================================
         // 5. ЗАГРУЗКА СПИСКА ГЛАВ
         // ==========================================
