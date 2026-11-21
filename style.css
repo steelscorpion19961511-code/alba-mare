@@ -556,3 +556,8 @@ body.dark-mode .status-badge.done { color: #7fd48a; border-color: rgba(127, 212,
     .step-card { padding: 15px 16px; }
     .step-card h4 { font-size: 19px; }
 }
+
+/* --- СТРОКИ МЕТА-ИНФОРМАЦИИ НА ГЛАВНОМ ЭКРАНЕ --- */
+.hero-meta-line {
+    display: block;
+}
