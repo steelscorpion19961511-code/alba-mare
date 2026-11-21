@@ -56,7 +56,7 @@
         .hidden-artifact:hover span, .hidden-artifact.found span { filter: grayscale(0%); }
 
         /* ========================================= */
-        /* --- БОКОВАЯ ПАНЕЛЬ ВЫБОРА КНИГИ (в стиле правой панели) --- */
+        /* --- БОКОВАЯ ПАНЕЛЬ ВЫБОРА КНИГИ --- */
         /* ========================================= */
         .book-switcher {
             position: fixed;
@@ -123,11 +123,11 @@
         body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
         body.dark-mode .book-switcher-btn.active { background: #0e2130; border-color: var(--accent-sand); color: var(--accent-sand); }
 
-        /* На мобильных — горизонтальная полоска внизу */
+        /* Мобильная версия панели книги */
         @media (max-width: 992px) {
             .book-switcher {
                 top: auto;
-                bottom: 15px;
+                bottom: 70px;
                 left: 50%;
                 right: auto;
                 transform: translateX(-50%);
@@ -149,8 +149,8 @@
         .city-inline-card,
         .place-inline-card {
             float: left;
-            width: 220px;
-            height: 220px;
+            width: 280px;
+            height: 280px;
             margin: 0 25px 20px 0;
             background: var(--bg-sand);
             border: 2px solid var(--accent-sand);
@@ -193,7 +193,7 @@
         }
 
         .artifact-inline-card .card-icon {
-            font-size: 80px;
+            font-size: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -214,7 +214,7 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(to top, rgba(11, 26, 38, 0.85) 0%, rgba(11, 26, 38, 0.55) 70%, rgba(11, 26, 38, 0) 100%);
-            padding: 25px 10px 10px;
+            padding: 30px 10px 12px;
             color: white;
             text-align: center;
             z-index: 2;
@@ -225,11 +225,11 @@
         .city-inline-card .card-name,
         .place-inline-card .card-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 700;
             color: white;
             line-height: 1.2;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
@@ -238,7 +238,7 @@
         .city-inline-card .card-hint,
         .place-inline-card .card-hint {
             font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--support-gold);
@@ -269,10 +269,14 @@
             .place-inline-card {
                 float: none;
                 width: 100%;
-                max-width: 280px;
-                height: 280px;
+                max-width: 320px;
+                height: 320px;
                 margin: 20px auto;
             }
+            .character-inline-card .card-name,
+            .artifact-inline-card .card-name,
+            .city-inline-card .card-name,
+            .place-inline-card .card-name { font-size: 20px; }
         }
 
         .reader-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-sand); z-index: 3500; overflow-y: auto; padding: 40px 20px; animation: fadeIn 0.3s ease; }
@@ -327,7 +331,7 @@
         @media (max-width: 768px) {
             .back-to-reading-btn {
                 top: auto;
-                bottom: 80px;
+                bottom: 140px;
                 right: 15px;
                 transform: none;
                 padding: 10px 16px;
@@ -349,7 +353,7 @@
         .legend-dot.passed { background: var(--shop-green); }
         .legend-dot.current { background: var(--accent-red); animation: pulse 1.5s infinite; }
 
-        /* --- Крестик на карте (правый верхний угол) --- */
+        /* --- Крестик на карте --- */
         .map-close-btn {
             position: absolute;
             top: 12px;
@@ -373,6 +377,16 @@
         }
         .map-close-btn:hover { background: var(--accent-red); border-color: white; transform: scale(1.1); }
 
+        @media (max-width: 768px) {
+            .map-close-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 26px;
+                top: 8px;
+                right: 8px;
+            }
+        }
+
         .collection-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; max-width: 900px; margin-left: auto; margin-right: auto; flex-wrap: wrap; }
         .tab-btn { background: none; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; color: var(--text-muted); transition: all 0.3s; position: relative; }
         .tab-btn:hover { color: var(--accent-sea); }
@@ -381,24 +395,56 @@
         .tab-content { display: none; max-width: 900px; margin: 0 auto; }
         .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
 
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
+        @media (max-width: 768px) {
+            .collection-tabs {
+                flex-direction: row;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                gap: 8px;
+                border-bottom: 2px solid var(--border-color);
+                padding-bottom: 10px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .tab-btn {
+                flex-shrink: 0;
+                border-bottom: none;
+                padding: 8px 14px;
+                font-size: 14px;
+            }
+            .tab-btn.active::after { display: block; bottom: -12px; }
+            .tab-btn.active { background: transparent; }
+        }
+
+        /* ========================================= */
+        /* --- КОЛЛЕКЦИЯ: увеличенные карточки --- */
+        /* ========================================= */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
         .card-item { display: flex; flex-direction: column; align-items: stretch; text-align: center; transition: all 0.3s; position: relative; }
         .card-frame { background: var(--bg-sand); border: 2px solid var(--border-color); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; aspect-ratio: 1 / 1; }
         .card-item.unlocked .card-frame { border-color: var(--support-gold); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
         .card-item.locked .card-frame { opacity: 0.55; filter: grayscale(100%); }
         .card-image { width: 100%; height: 100%; background-color: var(--bg-sand); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; display: block; flex: 1; }
         .card-item.locked .card-image { background-color: #ccc; background-image: none !important; }
-        .card-item.locked .card-image::after { content: '?'; font-size: 40px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%; }
-        .card-caption { padding: 10px 4px 0; }
-        .card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--accent-sea); line-height: 1.2; margin-bottom: 6px; }
+        .card-item.locked .card-image::after { content: '?'; font-size: 48px; color: #888; display: flex; align-items: center; justify-content: center; height: 100%; }
+        .card-caption { padding: 12px 6px 0; }
+        .card-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--accent-sea); line-height: 1.2; margin-bottom: 6px; }
         .card-role { font-size: 11px; text-transform: uppercase; color: var(--accent-red); letter-spacing: 1px; font-weight: 600; margin-bottom: 8px; display: block; }
-        .card-quote { font-size: 13px; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 10px; margin-top: 10px; line-height: 1.5; }
+        .card-quote { font-size: 14px; font-style: italic; color: var(--text-muted); border-top: 1px dashed var(--border-color); padding-top: 10px; margin-top: 10px; line-height: 1.5; }
 
         body.dark-mode .card-frame { background: #1a2f3a; border-color: #2a3f4d; }
         body.dark-mode .card-item.unlocked .card-frame { border-color: var(--support-gold); }
         body.dark-mode .card-name { color: var(--accent-sand); }
         body.dark-mode .card-quote { border-top-color: #2a3f4d; color: #8899a6; }
         body.dark-mode .card-role { color: var(--accent-sand); }
+
+        @media (max-width: 768px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .card-name { font-size: 16px; }
+            .card-role { font-size: 10px; }
+            .card-quote { font-size: 12px; }
+            .card-item.locked .card-image::after { font-size: 32px; }
+        }
 
         .chapter-nav { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color); margin-bottom: 30px; }
         .chapter-nav button { background: none; border: none; font-size: 18px; color: var(--accent-sea); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; }
@@ -435,7 +481,7 @@
         }
 
         @media (max-width: 768px) {
-            .reader-content { font-size: 18px; padding: 30px 20px; margin: 20px auto; border-radius: 0; border-left: none; border-right: none; }
+            .reader-content { font-size: 18px; padding: 30px 20px; margin: 20px auto 100px; border-radius: 0; border-left: none; border-right: none; }
             .reader-content h1 { font-size: 28px; }
             .reader-content h2 { font-size: 22px; }
             .reader-header { padding: 12px 5%; }
@@ -452,12 +498,7 @@
             .toc-title { font-size: 14px; }
             .travel-map-container { padding-bottom: 100%; }
             .map-legend { flex-direction: column; gap: 10px; align-items: center; }
-            .collection-tabs { flex-direction: column; gap: 5px; border: none; }
-            .tab-btn { border-bottom: 1px solid var(--border-color); }
-            .tab-btn.active::after { display: none; }
-            .tab-btn.active { background: rgba(42, 127, 143, 0.1); border-radius: 4px; }
-            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .reader-page { padding: 20px 10px; }
+            .reader-page { padding: 20px 10px; padding-bottom: 100px; }
             .page-header h2 { font-size: 32px; }
         }
     </style>
@@ -491,7 +532,7 @@
         </div>
     </header>
 
-    <!-- Боковая панель выбора книги (в стиле правой панели) -->
+    <!-- Боковая панель выбора книги -->
     <div class="book-switcher" id="book-switcher">
         <div class="book-switcher-title" data-ru="Книга" data-en="Book">Книга</div>
         <button class="book-switcher-btn active" data-book="1" onclick="switchBook(1)">
@@ -617,12 +658,12 @@
 
     <script>
         // ==========================================
-        // 1. КНИГИ
+        // 1. КНИГИ (с папками book1, book2, book3)
         // ==========================================
         const BOOKS = {
-            1: { listFile: 'chapters/list.json',  progressKey: 'alba-mare-progress-1', titleRu: 'Август Фьорд',        titleEn: 'August Fjord' },
-            2: { listFile: 'chapters/list2.json', progressKey: 'alba-mare-progress-2', titleRu: 'Восточный ветер',    titleEn: 'East Wind' },
-            3: { listFile: 'chapters/list3.json', progressKey: 'alba-mare-progress-3', titleRu: 'Там, где рождается холод', titleEn: 'Where the Cold is Born' }
+            1: { listFile: 'chapters/book1/list.json',  progressKey: 'alba-mare-progress-1', titleRu: 'Август Фьорд',        titleEn: 'August Fjord' },
+            2: { listFile: 'chapters/book2/list.json', progressKey: 'alba-mare-progress-2', titleRu: 'Восточный ветер',    titleEn: 'East Wind' },
+            3: { listFile: 'chapters/book3/list.json', progressKey: 'alba-mare-progress-3', titleRu: 'Там, где рождается холод', titleEn: 'Where the Cold is Born' }
         };
 
         let currentBook = parseInt(localStorage.getItem('alba-mare-current-book') || '1');
@@ -744,7 +785,7 @@
         }
 
         // ==========================================
-        // 6. ОТРИСОВКА ГЛАВЫ
+        // 6. ОТРИСОВКА ГЛАВЫ (с путём от папки книги)
         // ==========================================
         async function renderChapter() {
             if (bookChapters.length === 0) return;
@@ -755,6 +796,9 @@
             const chapterTitle = currentLang === 'ru' ? chapterInfo.title : (chapterInfo.titleEn || chapterInfo.title);
             const chapterFile = currentLang === 'ru' ? chapterInfo.file : (chapterInfo.fileEn || chapterInfo.file);
             
+            // Путь к главе: chapters/book{currentBook}/chapterFile
+            const chapterPath = `chapters/book${currentBook}/${chapterFile}`;
+            
             document.getElementById('reader-text').innerHTML = `
                 <h1>${bookTitle}</h1>
                 <h2>${chapterTitle}</h2>
@@ -762,7 +806,7 @@
             `;
 
             try {
-                const response = await fetch(`chapters/${chapterFile}`);
+                const response = await fetch(chapterPath);
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 const textHtml = await response.text();
 
@@ -798,7 +842,7 @@
 
             } catch (error) {
                 console.error('Ошибка загрузки главы:', error);
-                document.getElementById('reader-text').innerHTML += `<p style="text-align:center; color: red;">Не удалось загрузить текст главы. Проверьте файл chapters/${chapterFile}</p>`;
+                document.getElementById('reader-text').innerHTML += `<p style="text-align:center; color: red;">Не удалось загрузить текст главы. Проверьте файл ${chapterPath}</p>`;
             }
         }
 
@@ -870,7 +914,7 @@
             if (!config || !config.data) return;
             const name = config.data[currentLang === 'ru' ? config.names[0] : config.names[1]];
             const toast = document.createElement('div');
-            toast.style.cssText = `position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--accent-sea); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease;`;
+            toast.style.cssText = `position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--accent-sea); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease; max-width: 90vw;`;
             toast.innerHTML = `<div style="font-size: 24px; margin-bottom: 5px;">${config.icon}</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${currentLang === 'ru' ? config.labelRu : config.labelEn}</div><div style="font-size: 15px; color: var(--text-main);">${name} ${currentLang === 'ru' ? 'добавлен в Коллекцию' : 'added to Collection'}</div>`;
             document.body.appendChild(toast);
             setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
@@ -978,7 +1022,6 @@
 
         function renderMap() {
             const mapContainer = document.getElementById('travel-map');
-            // Удаляем старые точки, оставляем крестик
             mapContainer.querySelectorAll('.travel-point').forEach(p => p.remove());
             bookChapters.forEach((chapter, index) => {
                 if (!chapter.mapCoord) return;
@@ -1130,7 +1173,7 @@
     </script>
 	
     <footer>
-        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Ю.</p>
+        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;Д.&nbsp;Ю.</p>
     </footer>
 </body>
 </html>
