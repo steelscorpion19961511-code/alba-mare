@@ -1156,43 +1156,26 @@
             });
         }
 
-        // ==========================================
-        // 12. ШРИФТ И ЖИРНОСТЬ
+       // ==========================================
+        // 12. ЖИРНОСТЬ ШРИФМА
         // ==========================================
         let readerBold = localStorage.getItem('alba-mare-bold') === 'true';
-        let readerFontFamily = localStorage.getItem('alba-mare-font') || 'cormorant';
-
-        const FONT_FAMILIES = {
-            cormorant: "'Cormorant Garamond', serif",
-            georgia: "Georgia, 'Times New Roman', serif",
-            times: "'Times New Roman', Times, serif",
-            verdana: "Verdana, Geneva, sans-serif",
-            system: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        };
 
         function applyFontSettings() {
             const reader = document.getElementById('reader-text');
             if (!reader) return;
-            reader.style.fontFamily = FONT_FAMILIES[readerFontFamily] || FONT_FAMILIES.cormorant;
+            reader.style.fontFamily = "'Times New Roman', Times, serif";
             reader.style.fontWeight = readerBold ? '700' : '400';
             const btn = document.getElementById('font-weight-btn');
             if (btn) {
                 btn.style.background = readerBold ? 'var(--accent-sea)' : '';
                 btn.style.color = readerBold ? 'white' : '';
             }
-            const sel = document.querySelector('.font-family-select');
-            if (sel) sel.value = readerFontFamily;
         }
 
         function toggleFontWeight() {
             readerBold = !readerBold;
             localStorage.setItem('alba-mare-bold', readerBold);
-            applyFontSettings();
-        }
-
-        function changeFontFamily(value) {
-            readerFontFamily = value;
-            localStorage.setItem('alba-mare-font', value);
             applyFontSettings();
         }
 
