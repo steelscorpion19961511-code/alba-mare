@@ -69,7 +69,7 @@
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border-color);
             border-radius: 30px;
-            padding: 8px 10px;
+            padding: 10px 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
@@ -78,13 +78,15 @@
         }
         .book-switcher-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 9px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--text-muted);
             text-align: center;
             font-weight: 700;
-            margin-bottom: 2px;
+            margin-bottom: 6px;
+            max-width: 150px;
+            line-height: 1.3;
         }
         .book-switcher-btn {
             display: flex;
@@ -472,6 +474,21 @@
         .modal-content button[type="submit"] { background: var(--accent-sea); color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         .modal-content button[type="submit"]:hover { background: var(--accent-red); }
 
+        /* --- Селект шрифта --- */
+        .font-family-select {
+            background: var(--bg-paper);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 4px 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            color: var(--text-main);
+            cursor: pointer;
+            height: 30px;
+        }
+        .font-family-select:hover { border-color: var(--accent-sand); }
+        body.dark-mode .font-family-select { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 992px) {
@@ -500,6 +517,7 @@
             .map-legend { flex-direction: column; gap: 10px; align-items: center; }
             .reader-page { padding: 20px 10px; padding-bottom: 100px; }
             .page-header h2 { font-size: 32px; }
+            .font-family-select { height: 26px; font-size: 10px; padding: 2px 4px; }
         }
     </style>
 </head>
@@ -512,14 +530,13 @@
         <a href="index.html" class="logo">Альба-Маре</a>
         <div class="nav-right">
             <nav id="main-nav">
+                <a href="reader.html" data-ru="Читалка" data-en="Read">Читалка</a>
                 <a href="universe.html" data-ru="Вселенная" data-en="Universe">Вселенная</a>
                 <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
                 <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
                 <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
                 <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
-            
-            <a href="#" class="header-read-btn" id="header-read-btn" onclick="scrollToReader(); return false;" data-ru="Читалка" data-en="Read">Читалка</a>
             
             <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
@@ -534,7 +551,7 @@
 
     <!-- Боковая панель выбора книги -->
     <div class="book-switcher" id="book-switcher">
-        <div class="book-switcher-title" data-ru="Книга" data-en="Book">Книга</div>
+        <div class="book-switcher-title" data-ru="Цикл: свет, рождённый морем" data-en="Series: Light Born of the Sea">Цикл: свет, рождённый морем</div>
         <button class="book-switcher-btn active" data-book="1" onclick="switchBook(1)">
             <span class="book-num">1</span>
             <span class="book-label" data-ru="Август Фьорд" data-en="August Fjord">Август Фьорд</span>
@@ -555,12 +572,20 @@
             <span class="chapter-progress-label" id="chapter-progress-top"></span>
         </div>
         <div class="right-zone">
-            <button class="tool-btn" onclick="showPage('toc-page')">📖 <span data-ru="Оглавление" data-en="Contents">Оглавление</span></button>
-            <button class="tool-btn" onclick="showPage('collection-page')">🏆 <span data-ru="Коллекция" data-en="Collection">Коллекция</span></button>
-            <button class="tool-btn" onclick="showPage('map-page')">🗺️ <span data-ru="Карта" data-en="Map">Карта</span></button>
+            <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление" data-ru-title="Оглавление" data-en-title="Contents">📖 <span data-ru="Оглавление" data-en="Contents">Оглавление</span></button>
+            <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция" data-ru-title="Коллекция" data-en-title="Collection">🏆 <span data-ru="Коллекция" data-en="Collection">Коллекция</span></button>
+            <button class="tool-btn" onclick="showPage('map-page')" title="Карта" data-ru-title="Карта" data-en-title="Map">🗺️ <span data-ru="Карта" data-en="Map">Карта</span></button>
             <div class="font-sizer">
                 <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
                 <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
+                <button onclick="toggleFontWeight()" id="font-weight-btn" title="Жирный текст" style="font-weight: 700;">B</button>
+                <select class="font-family-select" onchange="changeFontFamily(this.value)" title="Шрифт">
+                    <option value="cormorant">Cormorant</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="times">Times</option>
+                    <option value="verdana">Verdana</option>
+                    <option value="system">System</option>
+                </select>
             </div>
         </div>
     </div>
@@ -587,9 +612,10 @@
         <div class="tab-content" id="tab-characters"><div class="cards-grid" id="characters-grid"></div></div>
         <div class="tab-content" id="tab-cities"><div class="cards-grid" id="cities-grid"></div></div>
         <div class="tab-content" id="tab-places"><div class="cards-grid" id="places-grid"></div></div>
- <button class="back-to-reading-btn" onclick="hideAllPages()">
+        <button class="back-to-reading-btn" onclick="hideAllPages()">
             <span data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</span>
-        </button>    </div>
+        </button>
+    </div>
 
     <!-- Карта -->
     <div class="reader-page" id="map-page">
@@ -659,7 +685,7 @@
 
     <script>
         // ==========================================
-        // 1. КНИГИ (с папками book1, book2, book3)
+        // 1. КНИГИ
         // ==========================================
         const BOOKS = {
             1: { listFile: 'chapters/book1/list.json',  progressKey: 'alba-mare-progress-1', titleRu: 'Август Фьорд',        titleEn: 'August Fjord' },
@@ -728,7 +754,7 @@
         let unlockedCities = loadSet('alba-mare-cities');
         let unlockedPlaces = loadSet('alba-mare-places');
 
-           // ==========================================
+        // ==========================================
         // 4. ПЕРЕКЛЮЧЕНИЕ КНИГИ
         // ==========================================
         function switchBook(bookNum) {
@@ -761,41 +787,6 @@
         // ==========================================
         async function loadChapterList(startChapter = 0) {
             const book = BOOKS[currentBook];
-            currentChapter = 0;
-            try {
-                const response = await fetch(book.listFile);
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-                const data = await response.json();
-                bookChapters = data;
-                currentChapter = Math.min(startChapter, bookChapters.length - 1);
-                if (currentChapter < 0) currentChapter = 0;
-                renderChapter();
-                return true;
-            } catch (error) {
-                console.error('Ошибка загрузки списка глав книги', currentBook, error);
-                bookChapters = [];
-                document.getElementById('reader-text').innerHTML = `
-                    <h1>${book.titleRu}</h1>
-                    <h2>${book.titleEn}</h2>
-                    <p style="text-align:center; padding: 40px 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text-muted);">
-                        ${currentLang === 'ru' ? 'Эта книга ещё в работе. Скоро здесь появятся главы.' : 'This book is still in progress. Chapters will appear here soon.'}
-                    </p>
-                    <div style="text-align: center; margin-top: 30px;">
-                        <a href="index.html#support" class="btn btn-red" data-ru="Поддержать проект" data-en="Support the project">Поддержать проект</a>
-                    </div>
-                `;
-                document.getElementById('chapter-indicator').innerText = '';
-                document.getElementById('chapter-progress-top').innerText = '';
-                document.getElementById('btn-prev').disabled = true;
-                document.getElementById('btn-next').disabled = true;
-                return false;
-            }
-        }
-        // ==========================================
-        // 5. ЗАГРУЗКА СПИСКА ГЛАВ
-        // ==========================================
-        async function loadChapterList(startChapter = 0) {
-            const book = BOOKS[currentBook];
             try {
                 const response = await fetch(book.listFile);
                 if (!response.ok) throw new Error('HTTP ' + response.status);
@@ -827,7 +818,7 @@
         }
 
         // ==========================================
-        // 6. ОТРИСОВКА ГЛАВЫ (с путём от папки книги)
+        // 6. ОТРИСОВКА ГЛАВЫ
         // ==========================================
         async function renderChapter() {
             if (bookChapters.length === 0) return;
@@ -838,7 +829,6 @@
             const chapterTitle = currentLang === 'ru' ? chapterInfo.title : (chapterInfo.titleEn || chapterInfo.title);
             const chapterFile = currentLang === 'ru' ? chapterInfo.file : (chapterInfo.fileEn || chapterInfo.file);
             
-            // Путь к главе: chapters/book{currentBook}/chapterFile
             const chapterPath = `chapters/book${currentBook}/${chapterFile}`;
             
             document.getElementById('reader-text').innerHTML = `
@@ -861,6 +851,7 @@
                     <div class="reading-time">⏱️ ${currentLang === 'ru' ? 'Примерное время чтения:' : 'Estimated reading time:'} ~${readingTime} ${currentLang === 'ru' ? 'мин.' : 'min.'}</div>
                     ${textHtml}
                 `;
+                applyFontSettings();
 
                 if (!readChapters.has(currentChapter)) {
                     readChapters.add(currentChapter);
@@ -1107,6 +1098,11 @@
                 if (text) el.innerHTML = text; 
             });
             
+            document.querySelectorAll('[data-ru-title]').forEach(el => {
+                const t = el.getAttribute(`data-${currentLang}-title`);
+                if (t) el.setAttribute('title', t);
+            });
+            
             document.documentElement.lang = currentLang; 
             localStorage.setItem('alba-mare-lang', currentLang);
             
@@ -1184,7 +1180,47 @@
         }
 
         // ==========================================
-        // 12. ИНИЦИАЛИЗАЦИЯ
+        // 12. ШРИФТ И ЖИРНОСТЬ
+        // ==========================================
+        let readerBold = localStorage.getItem('alba-mare-bold') === 'true';
+        let readerFontFamily = localStorage.getItem('alba-mare-font') || 'cormorant';
+
+        const FONT_FAMILIES = {
+            cormorant: "'Cormorant Garamond', serif",
+            georgia: "Georgia, 'Times New Roman', serif",
+            times: "'Times New Roman', Times, serif",
+            verdana: "Verdana, Geneva, sans-serif",
+            system: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        };
+
+        function applyFontSettings() {
+            const reader = document.getElementById('reader-text');
+            if (!reader) return;
+            reader.style.fontFamily = FONT_FAMILIES[readerFontFamily] || FONT_FAMILIES.cormorant;
+            reader.style.fontWeight = readerBold ? '700' : '400';
+            const btn = document.getElementById('font-weight-btn');
+            if (btn) {
+                btn.style.background = readerBold ? 'var(--accent-sea)' : '';
+                btn.style.color = readerBold ? 'white' : '';
+            }
+            const sel = document.querySelector('.font-family-select');
+            if (sel) sel.value = readerFontFamily;
+        }
+
+        function toggleFontWeight() {
+            readerBold = !readerBold;
+            localStorage.setItem('alba-mare-bold', readerBold);
+            applyFontSettings();
+        }
+
+        function changeFontFamily(value) {
+            readerFontFamily = value;
+            localStorage.setItem('alba-mare-font', value);
+            applyFontSettings();
+        }
+
+        // ==========================================
+        // 13. ИНИЦИАЛИЗАЦИЯ
         // ==========================================
         window.onload = async function() {
             const savedLang = localStorage.getItem('alba-mare-lang');
@@ -1204,7 +1240,9 @@
                 document.getElementById('theme-btn').innerText = '☀️';
             }
 
+            applyFontSettings();
             updateBookSwitcherUI();
+
             const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
             const startChapter = (savedChapter !== null && parseInt(savedChapter) > 0) ? parseInt(savedChapter) : 0;
             const loaded = await loadChapterList(startChapter);
