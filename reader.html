@@ -939,7 +939,9 @@
                 const rawTitle = chapter.title;
                 const cleanTitle = rawTitle.replace(/^(Глава|Chapter)\s*\d+\.?\s*/i, '');
                 item.innerHTML = `<div class="toc-item-left"><span class="toc-number">${index + 1}.</span><span class="toc-title">${cleanTitle}</span></div><div class="toc-item-right">${isCheckpoint ? '<span class="toc-icon" title="Вы остановились здесь">⭐</span>' : ''}<span class="toc-check">✓</span></div>`;
-
+                list.appendChild(item);
+            });
+        }
         // ==========================================
         // 10. ОСТАЛЬНОЕ
         // ==========================================
