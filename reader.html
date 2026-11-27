@@ -395,38 +395,36 @@
             .card-quote { font-size: 11px; }
         }
 
-        /* Закрытая карточка коллекции: полностью скрыта */
+        /* Закрытая карточка коллекции: возвращаем старое отображение */
         .card-item.locked .card-frame {
-            opacity: 1;
-            filter: none;
-            background: #d9d9d9;
-            border-color: #bdbdbd;
+            opacity: 0.55;
+            filter: grayscale(100%);
+            background: var(--bg-sand);
+            border-color: var(--border-color);
         }
         .card-item.locked .card-image {
-            background: #d9d9d9 !important;
+            background-color: #ccc;
             background-image: none !important;
         }
         .card-item.locked .card-image::after {
-            content: 'Нажмите, чтобы открыть';
-            font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            font-weight: 600;
-            color: #6b6b6b;
-            text-align: center;
-            padding: 0 12px;
+            content: '?';
+            font-size: 32px;
+            color: #888;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
-            line-height: 1.3;
         }
-        .card-item.locked .card-caption { display: none; }
-        .card-item.locked { cursor: pointer; }
-        .card-item.locked .card-frame:hover { border-color: var(--accent-sea); }
+        .card-item.locked .card-name,
+        .card-item.locked .card-role,
+        .card-item.locked .card-quote {
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
 
-        body.dark-mode .card-item.locked .card-frame { background: #2a3f4d; border-color: #3a5060; }
-        body.dark-mode .card-item.locked .card-image { background: #2a3f4d !important; }
-        body.dark-mode .card-item.locked .card-image::after { color: #8899a6; }
+        body.dark-mode .card-item.locked .card-frame { background: #1a2f3a; border-color: #2a3f4d; }
+        body.dark-mode .card-item.locked .card-image { background-color: #333; }
+        body.dark-mode .card-item.locked .card-image::after { color: #666; }
 
         .chapter-nav { display: flex; justify-content: space-between; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color); margin-bottom: 30px; }
         .chapter-nav button { background: none; border: none; font-size: 18px; color: var(--accent-sea); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; }
@@ -858,10 +856,53 @@
                 `;
                 applyFontSettings();
 
+                // НОВОЕ: Автоматически скрываем старые карточки в главах и готовим их к клику
+                document.querySelectorAll('.character-inline-card, .artifact-inline-card, .city-inline-card, .place-inline-card').forEach(el => {
+                    const isAlreadyOpened = el.classList.contains('opened');
+                    if (!isAlreadyOpened) {
+                        const img = el.querySelector('img');
+                        if (img) {
+                            el.dataset.image = img.getAttribute('src');
+                            img.style.display = 'none'; // Прячем старую картинку
+                        }
+                        const overlay = el.querySelector('.card-overlay');
+                        if (overlay) overlay.style.display = 'none'; // Прячем старые подписи
+                        
+                        // Добавляем текст "Нажмите, чтобы открыть"
+                        if (!el.querySelector('.inline-card-closed-text')) {
+                            const textDiv = document.createElement('div');
+                            textDiv.className = 'inline-card-closed-text';
+                            textDiv.textContent = currentLang === 'ru' ? 'Нажмите, чтобы открыть' : 'Click to open';
+                            el.appendChild(textDiv);
+                        }
+                    }
+                });
+
                 // Восстанавливаем уже открытые inline-карточки
                 document.querySelectorAll('.character-inline-card, .artifact-inline-card, .city-inline-card, .place-inline-card').forEach(el => {
-                    const type = el.dataset.type;
-                    const id = el.dataset.id;
+                    let type = el.dataset.type;
+                    let id = el.dataset.id;
+
+                    // Для старых глав: достаем тип и id из onclick
+                    if (!type || !id) {
+                        const onclickAttr = el.getAttribute('onclick') || '';
+                        const match = onclickAttr.match(/(?:unlockCharacter|collectArtifact|unlockCity|unlockPlace)\('([^']+)'/);
+                        if (match) {
+                            id = match[1];
+                            if (onclickAttr.includes('unlockCharacter')) type = 'character';
+                            else if (onclickAttr.includes('collectArtifact')) type = 'artifact';
+                            else if (onclickAttr.includes('unlockCity')) type = 'city';
+                            else if (onclickAttr.includes('unlockPlace')) type = 'place';
+                            el.dataset.type = type;
+                            el.dataset.id = id;
+                        }
+                    }
+                    // Убираем onclick, чтобы не срабатывал старый код
+                    if (el.hasAttribute('onclick')) {
+                        el.removeAttribute('onclick');
+                        el.onclick = function() { openInlineCard(this); };
+                    }
+
                     if (!type || !id) return;
                     const sets = {
                         character: unlockedCharacters,
@@ -953,12 +994,6 @@
             revealInlineCard(el, true);
         }
 
-        // Обёртки для совместимости со старыми главами
-        function collectArtifact(id, el) { if (el) { el.dataset.type='artifact'; el.dataset.id=id; openInlineCard(el); } }
-        function unlockCharacter(id, el) { if (el) { el.dataset.type='character'; el.dataset.id=id; openInlineCard(el); } }
-        function unlockCity(id, el)     { if (el) { el.dataset.type='city';     el.dataset.id=id; openInlineCard(el); } }
-        function unlockPlace(id, el)    { if (el) { el.dataset.type='place';    el.dataset.id=id; openInlineCard(el); } }
-
         function refreshCollectionIfOpen() {
             const collectionPage = document.getElementById('collection-page');
             if (collectionPage && collectionPage.classList.contains('active')) {
@@ -1010,10 +1045,10 @@
 
         function renderCards(type) {
             const grids = {
-                artifacts:  { el: document.getElementById('artifacts-grid'),  data: artifactsData,  set: foundArtifacts,      roleRu: 'Артефакт', roleEn: 'Artifact' },
-                characters: { el: document.getElementById('characters-grid'), data: charactersData, set: unlockedCharacters, roleRu: '', roleEn: '' },
-                cities:     { el: document.getElementById('cities-grid'),     data: citiesData,     set: unlockedCities,     roleRu: '', roleEn: '' },
-                places:     { el: document.getElementById('places-grid'),     data: placesData,     set: unlockedPlaces,     roleRu: '', roleEn: '' }
+                artifacts:  { el: document.getElementById('artifacts-grid'),  data: artifactsData,  set: foundArtifacts,      roleRu: 'Артефакт', roleEn: 'Artifact', emptyRu: 'Продолжайте читать, чтобы найти этот артефакт.', emptyEn: 'Keep reading to find this artifact.' },
+                characters: { el: document.getElementById('characters-grid'), data: charactersData, set: unlockedCharacters, roleRu: '', roleEn: '', emptyRu: 'Продолжайте читать, чтобы встретить этого персонажа.', emptyEn: 'Keep reading to meet this character.' },
+                cities:     { el: document.getElementById('cities-grid'),     data: citiesData,     set: unlockedCities,     roleRu: '', roleEn: '', emptyRu: 'Продолжайте читать, чтобы открыть этот город.', emptyEn: 'Keep reading to discover this city.' },
+                places:     { el: document.getElementById('places-grid'),     data: placesData,     set: unlockedPlaces,     roleRu: '', roleEn: '', emptyRu: 'Продолжайте читать, чтобы открыть это место.', emptyEn: 'Keep reading to discover this place.' }
             };
             const cfg = grids[type];
             if (!cfg || !cfg.el) return;
@@ -1033,6 +1068,7 @@
                 const desc = data.quoteRu !== undefined
                     ? (currentLang === 'ru' ? data.quoteRu : data.quoteEn)
                     : (currentLang === 'ru' ? data.descRu : data.descEn);
+                const emptyText = currentLang === 'ru' ? cfg.emptyRu : cfg.emptyEn;
 
                 const item = document.createElement('div');
                 item.className = `card-item ${isOpen ? 'unlocked' : 'locked'}`;
@@ -1052,9 +1088,15 @@
                         </div>
                     `;
                 } else {
+                    // Возвращаем старое отображение закрытой карточки (с вопросом и текстом)
                     item.innerHTML = `
                         <div class="card-frame">
                             <div class="card-image"></div>
+                        </div>
+                        <div class="card-caption">
+                            <div class="card-name">???</div>
+                            <span class="card-role">${currentLang === 'ru' ? 'Неизвестно' : 'Unknown'}</span>
+                            <div class="card-quote">${emptyText}</div>
                         </div>
                     `;
                 }
@@ -1068,17 +1110,7 @@
         }
 
         function openCollectionCard(type, id) {
-            // Клик по закрытой карточке в коллекции ничего не разблокирует.
-            // Разблокировка происходит только при чтении главы.
-            // Если нужно разрешить открытие из коллекции — раскомментируйте:
-            // const setters = {
-            //     artifacts:  { set: foundArtifacts,      save: 'alba-mare-artifacts' },
-            //     characters: { set: unlockedCharacters,  save: 'alba-mare-characters' },
-            //     cities:     { set: unlockedCities,      save: 'alba-mare-cities' },
-            //     places:     { set: unlockedPlaces,      save: 'alba-mare-places' }
-            // };
-            // const s = setters[type]; if (!s) return;
-            // s.set.add(id); saveSet(s.save, s.set); renderCards(type);
+            // Заглушка: клик по закрытой карточке в коллекции ничего не делает.
         }
 
         // ==========================================
