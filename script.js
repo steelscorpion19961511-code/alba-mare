@@ -3,12 +3,18 @@
 // --- Счётчик символов (CSS ждёт классы limit-near / limit-reached) ---
 const messageInput = document.getElementById('review-message');
 const counterEl = document.getElementById('char-counter');
+const MAX_MESSAGE_LENGTH = 1000;
+
+// Ограничиваем ввод прямо в поле: браузер не даст набрать (или вставить) больше лимита
+if (messageInput) {
+  messageInput.maxLength = MAX_MESSAGE_LENGTH;
+}
 
 function updateCounter() {
   const len = messageInput.value.length;
-  counterEl.textContent = len + ' / 1000';
-  counterEl.classList.toggle('limit-near', len >= 800 && len < 1000);
-  counterEl.classList.toggle('limit-reached', len >= 1000);
+  counterEl.textContent = len + ' / ' + MAX_MESSAGE_LENGTH;
+  counterEl.classList.toggle('limit-near', len >= 800 && len < MAX_MESSAGE_LENGTH);
+  counterEl.classList.toggle('limit-reached', len >= MAX_MESSAGE_LENGTH);
 }
 
 if (messageInput && counterEl) {

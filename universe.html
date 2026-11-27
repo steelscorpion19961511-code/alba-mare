@@ -6,9 +6,6 @@
     <title>Вселенная Альба-Маре — приквелы, новые циклы, карта мира</title>
     <meta name="description" content="«Альба-Маре» — это не трилогия, а мир. Приквелы о других героях, новый цикл «Наследие Фьорда» и карта вселенной.">
     
-    <!-- Фавикон -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -220,16 +217,16 @@
             margin: 0;
         }
 
-        @media (max-width: 768px) {
-            .universe-hero { padding: 130px 5% 60px; }
-            .universe-hero h1 { font-size: 40px; }
-            .universe-hero .subtitle { font-size: 18px; }
-            .universe-section { padding: 60px 5%; }
-            .roadmap { padding-left: 30px; }
-            .roadmap-item::before { left: -24px; }
-            .universe-quote p { font-size: 20px; }
-        }
+        
     </style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/web-app-manifest-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon/web-app-manifest-512x512.png">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
 </head>
 <body>
 
@@ -240,65 +237,18 @@
 
     
 	<!-- Шапка -->
-    <header>
-        <a href="index.html" class="logo"> <!-- ===== Декоративный кораблик (статичный) ===== -->
-<style>
-  .deco-ship {
-    display: inline-block;
-    width: 72px;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
-  }
-  .deco-ship svg { display: block; width: 60%; height: auto; animation: deco-ship-bob 5s ease-in-out infinite; }
-  @keyframes deco-ship-bob {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50%      { transform: translateY(-6px) rotate(2deg); }
-  }
-  @media (max-width: 700px) { .deco-ship { width: 52px; } }
-</style>
-
-<div class="deco-ship" aria-hidden="true">
-  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15 68 Q50 82 85 68 L78 78 Q50 88 22 78 Z" fill="#8a5a2b"/>
-    <path d="M15 68 Q50 82 85 68 L84 71 Q50 84 16 71 Z" fill="#c29a5b"/>
-    <rect x="48" y="20" width="3" height="50" fill="#6b4423" rx="1.5"/>
-    <path d="M51 24 Q78 40 72 62 L51 62 Z" fill="#f5f0e6"/>
-    <path d="M51 24 Q70 40 66 58 L51 58 Z" fill="#e8dfc8"/>
-    <path d="M49 18 L36 23 L49 28 Z" fill="#d4af37"/>
-    <path d="M8 76 Q18 72 28 76 T48 76 T68 76 T88 76" fill="none" stroke="#2a7f8f" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-    <path d="M14 82 Q24 78 34 82 T54 82 T74 82" fill="none" stroke="#2a7f8f" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
-  </svg>
-</div>  Альба-Маре</a>
-
-        <div class="nav-right">
-            <nav id="main-nav">
-                <a href="reader.html" data-ru="Читалка" data-en="Read">Читалка</a>
-                <a href="universe.html" data-ru="Вселенная" data-en="Universe">Вселенная</a>
-                <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
-                <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
-                <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
-                <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
-            </nav>
-            
-            <div class="lang-switch" onclick="toggleLang()">
-                <div id="lang-ru" class="active">RU</div>
-                <div id="lang-en">EN</div>
-            </div>
-            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
-            <div class="burger" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </header>
+    <header id="site-header"></header>
+<script src="header.js"></script>
 <!--Конец шапки-->
 	
 
     <!-- Заголовок страницы -->
     <div class="universe-hero">
-        <div class="hero-subtitle" data-ru="Мир, который растёт" data-en="A world that grows">Мир, который растёт</div>
-        <h1 class="cinzel" data-ru="Вселенная Альба-Маре" data-en="The Alba-Mare Universe">Вселенная Альба-Маре</h1>
-        <p class="subtitle" data-ru="Не трилогия. Мир." data-en="Not a trilogy. A world.">Не трилогия. Мир.</p>
-        <p data-ru="«Альба-Маре» — это не три книги с точкой в конце. Это вселенная с прошлым, настоящим и будущим. У каждого героя — своя дорога, у каждой дороги — своя песня. Здесь есть место и для истории Августа, и для тех, кто шёл рядом, и для тех, кто придёт после." 
-           data-en="'Alba-Mare' is not three books with a full stop at the end. It is a universe with a past, present and future. Every hero has their own road, every road has its own song. There is room here for August's story, for those who walked alongside him, and for those who will come after.">
+        <div class="hero-subtitle">Мир, который растёт</div>
+        <h1 class="cinzel">Вселенная Альба-Маре</h1>
+        <p class="subtitle">Не трилогия. Мир.</p>
+        <p 
+>
            «Альба-Маре» — это не три книги с точкой в конце. Это вселенная с прошлым, настоящим и будущим. У каждого героя — своя дорога, у каждой дороги — своя песня. Здесь есть место и для истории Августа, и для тех, кто шёл рядом, и для тех, кто придёт после.
         </p>
     </div>
@@ -306,32 +256,32 @@
     <!-- Циклы -->
     <section class="universe-section paper">
         <div class="section-header" data-aos="fade-up">
-            <h2 class="serif" data-ru="Три ветки одной вселенной" data-en="Three branches of one universe">Три ветки одной вселенной</h2>
-            <p data-ru="Каждая — самостоятельная история. Вместе — единый мир." data-en="Each is a standalone story. Together — a single world.">Каждая — самостоятельная история. Вместе — единый мир.</p>
+            <h2 class="serif">Три ветки одной вселенной</h2>
+            <p>Каждая — самостоятельная история. Вместе — единый мир.</p>
         </div>
 
         <div class="cycle-grid">
             <!-- Основной цикл -->
             <div class="cycle-card main" data-aos="fade-up">
-                <div class="cycle-badge" data-ru="Основной цикл" data-en="Main Cycle">Основной цикл</div>
+                <div class="cycle-badge">Основной цикл</div>
                 <span class="cycle-icon">    </span>
-                <h3 data-ru="Август Фьорд" data-en="August Fjord">Август Фьорд</h3>
-                <span class="cycle-status" data-ru=" 2 из 3 книг уже доступны" data-en="2 out of 3 books are already available">2 из 3 книг уже доступны</span>
-                <p data-ru="История юного стражника, потерявшего дом и нашедшего себя в музыке. От Альба-Маре до северных фьордов — путь, который начинается с потери и ведёт к обретению." 
-                   data-en="The story of a young guard who lost his home and found himself in music. From Alba-Mare to the northern fjords — a path that begins with loss and leads to finding.">
+                <h3>Август Фьорд</h3>
+                <span class="cycle-status">2 из 3 книг уже доступны</span>
+                <p 
+>
                    История юного стражника, потерявшего дом и нашедшего себя в музыке. От Альба-Маре до северных фьордов — путь, который начинается с потери и ведёт к обретению.
                 </p>
-                <a href="reader.html" class="btn-small" data-ru="Читать первую книгу →" data-en="Read the first book →">Читать первую книгу →</a>
+                <a href="reader.html" class="btn-small">Читать первую книгу →</a>
             </div>
 
             <!-- Приквелы -->
             <div class="cycle-card prequel" data-aos="fade-up" data-aos-delay="100">
-                <div class="cycle-badge" data-ru="Приквелы" data-en="Prequels">Приквелы</div>
+                <div class="cycle-badge">Приквелы</div>
                 <span class="cycle-icon">   </span>
-                <h3 data-ru="Другие герои" data-en="Other Heroes">Другие герои</h3>
-                <span class="cycle-status" data-ru="Отдельные книги · в планах" data-en="Standalone books · planned">Отдельные книги · в планах</span>
-                <p data-ru="Истории тех, кто шёл рядом с Августом: торговец Маттео, странница Мира, северный охотник Эйнар. Каждый — полноценная книга в том же мире, пересекающаяся с судьбой Августа и открывающая новые грани вселенной." 
-                   data-en="Stories of those who walked alongside August: the merchant Matteo, the wanderer Mira, the northern hunter Einar. Each — a full book in the same world, intersecting with August's fate and revealing new facets of the universe.">
+                <h3>Другие герои</h3>
+                <span class="cycle-status">Отдельные книги · в планах</span>
+                <p 
+>
                    Истории тех, кто шёл рядом с Августом: торговец Маттео, странница Мира, северный охотник Эйнар. Каждый — полноценная книга в том же мире, пересекающаяся с судьбой Августа и открывающая новые грани вселенной.
                 </p>
     
@@ -339,12 +289,12 @@
 
             <!-- Новый цикл -->
             <div class="cycle-card newcycle" data-aos="fade-up" data-aos-delay="200">
-                <div class="cycle-badge" data-ru="Новый цикл" data-en="New Cycle">Новый цикл</div>
+                <div class="cycle-badge">Новый цикл</div>
                 <span class="cycle-icon">  </span>
-                <h3 data-ru="Наследие Фьорда" data-en="Legacy of the Fjord">Наследие Фьорда</h3>
-                <span class="cycle-status" data-ru="Новая история · в разработке" data-en="New story · in development">Новая история · в разработке</span>
-                <p data-ru="Дочь Августа выросла на его песнях и рассказах о дальних берегах. Она отправляется в путь не потому, что потеряла дом — а потому, что хочет увидеть мир, о котором пел отец. Не поиск себя. Исследование мира. Новый цикл, новая героиня, новая дорога — в том же мире." 
-                   data-en="August's daughter grew up on his songs and tales of distant shores. She sets out not because she lost her home — but because she wants to see the world her father sang about. Not a search for self. An exploration of the world. A new cycle, a new heroine, a new road — in the same world.">
+                <h3>Наследие Фьорда</h3>
+                <span class="cycle-status">Новая история · в разработке</span>
+                <p 
+>
                    Дочь Августа выросла на его песнях и рассказах о дальних берегах. Она отправляется в путь не потому, что потеряла дом — а потому, что хочет увидеть мир, о котором пел отец. Не поиск себя. Исследование мира. Новый цикл, новая героиня, новая дорога — в том же мире.
                 </p>
              
@@ -355,8 +305,8 @@
     <!-- Секция: Библиотека -->
     <section id="library" style="padding-top: 150px;">
         <div class="section-header" data-aos="fade-up">
-            <h2 class="serif" data-ru="Библиотека" data-en="Library">Библиотека</h2>
-            <p data-ru="Все истории вселенной Альба-Маре в одном месте" data-en="All stories of the Alba-Mare universe in one place">Все истории вселенной Альба-Маре в одном месте</p>
+            <h2 class="serif">Библиотека</h2>
+            <p>Все истории вселенной Альба-Маре в одном месте</p>
         </div>
         
         <div class="books-container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
@@ -364,25 +314,25 @@
          <!-- Книга 1 -->
 <div class="book-card" data-aos="fade-up" data-aos-delay="100" style="width: 320px;">
     <img src="images/cover.png" alt="August Fjord" class="book-cover">
-    <span class="book-status" data-ru="Доступна" data-en="Available">Доступна</span>
+    <span class="book-status">Доступна</span>
     <h3>Август Фьорд</h3>
-    <p data-ru="Первая книга цикла. История о музыке, потере и обретении дома." data-en="The first book of the series. A story about music, loss, and finding home.">Первая книга цикла. История о музыке, потере и обретении дома.</p>
+    <p>Первая книга цикла. История о музыке, потере и обретении дома.</p>
 </div>
 
 <!-- Книга 2 -->
 <div class="book-card" data-aos="fade-up" data-aos-delay="200" style="width: 320px;">
     <img src="images/cover2.png" alt="East Wind" class="book-cover">
-    <span class="book-status" data-ru="Доступна" data-en="Available">Доступна</span>
+    <span class="book-status">Доступна</span>
     <h3>Восточный ветер</h3>
-    <p data-ru="Вторая книга цикла. Продолжение истории Августа." data-en="The second book of the series. Continuation of August's story.">Вторая книга цикла. Продолжение истории Августа.</p>
+    <p>Вторая книга цикла. Продолжение истории Августа.</p>
 </div>
 
 <!-- Книга 3 -->
 <div class="book-card" data-aos="fade-up" data-aos-delay="300" style="width: 320px;">
     <img src="images/cover3.png" alt="Where the Cold is Born" class="book-cover">
-    <span class="book-status coming" data-ru="Скоро" data-en="Coming Soon">Скоро</span>
+    <span class="book-status coming">Скоро</span>
     <h3>Там, где рождается холод</h3>
-    <p data-ru="Третья книга цикла. Завершение истории." data-en="The third book of the series. The end of the story.">Третья книга цикла. Завершение истории.</p>
+    <p>Третья книга цикла. Завершение истории.</p>
 </div>
 </div>
 </section>
@@ -390,41 +340,25 @@
     <!-- Цитата -->
     <section class="universe-section paper">
         <div class="universe-quote" data-aos="zoom-in">
-            <p data-ru="«Альба-Маре» — это не трилогия. Это мир. У него есть прошлое, настоящее и будущее — и в каждом времени есть те, чьи истории стоит рассказать." 
-               data-en="'Alba-Mare' is not a trilogy. It is a world. It has a past, a present and a future — and in each time there are those whose stories deserve to be told.">
+            <p 
+>
                «Альба-Маре» — это не трилогия. Это мир. У него есть прошлое, настоящее и будущее — и в каждом времени есть те, чьи истории стоит рассказать.
             </p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Yu.</p>
+        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
 
-        // Язык
-        let currentLang = localStorage.getItem('alba-mare-lang') || 'ru';
-        function applyLang() {
-            document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
-            document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
-            document.querySelectorAll('[data-ru]').forEach(el => {
-                const text = el.getAttribute(`data-${currentLang}`);
-                if (text) el.innerHTML = text;
-            });
-            document.documentElement.lang = currentLang;
-        }
-        function toggleLang() {
-            currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            localStorage.setItem('alba-mare-lang', currentLang);
-            applyLang();
-        }
+        
+        
 
-        function toggleMenu() {
-            document.getElementById('main-nav').classList.toggle('active');
-        }
+        
 
         // Кнопка "Наверх"
         const scrollToTopBtn = document.getElementById('scrollToTopBtn');
@@ -437,17 +371,7 @@
         });
 
         // --- ТЁМНАЯ ТЕМА ---
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            const btn = document.getElementById('theme-btn');
-            if (document.body.classList.contains('dark-mode')) {
-                btn.innerText = '☀️';
-                localStorage.setItem('alba-mare-theme', 'dark');
-            } else {
-                btn.innerText = '🌙';
-                localStorage.setItem('alba-mare-theme', 'light');
-            }
-        }
+        
 
         // Применяем сохранённую тему при загрузке (без мигания)
         (function applyTheme() {
@@ -457,8 +381,6 @@
                 if (btn) btn.innerText = '☀️';
             }
         })();
-        
-        document.addEventListener('DOMContentLoaded', applyLang);
     </script>
 </body>
 </html>

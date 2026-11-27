@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Читать «Август Фьорд» — Альба-Маре</title>
     <meta name="description" content="Первая книга цикла «Свет, рождённый морем». 43 главы, бесплатно и без регистрации. Читайте онлайн на русском и английском.">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/web-app-manifest-192x192.png">
+    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
 
     <meta property="og:type" content="book">
     <meta property="og:title" content="Читать «Август Фьорд» — Альба-Маре">
@@ -35,9 +39,6 @@
         #progress-container { position: sticky; top: 0; width: 100%; height: 4px; background: rgba(0,0,0,0.1); z-index: 3002; }
         #progress-bar { height: 100%; background: var(--accent-red); width: 0%; transition: width 0.1s; }
 
-        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; z-index: 1001; }
-        .burger span { display: block; width: 25px; height: 2px; background-color: var(--accent-sea); transition: 0.3s; }
-
         .reader-content { max-width: 800px; margin: 50px auto; padding: 60px 50px; font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.8; color: var(--text-main); background-color: #ffffff; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
         .reader-content h1 { font-size: 48px; text-align: center; margin-bottom: 10px; color: var(--accent-sea); }
         .reader-content h2 { font-size: 32px; text-align: center; margin-bottom: 10px; color: var(--text-muted); font-style: italic; }
@@ -45,8 +46,6 @@
         
         body.dark-mode .reader-content { background-color: #112233; border-color: #2a3f4d; }
         body.dark-mode .reader-content h1, body.dark-mode .reader-content h2 { color: var(--accent-sand); }
-
-        .reading-time { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 14px; color: var(--text-muted); margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
         .hidden-artifact { text-align: center; margin: 40px 0; opacity: 0.2; cursor: pointer; transition: all 0.3s; user-select: none; }
         .hidden-artifact:hover { opacity: 1; transform: scale(1.1); }
@@ -126,22 +125,6 @@
         body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
         body.dark-mode .book-switcher-btn.active { background: #0e2130; border-color: var(--accent-sand); color: var(--accent-sand); }
 
-        @media (max-width: 992px) {
-            .book-switcher {
-                top: auto;
-                bottom: 70px;
-                left: 50%;
-                right: auto;
-                transform: translateX(-50%);
-                flex-direction: row;
-                padding: 6px 8px;
-                gap: 5px;
-                border-radius: 20px;
-            }
-            .book-switcher-title { display: none; }
-            .book-switcher-btn { padding: 6px 10px; font-size: 11px; }
-            .book-switcher-btn .book-label { display: none; }
-        }
 
         /* ========================================= */
         /* --- INLINE-КАРТОЧКИ В ТЕКСТЕ (3:4) --- */
@@ -221,18 +204,6 @@
             display: none;
         }
 
-        @media (max-width: 768px) {
-            .character-inline-card,
-            .artifact-inline-card,
-            .city-inline-card,
-            .place-inline-card {
-                float: none;
-                width: 100%;
-                max-width: 200px;
-                height: 267px;
-                margin: 15px auto;
-            }
-        }
 
         .reader-page { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-sand); z-index: 3500; overflow-y: auto; padding: 40px 20px; animation: fadeIn 0.3s ease; }
         .reader-page.active { display: block; }
@@ -282,63 +253,7 @@
         .back-to-reading-btn:hover { background: var(--accent-red); transform: translateY(-50%) translateX(-3px); }
         body.dark-mode .back-to-reading-btn { background: var(--accent-sand); color: #0b1a26; }
 
-        @media (max-width: 768px) {
-            .back-to-reading-btn {
-                top: auto;
-                bottom: 140px;
-                right: 15px;
-                transform: none;
-                padding: 10px 16px;
-                font-size: 12px;
-            }
-            .back-to-reading-btn:hover { transform: translateX(-3px); }
-        }
 
-        .travel-map-container { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; padding-bottom: 60%; background-color: #e8e2d5; border-radius: 8px; border: 4px solid var(--accent-sand); box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; }
-        .travel-point { position: absolute; width: 24px; height: 24px; background-color: var(--accent-sand); border: 3px solid white; border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.4s ease; z-index: 10; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: bold; }
-        .travel-point.passed { background-color: var(--shop-green); opacity: 0.8; }
-        .travel-point.current { background-color: var(--accent-red); width: 30px; height: 30px; box-shadow: 0 0 0 0 rgba(179, 57, 57, 0.7); animation: pulse 1.5s infinite; z-index: 20; }
-        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 0 rgba(179, 57, 57, 0.7); } 70% { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 0 15px rgba(179, 57, 57, 0); } 100% { transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 0 rgba(179, 57, 57, 0); } }
-        .travel-point .point-label { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: rgba(11, 26, 38, 0.9); color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; white-space: nowrap; opacity: 0; transition: opacity 0.3s; pointer-events: none; font-family: 'Montserrat', sans-serif; font-weight: 500; }
-        .travel-point.current .point-label, .travel-point:hover .point-label { opacity: 1; }
-        .map-legend { display: flex; justify-content: center; gap: 30px; margin-top: 30px; font-size: 14px; color: var(--text-muted); }
-        .legend-item { display: flex; align-items: center; gap: 8px; }
-        .legend-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid white; }
-        .legend-dot.passed { background: var(--shop-green); }
-        .legend-dot.current { background: var(--accent-red); animation: pulse 1.5s infinite; }
-
-        .map-close-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            z-index: 30;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(11, 26, 38, 0.85);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.4);
-            cursor: pointer;
-            font-size: 22px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            line-height: 1;
-            padding-bottom: 2px;
-        }
-        .map-close-btn:hover { background: var(--accent-red); border-color: white; transform: scale(1.1); }
-
-        @media (max-width: 768px) {
-            .map-close-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 26px;
-                top: 8px;
-                right: 8px;
-            }
-        }
 
         .collection-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; max-width: 900px; margin-left: auto; margin-right: auto; flex-wrap: wrap; }
         .tab-btn { background: none; border: none; padding: 10px 20px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; color: var(--text-muted); transition: all 0.3s; position: relative; }
@@ -348,26 +263,6 @@
         .tab-content { display: none; max-width: 900px; margin: 0 auto; }
         .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
 
-        @media (max-width: 768px) {
-            .collection-tabs {
-                flex-direction: row;
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-                gap: 8px;
-                border-bottom: 2px solid var(--border-color);
-                padding-bottom: 10px;
-                -webkit-overflow-scrolling: touch;
-            }
-            .tab-btn {
-                flex-shrink: 0;
-                border-bottom: none;
-                padding: 8px 14px;
-                font-size: 14px;
-            }
-            .tab-btn.active::after { display: block; bottom: -12px; }
-            .tab-btn.active { background: transparent; }
-        }
 
         /* ========================================= */
         /* --- КОЛЛЕКЦИЯ: карточки 3:4 --- */
@@ -388,12 +283,6 @@
         body.dark-mode .card-quote { border-top-color: #2a3f4d; color: #8899a6; }
         body.dark-mode .card-role { color: var(--accent-sand); }
 
-        @media (max-width: 768px) {
-            .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .card-name { font-size: 16px; }
-            .card-role { font-size: 9px; }
-            .card-quote { font-size: 11px; }
-        }
 
         /* Закрытая карточка коллекции: возвращаем старое отображение */
         .card-item.locked .card-frame {
@@ -471,33 +360,7 @@
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @media (max-width: 992px) {
-            .reader-header nav { gap: 12px; }
-            .reader-header nav a { font-size: 11px; }
-            .reader-content { max-width: 100%; }
-        }
 
-        @media (max-width: 768px) {
-            .reader-content { font-size: 18px; padding: 30px 20px; margin: 20px auto 100px; border-radius: 0; border-left: none; border-right: none; }
-            .reader-content h1 { font-size: 28px; }
-            .reader-content h2 { font-size: 22px; }
-            .reader-header { padding: 12px 5%; }
-            .reader-header .logo { font-size: 18px; }
-            .reader-header .burger { display: flex; }
-            .reader-header nav { position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--bg-paper); flex-direction: column; align-items: center; padding: 20px 0; border-bottom: 2px solid var(--accent-sand); display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-            .reader-header nav.active { display: flex; }
-            .reader-header nav a { margin: 10px 0; font-size: 15px; }
-            
-            .chapter-nav { flex-direction: column; gap: 15px; align-items: center; }
-            .cta-buttons { flex-direction: column; }
-            .toc-item { padding: 12px 15px; }
-            .toc-number { font-size: 20px; min-width: 25px; }
-            .toc-title { font-size: 14px; }
-            .travel-map-container { padding-bottom: 100%; }
-            .map-legend { flex-direction: column; gap: 10px; align-items: center; }
-            .reader-page { padding: 20px 10px; padding-bottom: 100px; }
-            .page-header h2 { font-size: 32px; }
-        }
     </style>
 </head>
 <body>
@@ -505,73 +368,23 @@
     <div id="progress-container"><div id="progress-bar"></div></div>
 
     <!-- Шапка -->
-    <header>
-        <a href="index.html" class="logo">
-            <style>
-              .deco-ship {
-                display: inline-block;
-                width: 72px;
-                filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
-              }
-              .deco-ship svg { display: block; width: 60%; height: auto; animation: deco-ship-bob 5s ease-in-out infinite; }
-              @keyframes deco-ship-bob {
-                0%, 100% { transform: translateY(0) rotate(-2deg); }
-                50%      { transform: translateY(-6px) rotate(2deg); }
-              }
-              @media (max-width: 700px) { .deco-ship { width: 52px; } }
-            </style>
-
-            <div class="deco-ship" aria-hidden="true">
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 68 Q50 82 85 68 L78 78 Q50 88 22 78 Z" fill="#8a5a2b"/>
-                <path d="M15 68 Q50 82 85 68 L84 71 Q50 84 16 71 Z" fill="#c29a5b"/>
-                <rect x="48" y="20" width="3" height="50" fill="#6b4423" rx="1.5"/>
-                <path d="M51 24 Q78 40 72 62 L51 62 Z" fill="#f5f0e6"/>
-                <path d="M51 24 Q70 40 66 58 L51 58 Z" fill="#e8dfc8"/>
-                <path d="M49 18 L36 23 L49 28 Z" fill="#d4af37"/>
-                <path d="M8 76 Q18 72 28 76 T48 76 T68 76 T88 76" fill="none" stroke="#2a7f8f" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-                <path d="M14 82 Q24 78 34 82 T54 82 T74 82" fill="none" stroke="#2a7f8f" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
-              </svg>
-            </div>
-            Альба-Маре
-        </a>
-
-        <div class="nav-right">
-            <nav id="main-nav">
-                <a href="reader.html" data-ru="Читалка" data-en="Read">Читалка</a>
-                <a href="universe.html" data-ru="Вселенная" data-en="Universe">Вселенная</a>
-                <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
-                <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
-                <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
-                <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
-            </nav>
-            
-            <div class="lang-switch" onclick="toggleLang()">
-                <div id="lang-ru" class="active">RU</div>
-                <div id="lang-en">EN</div>
-            </div>
-            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
-            <div class="burger" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </header>
-    <!--Конец шапки-->
+    <header id="site-header"></header>
+<script src="header.js"></script>
 
     <!-- Боковая панель выбора книги -->
     <div class="book-switcher" id="book-switcher">
-        <div class="book-switcher-title" data-ru="Цикл: свет, рождённый морем" data-en="Series: Light Born of the Sea">Цикл: свет, рождённый морем</div>
+        <div class="book-switcher-title">Цикл: свет, рождённый морем</div>
         <button class="book-switcher-btn active" data-book="1" onclick="switchBook(1)">
             <span class="book-num">1</span>
-            <span class="book-label" data-ru="Август Фьорд" data-en="August Fjord">Август Фьорд</span>
+            <span class="book-label">Август Фьорд</span>
         </button>
         <button class="book-switcher-btn" data-book="2" onclick="switchBook(2)">
             <span class="book-num">2</span>
-            <span class="book-label" data-ru="Восточный ветер" data-en="East Wind">Восточный ветер</span>
+            <span class="book-label">Восточный ветер</span>
         </button>
         <button class="book-switcher-btn" data-book="3" onclick="switchBook(3)">
             <span class="book-num">3</span>
-            <span class="book-label" data-ru="Там, где рождается холод" data-en="Where the Cold is Born">Там, где рождается холод</span>
+            <span class="book-label">Там, где рождается холод</span>
         </button>
     </div>
 	
@@ -582,9 +395,8 @@
             <span class="chapter-progress-label" id="chapter-progress-top"></span>
         </div>
         <div class="right-zone">
-            <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление" data-ru-title="Оглавление" data-en-title="Contents">📖 <span data-ru="Оглавление" data-en="Contents">Оглавление</span></button>
-            <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция" data-ru-title="Коллекция" data-en-title="Collection">🏆 <span data-ru="Коллекция" data-en="Collection">Коллекция</span></button>
-            <button class="tool-btn" onclick="showPage('map-page')" title="Карта" data-ru-title="Карта" data-en-title="Map">🗺️ <span data-ru="Карта" data-en="Map">Карта</span></button>
+            <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление">📖 <span>Оглавление</span></button>
+            <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция">🏆 <span>Коллекция</span></button>
             <div class="font-sizer">
                 <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
                 <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
@@ -595,66 +407,54 @@
 
     <!-- Оглавление -->
     <div class="reader-page" id="toc-page">
-        <div class="page-header"><h2 data-ru="Оглавление" data-en="Table of Contents">Оглавление</h2><p data-ru="Выберите главу для чтения" data-en="Select a chapter to read">Выберите главу для чтения</p></div>
+        <div class="page-header"><h2>Оглавление</h2><p>Выберите главу для чтения</p></div>
         <div class="toc-list" id="toc-list"></div>
         <button class="back-to-reading-btn" onclick="hideAllPages()">
-            <span data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</span>
+            <span>← Вернуться к чтению</span>
         </button>
     </div>
 
     <!-- Коллекция -->
     <div class="reader-page" id="collection-page">
-        <div class="page-header"><h2 data-ru="Коллекция" data-en="Collection">Коллекция</h2><p data-ru="Всё, что вы нашли и встретили в этом мире" data-en="Everything you have found and met in this world">Всё, что вы нашли и встретили в этом мире</p></div>
+        <div class="page-header"><h2>Коллекция</h2><p>Всё, что вы нашли и встретили в этом мире</p></div>
         <div class="collection-tabs">
-            <button class="tab-btn active" onclick="switchTab('artifacts', this)" data-ru="Артефакты" data-en="Artifacts">Артефакты</button>
-            <button class="tab-btn" onclick="switchTab('characters', this)" data-ru="Персонажи" data-en="Characters">Персонажи</button>
-            <button class="tab-btn" onclick="switchTab('cities', this)" data-ru="Города" data-en="Cities">Города</button>
-            <button class="tab-btn" onclick="switchTab('places', this)" data-ru="Места" data-en="Places">Места</button>
+            <button class="tab-btn active" onclick="switchTab('artifacts', this)">Артефакты</button>
+            <button class="tab-btn" onclick="switchTab('characters', this)">Персонажи</button>
+            <button class="tab-btn" onclick="switchTab('cities', this)">Города</button>
+            <button class="tab-btn" onclick="switchTab('places', this)">Места</button>
         </div>
         <div class="tab-content active" id="tab-artifacts"><div class="cards-grid" id="artifacts-grid"></div></div>
         <div class="tab-content" id="tab-characters"><div class="cards-grid" id="characters-grid"></div></div>
         <div class="tab-content" id="tab-cities"><div class="cards-grid" id="cities-grid"></div></div>
         <div class="tab-content" id="tab-places"><div class="cards-grid" id="places-grid"></div></div>
         <button class="back-to-reading-btn" onclick="hideAllPages()">
-            <span data-ru="← Вернуться к чтению" data-en="← Back to reading">← Вернуться к чтению</span>
+            <span>← Вернуться к чтению</span>
         </button>
-    </div>
-
-    <!-- Карта -->
-    <div class="reader-page" id="map-page">
-        <div class="page-header"><h2 data-ru="Карта путешествия" data-en="Travel Map">Карта путешествия</h2><p data-ru="Следите за путём Августа по Южному королевству" data-en="Follow August's journey across the Southern Kingdom">Следите за путём Августа по Южному королевству</p></div>
-        <div class="travel-map-container" id="travel-map">
-            <button class="map-close-btn" onclick="hideAllPages()" title="Закрыть">×</button>
-        </div>
-        <div class="map-legend">
-            <div class="legend-item"><div class="legend-dot passed"></div><span data-ru="Пройдено" data-en="Passed">Пройдено</span></div>
-            <div class="legend-item"><div class="legend-dot current"></div><span data-ru="Вы здесь" data-en="You are here">Вы здесь</span></div>
-        </div>
     </div>
 
     <div class="reader-content" id="reader-text"></div>
 
     <div class="reader-content" id="chapter-footer" style="background: transparent; border: none; box-shadow: none; padding-top: 0;">
         <div class="chapter-nav">
-            <button id="btn-prev" onclick="changeChapter(-1)" data-ru="← Предыдущая глава" data-en="← Previous chapter">← Предыдущая глава</button>
+            <button id="btn-prev" onclick="changeChapter(-1)">← Предыдущая глава</button>
             <span id="chapter-indicator" style="font-weight: bold; color: var(--accent-sea);"></span>
-            <button id="btn-next" onclick="changeChapter(1)" data-ru="Следующая глава →" data-en="Next chapter →">Следующая глава →</button>
+            <button id="btn-next" onclick="changeChapter(1)">Следующая глава →</button>
         </div>
 		
         <div class="chapter-cta">
-            <h4 data-ru="Понравилась глава?" data-en="Enjoyed the chapter?">Понравилась глава?</h4>
-            <p data-ru="Поддержите автора — это помогает писать продолжение быстрее! А если хотите поделиться — нажмите на кнопку ниже." data-en="Support the author — it helps write the sequel faster! And if you want to share — click the button below.">Поддержите автора — это помогает писать продолжение быстрее! А если хотите поделиться — нажмите на кнопку ниже.</p>
+            <h4>Понравилась глава?</h4>
+            <p>Поддержите автора — это помогает писать продолжение быстрее! А если хотите поделиться — нажмите на кнопку ниже.</p>
             
             <div class="cta-buttons">
-                <a href="index.html#support" class="btn btn-red" data-ru="Поддержать автора" data-en="Support Author">Поддержать автора</a>
-                <button onclick="openFeedbackModal()" class="btn" style="background: transparent; border: 2px solid var(--accent-sea); color: var(--accent-sea);" data-ru="Оставить отзыв" data-en="Leave a Review">Оставить отзыв</button>
-                <button onclick="toggleShareMenu()" class="btn btn-share-toggle" id="share-toggle-btn" data-ru="Поделиться главой" data-en="Share chapter">Поделиться главой</button>
+                <a href="index.html#support" class="btn btn-red">Поддержать автора</a>
+                <button onclick="openFeedbackModal()" class="btn" style="background: transparent; border: 2px solid var(--accent-sea); color: var(--accent-sea);">Оставить отзыв</button>
+                <button onclick="toggleShareMenu()" class="btn btn-share-toggle" id="share-toggle-btn">Поделиться главой</button>
             </div>
 
             <div class="share-menu" id="share-menu">
                 <a href="#" onclick="shareVK(event)" class="share-btn share-vk" title="ВКонтакте">ВК</a>
                 <a href="#" onclick="shareTelegram(event)" class="share-btn share-tg" title="Telegram">Telegram</a>
-                <button onclick="copyLink(event)" class="share-btn share-copy" id="share-copy-btn" data-ru="Копировать ссылку" data-en="Copy link">Копировать ссылку</button>
+                <button onclick="copyLink(event)" class="share-btn share-copy" id="share-copy-btn">Копировать ссылку</button>
             </div>
         </div>
     </div>
@@ -663,13 +463,13 @@
     <div class="modal-overlay" id="feedback-modal" onclick="closeFeedbackModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeFeedbackModal(event)">&times;</span>
-            <h3 data-ru="Ваш отзыв" data-en="Your Review">Ваш отзыв</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;" data-ru="Расскажите, что вы думаете о книге. Ваше мнение очень важно!" data-en="Tell us what you think about the book. Your opinion is very important!">Расскажите, что вы думаете о книге. Ваше мнение очень важно!</p>
+            <h3>Ваш отзыв</h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Расскажите, что вы думаете о книге. Ваше мнение очень важно!</p>
             <form onsubmit="event.preventDefault(); alert('Спасибо за отзыв!'); closeFeedbackModal(); this.reset();">
                 <input type="text" placeholder="Ваше имя / Your name" required>
                 <input type="email" placeholder="Ваш Email / Your email" required>
                 <textarea placeholder="Ваш отзыв... / Your review..." required></textarea>
-                <button type="submit" data-ru="Отправить отзыв" data-en="Submit Review">Отправить отзыв</button>
+                <button type="submit">Отправить отзыв</button>
             </form>
         </div>
     </div>
@@ -677,11 +477,11 @@
     <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeResumeModal(event)">&times;</span>
-            <h3 data-ru="С возвращением!" data-en="Welcome back!">С возвращением!</h3>
+            <h3>С возвращением!</h3>
             <p id="resume-text">Вы остановились на главе 2. Продолжить чтение?</p>
             <div style="display: flex; gap: 10px; justify-content: center;">
-                <button class="btn" onclick="resumeReading()" data-ru="Продолжить" data-en="Continue">Продолжить</button>
-                <button class="btn" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);" onclick="startFromBeginning()" data-ru="Начать сначала" data-en="Start over">Начать сначала</button>
+                <button class="btn" onclick="resumeReading()">Продолжить</button>
+                <button class="btn" style="background: transparent; border-color: var(--border-color); color: var(--text-muted);" onclick="startFromBeginning()">Начать сначала</button>
             </div>
         </div>
     </div>
@@ -691,9 +491,9 @@
         // 1. КНИГИ
         // ==========================================
         const BOOKS = {
-            1: { listFile: 'chapters/book1/list.json',  progressKey: 'alba-mare-progress-1', titleRu: 'Август Фьорд',        titleEn: 'August Fjord' },
-            2: { listFile: 'chapters/book2/list.json',  progressKey: 'alba-mare-progress-2', titleRu: 'Восточный ветер',    titleEn: 'East Wind' },
-            3: { listFile: 'chapters/book3/list.json',  progressKey: 'alba-mare-progress-3', titleRu: 'Там, где рождается холод', titleEn: 'Where the Cold is Born' }
+            1: { listFile: 'chapters/book1/list.json',  progressKey: 'alba-mare-progress-1', titleRu: 'Август Фьорд' },
+            2: { listFile: 'chapters/book2/list.json',  progressKey: 'alba-mare-progress-2', titleRu: 'Восточный ветер' },
+            3: { listFile: 'chapters/book3/list.json',  progressKey: 'alba-mare-progress-3', titleRu: 'Там, где рождается холод' }
         };
 
         let currentBook = parseInt(localStorage.getItem('alba-mare-current-book') || '1');
@@ -702,26 +502,26 @@
         // 2. ДАННЫЕ КОЛЛЕКЦИИ
         // ==========================================
         const artifactsData = {
-            'guitar':  { image: 'images/artifacts/guitar.jpg', titleRu: 'Гитара',        titleEn: "Guitar",          descRu: 'Инструмент, оставленный купцом.',   descEn: 'The instrument left by merchant.' },
-            'sword':   { image: '', titleRu: 'Клинок отца',          titleEn: "Father's Blade",           descRu: 'Прямой меч с потертой рукоятью.',           descEn: 'A straight sword with a worn hilt.' },
-            'compass': { image: '', titleRu: 'Старый компас',        titleEn: 'Old Compass',              descRu: 'Стрелка дрожит, указывая путь на север.',   descEn: 'The needle trembles, pointing north.' },
-            'map':     { image: '', titleRu: 'Карта северных земель', titleEn: 'Map of the Northern Lands', descRu: 'Нарисованная на коже, она хранит секреты фьордов.', descEn: 'Drawn on leather, it holds the secrets of the fjords.' }
+            'guitar':  { image: 'images/artifacts/guitar.jpg', titleRu: 'Гитара',          descRu: 'Инструмент, оставленный купцом.' },
+            'sword':   { image: '', titleRu: 'Клинок отца',           descRu: 'Прямой меч с потертой рукоятью.' },
+            'compass': { image: '', titleRu: 'Старый компас',              descRu: 'Стрелка дрожит, указывая путь на север.' },
+            'map':     { image: '', titleRu: 'Карта северных земель', descRu: 'Нарисованная на коже, она хранит секреты фьордов.' }
         };
 
         const charactersData = {
-            'matteo': { image: 'images/characters/matteo.jpg', nameRu: 'Маттео', nameEn: 'Matteo', roleRu: 'Торговец и Наставник', roleEn: 'Merchant and Mentor', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».', quoteEn: '“The instrument is just wood and strings. The main thing is inside.”' },
-            'mira':   { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', nameRu: 'Мира',   nameEn: 'Mira',   roleRu: 'Странница',        roleEn: 'Wanderer',        quoteRu: '«Дом — это не стены. Это те, кто ждёт тебя».', quoteEn: '“Home is not walls. It\'s those who wait for you.”' },
-            'einar':  { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', nameRu: 'Эйнар',  nameEn: 'Einar',  roleRu: 'Северный охотник', roleEn: 'Northern Hunter', quoteRu: '«Тишина иногда громче любого крика».',           quoteEn: '“Silence is sometimes louder than any scream.”' }
+            'matteo': { image: 'images/characters/matteo.jpg', nameRu: 'Маттео', roleRu: 'Торговец и Наставник', quoteRu: '«Инструмент — это просто дерево и струны. Главное — внутри».' },
+            'mira':   { image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', nameRu: 'Мира',   roleRu: 'Странница',        quoteRu: '«Дом — это не стены. Это те, кто ждёт тебя».' },
+            'einar':  { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', nameRu: 'Эйнар',  roleRu: 'Северный охотник', quoteRu: '«Тишина иногда громче любого крика».' }
         };
 
         const citiesData = {
-            'alba-mare':     { image: '', nameRu: 'Альба-Маре',     nameEn: 'Alba-Mare',     roleRu: 'Город у моря',      roleEn: 'City by the Sea',   quoteRu: '«Свет, рождённый морем».', quoteEn: '“Light born of the sea.”' },
-            'northern-fjords': { image: '', nameRu: 'Северные фьорды', nameEn: 'Northern Fjords', roleRu: 'Край снега и тишины', roleEn: 'Land of Snow and Silence', quoteRu: '«Здесь холод рождается из молчания».', quoteEn: '“Here the cold is born of silence.”' }
+            'alba-mare':     { image: '', nameRu: 'Альба-Маре',     roleRu: 'Город у моря',   quoteRu: '«Свет, рождённый морем».' },
+            'northern-fjords': { image: '', nameRu: 'Северные фьорды', roleRu: 'Край снега и тишины', quoteRu: '«Здесь холод рождается из молчания».' }
         };
 
         const placesData = {
-            'old-pier':     { image: '', nameRu: 'Старый пирс',     nameEn: 'The Old Pier',     roleRu: 'Бухта',   roleEn: 'Bay',   quoteRu: '«Место, где Август впервые услышал город».', quoteEn: '“The place where August first heard the city.”' },
-            'market-square': { image: '', nameRu: 'Рыночная площадь', nameEn: 'Market Square', roleRu: 'Площадь', roleEn: 'Square', quoteRu: '«Здесь музыка впервые зазвучала для Августа».', quoteEn: '“Here music first sounded for August.”' }
+            'old-pier':     { image: '', nameRu: 'Старый пирс',     roleRu: 'Бухта',   quoteRu: '«Место, где Август впервые услышал город».' },
+            'market-square': { image: '', nameRu: 'Рыночная площадь', roleRu: 'Площадь', quoteRu: '«Здесь музыка впервые зазвучала для Августа».' }
         };
 
         // ==========================================
@@ -729,7 +529,6 @@
         // ==========================================
         let bookChapters = [];
         let currentChapter = 0;
-        let currentLang = 'ru';
         let readerFontSize = parseInt(localStorage.getItem('alba-mare-font-size') || '22');
 
         function loadSet(key) {
@@ -804,12 +603,11 @@
                 bookChapters = [];
                 document.getElementById('reader-text').innerHTML = `
                     <h1>${book.titleRu}</h1>
-                    <h2>${book.titleEn}</h2>
                     <p style="text-align:center; padding: 40px 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text-muted);">
-                        ${currentLang === 'ru' ? 'Эта книга ещё в работе. Скоро здесь появятся главы.' : 'This book is still in progress. Chapters will appear here soon.'}
+                        ${'Эта книга ещё в работе. Скоро здесь появятся главы.'}
                     </p>
                     <div style="text-align: center; margin-top: 30px;">
-                        <a href="index.html#support" class="btn btn-red" data-ru="Поддержать проект" data-en="Support the project">Поддержать проект</a>
+                        <a href="index.html#support" class="btn btn-red">Поддержать проект</a>
                     </div>
                 `;
                 document.getElementById('book-progress-top').innerText = '';
@@ -828,16 +626,15 @@
 
             const chapterInfo = bookChapters[currentChapter];
             const book = BOOKS[currentBook];
-            const bookTitle = currentLang === 'ru' ? book.titleRu : book.titleEn;
-            const chapterTitle = currentLang === 'ru' ? chapterInfo.title : (chapterInfo.titleEn || chapterInfo.title);
-            const chapterFile = currentLang === 'ru' ? chapterInfo.file : (chapterInfo.fileEn || chapterInfo.file);
+            const bookTitle = book.titleRu;
+            const chapterTitle = chapterInfo.title;
+            const chapterFile = chapterInfo.file;
             
             const chapterPath = `chapters/book${currentBook}/${chapterFile}`;
             
             document.getElementById('reader-text').innerHTML = `
                 <h1>${bookTitle}</h1>
                 <h2>${chapterTitle}</h2>
-                <div class="reading-time">⏱️ ${currentLang === 'ru' ? 'Загрузка...' : 'Loading...'}</div>
             `;
 
             try {
@@ -845,13 +642,9 @@
                 if (!response.ok) throw new Error('HTTP ' + response.status);
                 const textHtml = await response.text();
 
-                const wordCount = textHtml.replace(/<[^>]*>/g, ' ').trim().split(/\s+/).length;
-                const readingTime = Math.ceil(wordCount / 200);
-
                 document.getElementById('reader-text').innerHTML = `
                     <h1>${bookTitle}</h1>
                     <h2>${chapterTitle}</h2>
-                    <div class="reading-time">⏱️ ${currentLang === 'ru' ? 'Примерное время чтения:' : 'Estimated reading time:'} ~${readingTime} ${currentLang === 'ru' ? 'мин.' : 'min.'}</div>
                     ${textHtml}
                 `;
                 applyFontSettings();
@@ -872,7 +665,7 @@
                         if (!el.querySelector('.inline-card-closed-text')) {
                             const textDiv = document.createElement('div');
                             textDiv.className = 'inline-card-closed-text';
-                            textDiv.textContent = currentLang === 'ru' ? 'Нажмите, чтобы открыть' : 'Click to open';
+                            textDiv.textContent = 'Нажмите, чтобы открыть';
                             el.appendChild(textDiv);
                         }
                     }
@@ -925,9 +718,9 @@
                     if (foundArtifacts.has(id)) el.classList.add('found');
                 });
 
-                const bookLabel = `${currentLang === 'ru' ? 'Книга' : 'Book'} ${currentBook}`;
+                const bookLabel = `${'Книга'} ${currentBook}`;
                 document.getElementById('book-progress-top').innerText = bookLabel;
-                const chapterLabel = `${currentLang === 'ru' ? 'Глава' : 'Chapter'} ${currentChapter + 1} / ${bookChapters.length}`;
+                const chapterLabel = `${'Глава'} ${currentChapter + 1} / ${bookChapters.length}`;
                 document.getElementById('chapter-indicator').innerText = chapterLabel;
                 document.getElementById('chapter-progress-top').innerText = chapterLabel;
                 document.getElementById('btn-prev').disabled = currentChapter === 0;
@@ -1006,16 +799,16 @@
 
         function showUnlockToast(type, id) {
             const config = {
-                artifact:  { data: artifactsData[id],  names: ['titleRu', 'titleEn'],  icon: '🎁', labelRu: 'Новый артефакт!', labelEn: 'New artifact!' },
-                character: { data: charactersData[id], names: ['nameRu', 'nameEn'],    icon: '👤', labelRu: 'Новый персонаж!', labelEn: 'New character!' },
-                city:      { data: citiesData[id],     names: ['nameRu', 'nameEn'],    icon: '🏙️', labelRu: 'Новый город!', labelEn: 'New city!' },
-                place:     { data: placesData[id],     names: ['nameRu', 'nameEn'],    icon: '📍', labelRu: 'Новое место!', labelEn: 'New place!' }
+                artifact:  { data: artifactsData[id],  names: ['titleRu'],  icon: '🎁', labelRu: 'Новый артефакт!' },
+                character: { data: charactersData[id], names: ['nameRu'],    icon: '👤', labelRu: 'Новый персонаж!' },
+                city:      { data: citiesData[id],     names: ['nameRu'],    icon: '🏙️', labelRu: 'Новый город!' },
+                place:     { data: placesData[id],     names: ['nameRu'],    icon: '📍', labelRu: 'Новое место!' }
             }[type];
             if (!config || !config.data) return;
-            const name = config.data[currentLang === 'ru' ? config.names[0] : config.names[1]];
+            const name = config.data[config.names[0]];
             const toast = document.createElement('div');
             toast.style.cssText = `position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--bg-paper); border: 2px solid var(--accent-sea); padding: 15px 25px; border-radius: 8px; z-index: 4000; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; animation: fadeIn 0.3s ease; max-width: 90vw;`;
-            toast.innerHTML = `<div style="font-size: 24px; margin-bottom: 5px;">${config.icon}</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${currentLang === 'ru' ? config.labelRu : config.labelEn}</div><div style="font-size: 15px; color: var(--text-main);">${name} ${currentLang === 'ru' ? 'добавлен в Коллекцию' : 'added to Collection'}</div>`;
+            toast.innerHTML = `<div style="font-size: 24px; margin-bottom: 5px;">${config.icon}</div><div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: bold; color: var(--accent-sea);">${config.labelRu}</div><div style="font-size: 15px; color: var(--text-main);">${name} ${'добавлен в Коллекцию'}</div>`;
             document.body.appendChild(toast);
             setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.5s'; setTimeout(() => toast.remove(), 500); }, 3000);
         }
@@ -1045,10 +838,10 @@
 
         function renderCards(type) {
             const grids = {
-                artifacts:  { el: document.getElementById('artifacts-grid'),  data: artifactsData,  set: foundArtifacts,      roleRu: 'Артефакт', roleEn: 'Artifact', emptyRu: 'Продолжайте читать, чтобы найти этот артефакт.', emptyEn: 'Keep reading to find this artifact.' },
-                characters: { el: document.getElementById('characters-grid'), data: charactersData, set: unlockedCharacters, roleRu: '', roleEn: '', emptyRu: 'Продолжайте читать, чтобы встретить этого персонажа.', emptyEn: 'Keep reading to meet this character.' },
-                cities:     { el: document.getElementById('cities-grid'),     data: citiesData,     set: unlockedCities,     roleRu: '', roleEn: '', emptyRu: 'Продолжайте читать, чтобы открыть этот город.', emptyEn: 'Keep reading to discover this city.' },
-                places:     { el: document.getElementById('places-grid'),     data: placesData,     set: unlockedPlaces,     roleRu: '', roleEn: '', emptyRu: 'Продолжайте читать, чтобы открыть это место.', emptyEn: 'Keep reading to discover this place.' }
+                artifacts:  { el: document.getElementById('artifacts-grid'),  data: artifactsData,  set: foundArtifacts,      roleRu: 'Артефакт', emptyRu: 'Продолжайте читать, чтобы найти этот артефакт.' },
+                characters: { el: document.getElementById('characters-grid'), data: charactersData, set: unlockedCharacters, roleRu: '', emptyRu: 'Продолжайте читать, чтобы встретить этого персонажа.' },
+                cities:     { el: document.getElementById('cities-grid'),     data: citiesData,     set: unlockedCities,     roleRu: '', emptyRu: 'Продолжайте читать, чтобы открыть этот город.' },
+                places:     { el: document.getElementById('places-grid'),     data: placesData,     set: unlockedPlaces,     roleRu: '', emptyRu: 'Продолжайте читать, чтобы открыть это место.' }
             };
             const cfg = grids[type];
             if (!cfg || !cfg.el) return;
@@ -1059,16 +852,10 @@
                 const data = cfg.data[id];
                 const isOpen = cfg.set.has(id);
 
-                const name = data.nameRu !== undefined
-                    ? (currentLang === 'ru' ? data.nameRu : data.nameEn)
-                    : (currentLang === 'ru' ? data.titleRu : data.titleEn);
-                const role = data.roleRu !== undefined
-                    ? (currentLang === 'ru' ? data.roleRu : data.roleEn)
-                    : (currentLang === 'ru' ? cfg.roleRu : cfg.roleEn);
-                const desc = data.quoteRu !== undefined
-                    ? (currentLang === 'ru' ? data.quoteRu : data.quoteEn)
-                    : (currentLang === 'ru' ? data.descRu : data.descEn);
-                const emptyText = currentLang === 'ru' ? cfg.emptyRu : cfg.emptyEn;
+                const name = data.nameRu !== undefined ? data.nameRu : data.titleRu;
+                const role = data.roleRu !== undefined ? data.roleRu : cfg.roleRu;
+                const desc = data.quoteRu !== undefined ? data.quoteRu : data.descRu;
+                const emptyText = cfg.emptyRu;
 
                 const item = document.createElement('div');
                 item.className = `card-item ${isOpen ? 'unlocked' : 'locked'}`;
@@ -1095,7 +882,7 @@
                         </div>
                         <div class="card-caption">
                             <div class="card-name">???</div>
-                            <span class="card-role">${currentLang === 'ru' ? 'Неизвестно' : 'Unknown'}</span>
+                            <span class="card-role">${'Неизвестно'}</span>
                             <div class="card-quote">${emptyText}</div>
                         </div>
                     `;
@@ -1120,7 +907,7 @@
             const modal = document.getElementById('resume-modal');
             const text = document.getElementById('resume-text');
             const chapterTitle = bookChapters[chapterIndex] ? bookChapters[chapterIndex].title : '';
-            text.innerHTML = currentLang === 'ru' ? `Вы остановились на главе <strong>${chapterIndex + 1}</strong> (<em>${chapterTitle}</em>). Продолжить чтение?` : `You stopped at chapter <strong>${chapterIndex + 1}</strong> (<em>${chapterTitle}</em>). Continue reading?`;
+            text.innerHTML = `Вы остановились на главе <strong>${chapterIndex + 1}</strong> (<em>${chapterTitle}</em>). Продолжить чтение?`;
             modal.style.display = 'flex';
             modal.dataset.chapter = chapterIndex;
         }
@@ -1136,7 +923,7 @@
         function updateProgressBar() { const totalHeight = document.documentElement.scrollHeight - window.innerHeight; const progressBar = document.getElementById('progress-bar'); if (totalHeight > 0) { const scrollPercentage = (window.scrollY / totalHeight) * 100; progressBar.style.width = scrollPercentage + '%'; } else { progressBar.style.width = '100%'; } }
         window.addEventListener('scroll', updateProgressBar);
 
-        function showPage(pageId) { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); document.getElementById(pageId).classList.add('active'); if (pageId === 'toc-page') renderTOC(); if (pageId === 'collection-page') renderCollection(); if (pageId === 'map-page') renderMap(); }
+        function showPage(pageId) { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); document.getElementById(pageId).classList.add('active'); if (pageId === 'toc-page') renderTOC(); if (pageId === 'collection-page') renderCollection(); }
         function hideAllPages() { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); }
 
         function renderTOC() {
@@ -1149,73 +936,17 @@
                 const isCheckpoint = (savedChapter !== null && parseInt(savedChapter) === index) || isCurrent;
                 const item = document.createElement('div'); item.className = `toc-item ${isCurrent ? 'active' : ''} ${isRead ? 'read' : ''}`;
                 item.onclick = () => { currentChapter = index; renderChapter(); hideAllPages(); };
-                const rawTitle = currentLang === 'ru' ? chapter.title : (chapter.titleEn || chapter.title);
+                const rawTitle = chapter.title;
                 const cleanTitle = rawTitle.replace(/^(Глава|Chapter)\s*\d+\.?\s*/i, '');
                 item.innerHTML = `<div class="toc-item-left"><span class="toc-number">${index + 1}.</span><span class="toc-title">${cleanTitle}</span></div><div class="toc-item-right">${isCheckpoint ? '<span class="toc-icon" title="Вы остановились здесь">⭐</span>' : ''}<span class="toc-check">✓</span></div>`;
-                list.appendChild(item);
-            });
-        }
-
-        function renderMap() {
-            const mapContainer = document.getElementById('travel-map');
-            mapContainer.querySelectorAll('.travel-point').forEach(p => p.remove());
-            bookChapters.forEach((chapter, index) => {
-                if (!chapter.mapCoord) return;
-                const isCurrent = index === currentChapter; const isPassed = index < currentChapter;
-                const point = document.createElement('div'); point.className = `travel-point ${isCurrent ? 'current' : ''} ${isPassed ? 'passed' : ''}`;
-                point.style.left = chapter.mapCoord.x + '%'; point.style.top = chapter.mapCoord.y + '%';
-                const title = currentLang === 'ru' ? chapter.title : (chapter.titleEn || chapter.title);
-                if (isCurrent) { point.innerHTML = `<div class="point-label">${title}</div>`; } else if (isPassed) { point.innerHTML = '✓'; }
-                mapContainer.appendChild(point);
-            });
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            const btn = document.getElementById('theme-btn');
-            if (document.body.classList.contains('dark-mode')) { btn.innerText = '☀️'; localStorage.setItem('alba-mare-theme', 'dark'); } else { btn.innerText = '🌙'; localStorage.setItem('alba-mare-theme', 'light'); }
-        }
-
-        function toggleMenu() {
-            document.getElementById('main-nav').classList.toggle('active');
-        }
 
         // ==========================================
         // 10. ОСТАЛЬНОЕ
         // ==========================================
-        function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
+		
+		function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
         function closeFeedbackModal(event) { if (!event || event.target.id === 'feedback-modal' || event.target.classList.contains('close-modal')) { document.getElementById('feedback-modal').style.display = 'none'; } }
-
-        function toggleLang(noRerender) {
-            currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            
-            document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
-            document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
-            
-            document.querySelectorAll('[data-ru]').forEach(el => { 
-                const text = el.getAttribute(`data-${currentLang}`); 
-                if (text) el.innerHTML = text; 
-            });
-            
-            document.querySelectorAll('[data-ru-title]').forEach(el => {
-                const t = el.getAttribute(`data-${currentLang}-title`);
-                if (t) el.setAttribute('title', t);
-            });
-            
-            document.documentElement.lang = currentLang; 
-            localStorage.setItem('alba-mare-lang', currentLang);
-            
-            if (!noRerender && bookChapters.length > 0) {
-                const scrollY = window.scrollY;
-                renderChapter().then(() => {
-                    window.scrollTo({ top: scrollY, behavior: 'instant' });
-                });
-            }
-            
-            if (document.getElementById('toc-page').classList.contains('active')) { renderTOC(); } 
-            else if (document.getElementById('collection-page').classList.contains('active')) { renderCollection(); } 
-            else if (document.getElementById('map-page').classList.contains('active')) { renderMap(); }
-        }
+        function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
 
         // ==========================================
         // 11. ПОДЕЛИТЬСЯ
@@ -1227,11 +958,11 @@
             menu.classList.toggle('active');
             
             if (menu.classList.contains('active')) {
-                btn.innerText = currentLang === 'ru' ? 'Скрыть' : 'Hide';
+                btn.innerText = 'Скрыть';
                 btn.style.background = 'transparent';
                 btn.style.color = 'var(--accent-sea)';
             } else {
-                btn.innerText = currentLang === 'ru' ? 'Поделиться главой' : 'Share chapter';
+                btn.innerText = 'Поделиться главой';
                 btn.style.background = 'var(--accent-sea)';
                 btn.style.color = 'white';
             }
@@ -1264,7 +995,7 @@
             
             navigator.clipboard.writeText(url).then(() => {
                 const originalText = btn.innerText;
-                btn.innerText = currentLang === 'ru' ? '✓ Скопировано!' : '✓ Copied!';
+                btn.innerText = '✓ Скопировано!';
                 btn.style.backgroundColor = 'var(--shop-green)';
                 btn.style.borderColor = 'var(--shop-green)';
                 setTimeout(() => {
@@ -1274,7 +1005,7 @@
                 }, 2000);
             }).catch(err => {
                 console.error('Не удалось скопировать:', err);
-                alert(currentLang === 'ru' ? 'Не удалось скопировать ссылку.' : 'Failed to copy link.');
+                alert('Не удалось скопировать ссылку.');
             });
         }
 
@@ -1305,22 +1036,6 @@
         // 13. ИНИЦИАЛИЗАЦИЯ
         // ==========================================
         window.onload = async function() {
-            const savedLang = localStorage.getItem('alba-mare-lang');
-            if (savedLang && savedLang !== currentLang) {
-                currentLang = savedLang;
-                document.getElementById('lang-ru').classList.toggle('active', currentLang === 'ru');
-                document.getElementById('lang-en').classList.toggle('active', currentLang === 'en');
-                document.querySelectorAll('[data-ru]').forEach(el => {
-                    const text = el.getAttribute(`data-${currentLang}`);
-                    if (text) el.innerHTML = text;
-                });
-                document.documentElement.lang = currentLang;
-            }
-
-            if (localStorage.getItem('alba-mare-theme') === 'dark') {
-                document.body.classList.add('dark-mode');
-                document.getElementById('theme-btn').innerText = '☀️';
-            }
 
             applyFontSettings();
             updateBookSwitcherUI();
@@ -1335,7 +1050,7 @@
     </script>
 	
     <footer>
-        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю. / Ivanov&nbsp;D.&nbsp;Yu.</p>
+        <p>&copy; 2026 Иванов&nbsp;Д.&nbsp;Ю.</p>
     </footer>
 </body>
 </html>
