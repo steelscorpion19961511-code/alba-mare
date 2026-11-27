@@ -29,8 +29,9 @@
         <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
     </button>
 
+	<!-- Шапка -->
     <header>
-    <a href="index.html" class="logo" data-ru="Альба-Маре" data-en="Alba-Mare">  <!-- ===== Декоративный кораблик (статичный) ===== -->
+        <a href="index.html" class="logo"> <!-- ===== Декоративный кораблик (статичный) ===== -->
 <style>
   .deco-ship {
     display: inline-block;
@@ -60,22 +61,26 @@
 
         <div class="nav-right">
             <nav id="main-nav">
+                <a href="reader.html" data-ru="Читалка" data-en="Read">Читалка</a>
                 <a href="universe.html" data-ru="Вселенная" data-en="Universe">Вселенная</a>
                 <a href="shop.html" data-ru="Магазин" data-en="Store">Магазин</a>
                 <a href="index.html#reviews" data-ru="Отзывы" data-en="Reviews">Отзывы</a>
                 <a href="index.html#author" data-ru="Автор" data-en="Author">Автор</a>
-                <a href="index.html#support" class="support-link" data-ru="Поддержать" data-en="Support">Поддержать</a>
+                <a href="index.html#support" class="support-link" data-ru="Поддержать проект" data-en="Support">Поддержать проект</a>
             </nav>
-            <a href="reader.html" class="header-read-btn" data-ru="Читалка" data-en="Read">Читалка</a>
+            
             <div class="lang-switch" onclick="toggleLang()">
                 <div id="lang-ru" class="active">RU</div>
                 <div id="lang-en">EN</div>
             </div>
-            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему" aria-label="Переключить тему">🌙</button>
-            <div class="burger" onclick="toggleMenu()" aria-label="Меню"><span></span><span></span><span></span></div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Переключить тему">🌙</button>
+            <div class="burger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </header>
-
+<!--Конец шапки-->
+	
     <div class="hero">
         <div class="hero-text" data-aos="fade-right">
             <div class="hero-subtitle" data-ru="Приключенческая повесть. 16+" data-en="Adventure Fantasy">Приключенческая повесть. 16+ </div>
