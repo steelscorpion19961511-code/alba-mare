@@ -539,6 +539,28 @@
     50%      { transform: translateY(-6px) rotate(2deg); }
   }
   @media (max-width: 700px) { .deco-ship { width: 52px; } }
+
+	        /* Фикс белых полос */
+        body { background-color: var(--bg-sand); padding-bottom: 0; }
+        body.dark-mode { background-color: #0b1a26; }
+        body.dark-mode #progress-container { background: rgba(255,255,255,0.1); }
+        body.dark-mode footer { background-color: #0e2130; color: #8899a6; }
+
+        /* Фикс клика по карточкам */
+        .character-inline-card,
+        .artifact-inline-card,
+        .city-inline-card,
+        .place-inline-card {
+            pointer-events: auto;
+            z-index: 1;
+        }
+        .character-inline-card .card-overlay,
+        .artifact-inline-card .card-overlay,
+        .city-inline-card .card-overlay,
+        .place-inline-card .card-overlay {
+            pointer-events: none;
+        }
+	
 </style>
 
 <div class="deco-ship" aria-hidden="true">
