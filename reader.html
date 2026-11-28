@@ -55,40 +55,8 @@
         .hidden-artifact:hover span, .hidden-artifact.found span { filter: grayscale(0%); }
 
         /* ========================================= */
-        /* --- БОКОВАЯ ПАНЕЛЬ ВЫБОРА КНИГИ --- */
-        /* ========================================= */
-        .book-switcher {
-            position: fixed;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-            z-index: 2900;
-            background: rgba(252, 250, 245, 0.97);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            padding: 10px 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 6px;
-            transition: all 0.3s;
-        }
-        .book-switcher-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            text-align: center;
-            font-weight: 700;
-            margin-bottom: 6px;
-            width: 100%;
-            line-height: 1.3;
-        }
-        .book-switcher-btn {
+        /* --- КНОПКИ ВЫБОРА КНИГИ (страница «Книги») --- */
+        /* ========================================= */.book-switcher-btn {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -120,9 +88,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        body.dark-mode .book-switcher { background: rgba(17, 34, 51, 0.97); border-color: #2a3f4d; }
-        body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
+body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
         body.dark-mode .book-switcher-btn.active { background: #0e2130; border-color: var(--accent-sand); color: var(--accent-sand); }
 
 
@@ -320,15 +286,6 @@
         .chapter-nav button:hover { color: var(--accent-red); }
         .chapter-nav button:disabled { color: var(--border-color); cursor: not-allowed; }
 
-        .chapter-cta { background: var(--bg-paper); border: 2px dashed var(--accent-sand); padding: 30px; border-radius: 8px; text-align: center; margin: 20px 0 50px 0; font-family: 'Montserrat', sans-serif; }
-        .chapter-cta h4 { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--accent-sea); margin-bottom: 10px; }
-        .chapter-cta p { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; text-indent: 0; }
-        .cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .cta-buttons .btn { padding: 10px 20px; font-size: 12px; }
-        
-        body.dark-mode .chapter-cta { background: #1a2f3a; border-color: #2a3f4d; }
-        body.dark-mode .chapter-cta h4 { color: var(--accent-sand); }
-        body.dark-mode .chapter-cta p { color: #8899a6; }
 
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 26, 38, 0.7); backdrop-filter: blur(5px); z-index: 4000; justify-content: center; align-items: center; }
         .modal-content { background: var(--bg-paper); padding: 40px; border-radius: 8px; max-width: 500px; width: 90%; text-align: center; position: relative; border: 1px solid var(--accent-sand); }
@@ -361,6 +318,11 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
+    
+        /* --- ПАНЕЛЬ ИНСТРУМЕНТОВ: ГОРИЗОНТАЛЬНАЯ, У МЕНЮ --- */
+        .floating-controls { flex-direction: row; align-items: center; gap: 10px; top: 84px; right: 16px; transform: none; }
+        .floating-controls .right-zone { flex-direction: row; align-items: center; }
+
     </style>
 </head>
 <body>
@@ -371,23 +333,6 @@
     <header id="site-header"></header>
 <script src="header.js"></script>
 
-    <!-- Боковая панель выбора книги -->
-    <div class="book-switcher" id="book-switcher">
-        <div class="book-switcher-title">Цикл: свет, рождённый морем</div>
-        <button class="book-switcher-btn active" data-book="1" onclick="switchBook(1)">
-            <span class="book-num">1</span>
-            <span class="book-label">Август Фьорд</span>
-        </button>
-        <button class="book-switcher-btn" data-book="2" onclick="switchBook(2)">
-            <span class="book-num">2</span>
-            <span class="book-label">Восточный ветер</span>
-        </button>
-        <button class="book-switcher-btn" data-book="3" onclick="switchBook(3)">
-            <span class="book-num">3</span>
-            <span class="book-label">Там, где рождается холод</span>
-        </button>
-    </div>
-	
     <!-- Панель инструментов -->
     <div class="floating-controls">
         <div class="left-zone">
@@ -397,6 +342,7 @@
         <div class="right-zone">
             <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление">📖 <span>Оглавление</span></button>
             <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция">🏆 <span>Коллекция</span></button>
+            <button class="tool-btn" onclick="showPage('books-page')" title="Книги">📚 <span>Книги</span></button>
             <div class="font-sizer">
                 <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
                 <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
@@ -409,6 +355,28 @@
     <div class="reader-page" id="toc-page">
         <div class="page-header"><h2>Оглавление</h2><p>Выберите главу для чтения</p></div>
         <div class="toc-list" id="toc-list"></div>
+        <button class="back-to-reading-btn" onclick="hideAllPages()">
+            <span>← Вернуться к чтению</span>
+        </button>
+    </div>
+
+    <!-- Книги -->
+    <div class="reader-page" id="books-page">
+        <div class="page-header"><h2>Книги</h2><p>Цикл: свет, рождённый морем</p></div>
+        <div class="books-list" style="display: flex; flex-direction: column; gap: 10px; max-width: 420px; margin: 0 auto; width: 100%; padding: 0 20px;">
+            <button class="book-switcher-btn" data-book="1" onclick="switchBook(1)">
+                <span class="book-num">1</span>
+                <span class="book-label">Август Фьорд</span>
+            </button>
+            <button class="book-switcher-btn" data-book="2" onclick="switchBook(2)">
+                <span class="book-num">2</span>
+                <span class="book-label">Восточный ветер</span>
+            </button>
+            <button class="book-switcher-btn" data-book="3" onclick="switchBook(3)">
+                <span class="book-num">3</span>
+                <span class="book-label">Там, где рождается холод</span>
+            </button>
+        </div>
         <button class="back-to-reading-btn" onclick="hideAllPages()">
             <span>← Вернуться к чтению</span>
         </button>
@@ -441,39 +409,10 @@
             <button id="btn-next" onclick="changeChapter(1)">Следующая глава →</button>
         </div>
 		
-        <div class="chapter-cta">
-            <h4>Понравилась глава?</h4>
-            <p>Поддержите автора — это помогает писать продолжение быстрее! А если хотите поделиться — нажмите на кнопку ниже.</p>
-            
-            <div class="cta-buttons">
-                <a href="index.html#support" class="btn btn-red">Поддержать автора</a>
-                <button onclick="openFeedbackModal()" class="btn" style="background: transparent; border: 2px solid var(--accent-sea); color: var(--accent-sea);">Оставить отзыв</button>
-                <button onclick="toggleShareMenu()" class="btn btn-share-toggle" id="share-toggle-btn">Поделиться главой</button>
-            </div>
-
-            <div class="share-menu" id="share-menu">
-                <a href="#" onclick="shareVK(event)" class="share-btn share-vk" title="ВКонтакте">ВК</a>
-                <a href="#" onclick="shareTelegram(event)" class="share-btn share-tg" title="Telegram">Telegram</a>
-                <button onclick="copyLink(event)" class="share-btn share-copy" id="share-copy-btn">Копировать ссылку</button>
-            </div>
-        </div>
+        
     </div>
 
     <!-- Модалки -->
-    <div class="modal-overlay" id="feedback-modal" onclick="closeFeedbackModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeFeedbackModal(event)">&times;</span>
-            <h3>Ваш отзыв</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Расскажите, что вы думаете о книге. Ваше мнение очень важно!</p>
-            <form onsubmit="event.preventDefault(); alert('Спасибо за отзыв!'); closeFeedbackModal(); this.reset();">
-                <input type="text" placeholder="Ваше имя / Your name" required>
-                <input type="email" placeholder="Ваш Email / Your email" required>
-                <textarea placeholder="Ваш отзыв... / Your review..." required></textarea>
-                <button type="submit">Отправить отзыв</button>
-            </form>
-        </div>
-    </div>
-
     <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeResumeModal(event)">&times;</span>
@@ -560,7 +499,7 @@
         // 4. ПЕРЕКЛЮЧЕНИЕ КНИГИ
         // ==========================================
         function switchBook(bookNum) {
-            if (bookNum === currentBook) return;
+            if (bookNum === currentBook) { hideAllPages(); return; }
             currentBook = bookNum;
             localStorage.setItem('alba-mare-current-book', bookNum);
             updateBookSwitcherUI();
@@ -572,6 +511,7 @@
             const startChapter = (savedChapter !== null && parseInt(savedChapter) > 0) ? parseInt(savedChapter) : 0;
 
             loadChapterList(startChapter).then((loaded) => {
+                hideAllPages();
                 if (loaded && startChapter > 0) {
                     showResumeModal(startChapter);
                 }
@@ -945,74 +885,11 @@
         // ==========================================
         // 10. ОСТАЛЬНОЕ
         // ==========================================
-		
-		function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
-        function closeFeedbackModal(event) { if (!event || event.target.id === 'feedback-modal' || event.target.classList.contains('close-modal')) { document.getElementById('feedback-modal').style.display = 'none'; } }
-        function openFeedbackModal() { document.getElementById('feedback-modal').style.display = 'flex'; }
+        
 
         // ==========================================
-        // 11. ПОДЕЛИТЬСЯ
-        // ==========================================
-        function toggleShareMenu() {
-            const menu = document.getElementById('share-menu');
-            const btn = document.getElementById('share-toggle-btn');
-            
-            menu.classList.toggle('active');
-            
-            if (menu.classList.contains('active')) {
-                btn.innerText = 'Скрыть';
-                btn.style.background = 'transparent';
-                btn.style.color = 'var(--accent-sea)';
-            } else {
-                btn.innerText = 'Поделиться главой';
-                btn.style.background = 'var(--accent-sea)';
-                btn.style.color = 'white';
-            }
-        }
-
-        function getShareUrl() {
-            const chapterTitle = document.querySelector('.reader-content h2')?.innerText || 'Август Фьорд';
-            const baseUrl = window.location.origin + window.location.pathname;
-            return { url: baseUrl, title: `${chapterTitle} — Август Фьорд` };
-        }
-
-        function shareVK(event) {
-            event.preventDefault();
-            const { url, title } = getShareUrl();
-            const vkUrl = `https://vk.com/share.php?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
-            window.open(vkUrl, '_blank', 'width=600,height=400');
-        }
-
-        function shareTelegram(event) {
-            event.preventDefault();
-            const { url, title } = getShareUrl();
-            const tgUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
-            window.open(tgUrl, '_blank', 'width=600,height=400');
-        }
-
-        function copyLink(event) {
-            if (event) event.preventDefault();
-            const { url } = getShareUrl();
-            const btn = document.getElementById('share-copy-btn');
-            
-            navigator.clipboard.writeText(url).then(() => {
-                const originalText = btn.innerText;
-                btn.innerText = '✓ Скопировано!';
-                btn.style.backgroundColor = 'var(--shop-green)';
-                btn.style.borderColor = 'var(--shop-green)';
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.backgroundColor = '';
-                    btn.style.borderColor = '';
-                }, 2000);
-            }).catch(err => {
-                console.error('Не удалось скопировать:', err);
-                alert('Не удалось скопировать ссылку.');
-            });
-        }
-
-        // ==========================================
-        // 12. ЖИРНОСТЬ ШРИФМА
+        
+// 12. ЖИРНОСТЬ ШРИФМА
         // ==========================================
         let readerBold = localStorage.getItem('alba-mare-bold') === 'true';
 
@@ -1038,6 +915,8 @@
         // 13. ИНИЦИАЛИЗАЦИЯ
         // ==========================================
         window.onload = async function() {
+
+            if (!BOOKS[currentBook]) { currentBook = 1; localStorage.setItem('alba-mare-current-book', '1'); }
 
             applyFontSettings();
             updateBookSwitcherUI();
