@@ -476,3 +476,23 @@ body.dark-mode .status-badge.done { color: #7fd48a; border-color: rgba(127, 212,
   0%, 100% { transform: translateY(0) rotate(-2deg); }
   50%      { transform: translateY(-6px) rotate(2deg); }
 }
+
+/* --- ПОДДЕРЖКА: СБП, ТЕЛЕФОН, QR --- */
+.sbp-btn { display: inline-block; margin: 12px 0 4px; padding: 16px 36px;
+    background: var(--shop-green); color: #fff; text-decoration: none;
+    font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    border-radius: 6px; border: 2px solid var(--shop-green); transition: all .3s; }
+.sbp-btn:hover { background: transparent; color: var(--shop-green); }
+.support-sep { margin: 18px 0 8px; color: var(--text-muted); font-size: 14px; }
+.qr-link { display: inline-block; line-height: 0; transition: transform .3s; }
+.qr-link:hover { transform: scale(1.02); }
+
+/* --- ТЁМНАЯ ТЕМА --- */
+body.dark-mode .support-sep { color: #9fb3bd; }
+/* QR остаётся на белой плашке — так его читает любая камера */
+
+@media (max-width: 768px) {
+    .support-main { text-align: center; }
+    .sbp-btn { display: block; width: 100%; }
+    .support-qr { width: 180px; height: 180px; }
+}
