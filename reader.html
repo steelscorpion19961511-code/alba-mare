@@ -55,8 +55,10 @@
         .hidden-artifact:hover span, .hidden-artifact.found span { filter: grayscale(0%); }
 
         /* ========================================= */
-        /* --- КНОПКИ ВЫБОРА КНИГИ (страница «Книги») --- */
-        /* ========================================= */.book-switcher-btn {
+        /* --- БОКОВАЯ ПАНЕЛЬ ВЫБОРА КНИГИ --- */
+        /* ========================================= */
+        
+        .book-switcher-btn {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -88,8 +90,14 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
+        body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
         body.dark-mode .book-switcher-btn.active { background: #0e2130; border-color: var(--accent-sand); color: var(--accent-sand); }
+
+        /* --- СТРАНИЦА "КНИГИ" --- */
+        .books-list { display: flex; flex-direction: column; gap: 12px; max-width: 420px; margin: 0 auto 30px; }
+        .books-list .book-switcher-btn { font-size: 15px; padding: 14px 24px; border-radius: 10px; }
+        .books-list .book-switcher-btn .book-num { font-size: 24px; min-width: 22px; }
+        .books-list .book-switcher-btn .book-label { font-size: 13px; }
 
 
         /* ========================================= */
@@ -286,7 +294,6 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         .chapter-nav button:hover { color: var(--accent-red); }
         .chapter-nav button:disabled { color: var(--border-color); cursor: not-allowed; }
 
-
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(11, 26, 38, 0.7); backdrop-filter: blur(5px); z-index: 4000; justify-content: center; align-items: center; }
         .modal-content { background: var(--bg-paper); padding: 40px; border-radius: 8px; max-width: 500px; width: 90%; text-align: center; position: relative; border: 1px solid var(--accent-sand); }
         .close-modal { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: var(--text-muted); }
@@ -318,11 +325,6 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
-    
-        /* --- ПАНЕЛЬ ИНСТРУМЕНТОВ: ГОРИЗОНТАЛЬНАЯ, У МЕНЮ --- */
-        .floating-controls { flex-direction: row; align-items: center; gap: 10px; top: 84px; right: 16px; transform: none; }
-        .floating-controls .right-zone { flex-direction: row; align-items: center; }
-
     </style>
 </head>
 <body>
@@ -331,8 +333,20 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
 
     <!-- Шапка -->
     <header id="site-header"></header>
-<script src="header.js"></script>
-
+<script src="header.js"></script>        <button class="book-switcher-btn active" data-book="1" onclick="switchBook(1)">
+            <span class="book-num">1</span>
+            <span class="book-label">Август Фьорд</span>
+        </button>
+        <button class="book-switcher-btn" data-book="2" onclick="switchBook(2)">
+            <span class="book-num">2</span>
+            <span class="book-label">Восточный ветер</span>
+        </button>
+        <button class="book-switcher-btn" data-book="3" onclick="switchBook(3)">
+            <span class="book-num">3</span>
+            <span class="book-label">Там, где рождается холод</span>
+        </button>
+    </div>
+	
     <!-- Панель инструментов -->
     <div class="floating-controls">
         <div class="left-zone">
@@ -360,10 +374,27 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         </button>
     </div>
 
+    <!-- Коллекция -->
+    <div class="reader-page" id="collection-page">
+        <div class="page-header"><h2>Коллекция</h2><p>Всё, что вы нашли и встретили в этом мире</p></div>
+        <div class="collection-tabs">
+            <button class="tab-btn active" onclick="switchTab('artifacts', this)">Артефакты</button>
+            <button class="tab-btn" onclick="switchTab('characters', this)">Персонажи</button>
+            <button class="tab-btn" onclick="switchTab('cities', this)">Города</button>
+            <button class="tab-btn" onclick="switchTab('places', this)">Места</button>
+        </div>
+        <div class="tab-content active" id="tab-artifacts"><div class="cards-grid" id="artifacts-grid"></div></div>
+        <div class="tab-content" id="tab-characters"><div class="cards-grid" id="characters-grid"></div></div>
+        <div class="tab-content" id="tab-cities"><div class="cards-grid" id="cities-grid"></div></div>
+        <div class="tab-content" id="tab-places"><div class="cards-grid" id="places-grid"></div></div>
+        <button class="back-to-reading-btn" onclick="hideAllPages()">
+            <span>← Вернуться к чтению</span>
+        </button>
+    </div>
     <!-- Книги -->
     <div class="reader-page" id="books-page">
         <div class="page-header"><h2>Книги</h2><p>Цикл: свет, рождённый морем</p></div>
-        <div class="books-list" style="display: flex; flex-direction: column; gap: 10px; max-width: 420px; margin: 0 auto; width: 100%; padding: 0 20px;">
+        <div class="books-list">
             <button class="book-switcher-btn" data-book="1" onclick="switchBook(1)">
                 <span class="book-num">1</span>
                 <span class="book-label">Август Фьорд</span>
@@ -382,24 +413,6 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         </button>
     </div>
 
-    <!-- Коллекция -->
-    <div class="reader-page" id="collection-page">
-        <div class="page-header"><h2>Коллекция</h2><p>Всё, что вы нашли и встретили в этом мире</p></div>
-        <div class="collection-tabs">
-            <button class="tab-btn active" onclick="switchTab('artifacts', this)">Артефакты</button>
-            <button class="tab-btn" onclick="switchTab('characters', this)">Персонажи</button>
-            <button class="tab-btn" onclick="switchTab('cities', this)">Города</button>
-            <button class="tab-btn" onclick="switchTab('places', this)">Места</button>
-        </div>
-        <div class="tab-content active" id="tab-artifacts"><div class="cards-grid" id="artifacts-grid"></div></div>
-        <div class="tab-content" id="tab-characters"><div class="cards-grid" id="characters-grid"></div></div>
-        <div class="tab-content" id="tab-cities"><div class="cards-grid" id="cities-grid"></div></div>
-        <div class="tab-content" id="tab-places"><div class="cards-grid" id="places-grid"></div></div>
-        <button class="back-to-reading-btn" onclick="hideAllPages()">
-            <span>← Вернуться к чтению</span>
-        </button>
-    </div>
-
     <div class="reader-content" id="reader-text"></div>
 
     <div class="reader-content" id="chapter-footer" style="background: transparent; border: none; box-shadow: none; padding-top: 0;">
@@ -407,13 +420,10 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
             <button id="btn-prev" onclick="changeChapter(-1)">← Предыдущая глава</button>
             <span id="chapter-indicator" style="font-weight: bold; color: var(--accent-sea);"></span>
             <button id="btn-next" onclick="changeChapter(1)">Следующая глава →</button>
-        </div>
-		
-        
+        </div>        </div>
     </div>
 
-    <!-- Модалки -->
-    <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
+    <!-- Модалки -->    <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeResumeModal(event)">&times;</span>
             <h3>С возвращением!</h3>
@@ -436,6 +446,7 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         };
 
         let currentBook = parseInt(localStorage.getItem('alba-mare-current-book') || '1');
+        if (!(currentBook in BOOKS)) currentBook = 1; // защита от устаревшего сохранения
 
         // ==========================================
         // 2. ДАННЫЕ КОЛЛЕКЦИИ
@@ -502,7 +513,6 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
             if (bookNum === currentBook) { hideAllPages(); return; }
             currentBook = bookNum;
             localStorage.setItem('alba-mare-current-book', bookNum);
-            updateBookSwitcherUI();
             bookChapters = [];
             currentChapter = 0;
             readChapters = loadSet('alba-mare-read-chapters-' + currentBook);
@@ -511,16 +521,10 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
             const startChapter = (savedChapter !== null && parseInt(savedChapter) > 0) ? parseInt(savedChapter) : 0;
 
             loadChapterList(startChapter).then((loaded) => {
-                hideAllPages();
                 if (loaded && startChapter > 0) {
                     showResumeModal(startChapter);
                 }
-            });
-        }
-
-        function updateBookSwitcherUI() {
-            document.querySelectorAll('.book-switcher-btn').forEach(btn => {
-                btn.classList.toggle('active', parseInt(btn.dataset.book) === currentBook);
+                hideAllPages();
             });
         }
 
@@ -863,8 +867,14 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         function updateProgressBar() { const totalHeight = document.documentElement.scrollHeight - window.innerHeight; const progressBar = document.getElementById('progress-bar'); if (totalHeight > 0) { const scrollPercentage = (window.scrollY / totalHeight) * 100; progressBar.style.width = scrollPercentage + '%'; } else { progressBar.style.width = '100%'; } }
         window.addEventListener('scroll', updateProgressBar);
 
-        function showPage(pageId) { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); document.getElementById(pageId).classList.add('active'); if (pageId === 'toc-page') renderTOC(); if (pageId === 'collection-page') renderCollection(); }
+        function showPage(pageId) { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); document.getElementById(pageId).classList.add('active'); if (pageId === 'toc-page') renderTOC(); if (pageId === 'collection-page') renderCollection(); if (pageId === 'books-page') renderBooksPage(); }
         function hideAllPages() { document.querySelectorAll('.reader-page').forEach(page => page.classList.remove('active')); }
+
+        function renderBooksPage() {
+            document.querySelectorAll('#books-page .book-switcher-btn').forEach(btn => {
+                btn.classList.toggle('active', parseInt(btn.dataset.book) === currentBook);
+            });
+        }
 
         function renderTOC() {
             const list = document.getElementById('toc-list'); list.innerHTML = '';
@@ -885,11 +895,8 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         // ==========================================
         // 10. ОСТАЛЬНОЕ
         // ==========================================
-        
-
         // ==========================================
-        
-// 12. ЖИРНОСТЬ ШРИФМА
+        // 12. ЖИРНОСТЬ ШРИФМА
         // ==========================================
         let readerBold = localStorage.getItem('alba-mare-bold') === 'true';
 
@@ -916,10 +923,7 @@ body.dark-mode .book-switcher-btn { background: #1a2f3a; border-color: #2a3f4d; 
         // ==========================================
         window.onload = async function() {
 
-            if (!BOOKS[currentBook]) { currentBook = 1; localStorage.setItem('alba-mare-current-book', '1'); }
-
             applyFontSettings();
-            updateBookSwitcherUI();
 
             const savedChapter = localStorage.getItem(BOOKS[currentBook].progressKey);
             const startChapter = (savedChapter !== null && parseInt(savedChapter) > 0) ? parseInt(savedChapter) : 0;
