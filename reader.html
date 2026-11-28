@@ -325,6 +325,44 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 
+        /* ========================================= */
+        /* --- ПАНЕЛЬ ИНСТРУМЕНТОВ (инлайн: главнее внешнего style.css) --- */
+        /* ========================================= */
+        .floating-controls {
+            position: fixed !important;
+            top: 180px !important;
+            right: 80px !important;
+            transform: none !important;
+            z-index: 3000;
+            background: rgba(252, 250, 245, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: max-content;
+        }
+        .fc-top { display: flex; align-items: center; gap: 20px; }
+        .fc-info { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+        .chapter-progress-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: var(--accent-sea); white-space: nowrap; line-height: 1.2; }
+        .fc-icons { display: flex; align-items: center; gap: 6px; }
+        .floating-controls .tool-btn { background: transparent; border: 1px solid transparent; padding: 8px; border-radius: 8px; cursor: pointer; font-size: 18px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; width: 38px; height: 38px; }
+        .floating-controls .tool-btn:hover { background: var(--bg-paper); border-color: var(--border-color); color: var(--accent-sea); transform: scale(1.1); }
+        .fc-fonts { display: flex; align-items: center; justify-content: center; gap: 8px; border-top: 1px solid var(--border-color); padding-top: 10px; }
+        .fc-fonts button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-paper); color: var(--text-main); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .fc-fonts button:hover { background: var(--accent-sand); color: #fff; border-color: var(--accent-sand); }
+        body.dark-mode .floating-controls { background: rgba(17, 34, 51, 0.95); border-color: #2a3f4d; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
+        body.dark-mode .book-progress-label, body.dark-mode .chapter-progress-label { color: var(--accent-sand); }
+        body.dark-mode .floating-controls .tool-btn { color: #8899a6; }
+        body.dark-mode .floating-controls .tool-btn:hover { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
+        body.dark-mode .fc-fonts { border-top-color: #2a3f4d; }
+        body.dark-mode .fc-fonts button { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
+        body.dark-mode .fc-fonts button:hover { background: var(--accent-sand); color: #0b1a26; border-color: var(--accent-sand); }
+
     </style>
 </head>
 <body>
@@ -337,19 +375,21 @@
 	
     <!-- Панель инструментов -->
     <div class="floating-controls">
-        <div class="left-zone">
-            <span class="book-progress-label" id="book-progress-top"></span>
-            <span class="chapter-progress-label" id="chapter-progress-top"></span>
-        </div>
-        <div class="right-zone">
-            <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление">📖 <span>Оглавление</span></button>
-            <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция">🏆 <span>Коллекция</span></button>
-            <button class="tool-btn" onclick="showPage('books-page')" title="Книги">📚 <span>Книги</span></button>
-            <div class="font-sizer">
-                <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
-                <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
-                <button onclick="toggleFontWeight()" id="font-weight-btn" title="Жирный текст" style="font-weight: 700;">B</button>
+        <div class="fc-top">
+            <div class="fc-info">
+                <span class="book-progress-label" id="book-progress-top"></span>
+                <span class="chapter-progress-label" id="chapter-progress-top"></span>
             </div>
+            <div class="fc-icons">
+                <button class="tool-btn" onclick="showPage('books-page')" title="Книги">📚</button>
+                <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление">📖</button>
+                <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция">🏆</button>
+            </div>
+        </div>
+        <div class="fc-fonts">
+            <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
+            <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
+            <button onclick="toggleFontWeight()" id="font-weight-btn" title="Жирный текст" style="font-weight: 700;">B</button>
         </div>
     </div>
 
@@ -408,8 +448,7 @@
             <button id="btn-prev" onclick="changeChapter(-1)">← Предыдущая глава</button>
             <span id="chapter-indicator" style="font-weight: bold; color: var(--accent-sea);"></span>
             <button id="btn-next" onclick="changeChapter(1)">Следующая глава →</button>
-        </div>        </div>
-    </div>
+        </div>    </div>
 
     <!-- Модалки -->    <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">

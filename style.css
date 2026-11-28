@@ -210,25 +210,7 @@ footer { background-color: #e8e2d5; padding: 40px 20px; text-align: center; bord
 footer p { color: var(--text-muted); font-size: 14px; margin-bottom: 10px; }
 footer a { color: var(--accent-sea); text-decoration: none; font-weight: 600; }
 
-/* ========================================= */
-/* --- ПАНЕЛЬ ИНСТРУМЕНТОВ ЧИТАЛКИ (ПАРЯЩАЯ) --- */
-/* ========================================= */
-.floating-controls { position: fixed !important; top: 180px !important; right: 80px !important; transform: none !important; z-index: 3000; background: rgba(252, 250, 245, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 14px; display: flex !important; flex-direction: row !important; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; min-width: 300px; }
-.floating-controls .left-zone, .floating-controls .right-zone { display: flex; flex-direction: row; align-items: center; gap: 12px; width: auto; }
-.floating-controls .left-zone { border-bottom: none; padding-bottom: 0; }
-.chapter-progress-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: var(--accent-sea); text-align: center; white-space: normal; line-height: 1.2; padding: 0; }
-.floating-controls .tool-btn { background: transparent; border: 1px solid transparent; padding: 8px; border-radius: 8px; cursor: pointer; font-size: 18px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; width: 40px; height: 40px; }
-.floating-controls .tool-btn span { display: none; }
-.floating-controls .tool-btn:hover { background: var(--bg-paper); border-color: var(--border-color); color: var(--accent-sea); transform: scale(1.1); }
-.font-sizer { display: flex !important; flex-direction: row !important; gap: 8px; margin-left: 0; border-top: 1px solid var(--border-color); padding-top: 10px; width: 100%; align-items: center; justify-content: center; }
-.font-sizer button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-paper); color: var(--text-main); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-.font-sizer button:hover { background: var(--accent-sand); color: #fff; border-color: var(--accent-sand); }
-body.dark-mode .floating-controls { background: rgba(17, 34, 51, 0.95); border-color: #2a3f4d; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
-body.dark-mode .chapter-progress-label { color: var(--accent-sand); }
-body.dark-mode .floating-controls .tool-btn { color: #8899a6; }
-body.dark-mode .floating-controls .tool-btn:hover { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
-body.dark-mode .font-sizer button { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
-body.dark-mode .font-sizer button:hover { background: var(--accent-sand); color: #0b1a26; border-color: var(--accent-sand); }
+/* Панель инструментов читалки: стили панели теперь инлайново в reader.html */
 
 /* ========================================= */
 /* --- МОДАЛЬНОЕ ОКНО "СПАСИБО" И ИСКРЫ --- */
