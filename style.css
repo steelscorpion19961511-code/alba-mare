@@ -134,7 +134,6 @@ section { padding: 100px 10%; scroll-margin-top: 100px; }
 .book-card h3 { font-size: 26px; color: var(--text-main); margin-bottom: 10px; }
 .book-status { display: inline-block; padding: 3px 10px; background-color: rgba(179, 57, 57, 0.1); color: var(--accent-red); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; margin-bottom: 15px; font-weight: 600; align-self: center; }
 .book-status.coming { background-color: rgba(42, 127, 143, 0.1); color: var(--accent-sea); }
-body.dark-mode .book-status.coming { color: var(--support-gold); }
 .book-card p { color: var(--text-muted); font-size: 15px; margin-bottom: 25px; flex-grow: 1; }
 .placeholder-cover { width: 100%; max-width: 220px; height: 330px; background: var(--bg-sand); border: 2px dashed var(--border-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; border-radius: 2px; color: var(--text-muted); font-style: italic; }
 .books-note { text-align: center; margin-top: 60px; padding: 0 20px; }
@@ -203,8 +202,19 @@ body.dark-mode .book-status.coming { color: var(--support-gold); }
 .copy-box button:hover { background: #fff; }
 .copy-tooltip { position: absolute; top: -25px; right: 0; background: #27ae60; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
 .copy-tooltip.show { opacity: 1; }
-.support-link-btn { display: inline-block; width: 100%; text-align: center; background: transparent; color: var(--support-gold); border: 1px solid var(--support-gold); padding: 10px; border-radius: 4px; text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.3s; margin-top: auto; }
-.support-link-btn:hover { background: var(--support-gold); color: #000; }
+.support-card-inner { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; }
+.support-main { display: flex; flex-direction: column; gap: 15px; }
+.bank-app-btn { background: var(--support-gold); color: #06121a; border: none; padding: 12px 18px; border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s, transform 0.3s; }
+.bank-app-btn:hover { background: #fff; transform: translateY(-2px); }
+.bank-fallback { font-size: 13px; color: #a0b2c6; line-height: 1.6; background: rgba(39, 174, 96, 0.12); border-left: 3px solid #27ae60; padding: 10px 14px; border-radius: 4px; opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.4s ease, max-height 0.4s ease; }
+.bank-fallback.show { opacity: 1; max-height: 120px; }
+.qr-hint { font-size: 12px; color: #7d8f9e; font-style: italic; }
+.qr-side { display: flex; justify-content: center; align-items: center; }
+.support-qr { width: 180px; max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.35); }
+@media (min-width: 993px) {
+    .support-card-inner { grid-template-columns: 1.2fr 0.8fr; }
+    .qr-hint { display: none; }
+}
 
 /* --- ПОДВАЛ --- */
 footer { background-color: #e8e2d5; padding: 40px 20px; text-align: center; border-top: 1px solid var(--border-color); }
@@ -288,22 +298,15 @@ body.dark-mode .author-image { box-shadow: 15px 15px 0 rgba(212, 175, 55, 0.15);
 body.dark-mode .quote { border-left-color: var(--accent-sand); color: #e0e0e0; }
 body.dark-mode footer { background: #0e2130; border-color: #2a3f4d; }
 body.dark-mode footer p { color: #8899a6; }
-body.dark-mode .universe-section.alt { background-color: #0e2130; }
-body.dark-mode .cycle-card:hover { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
-body.dark-mode .cycle-card.main h3 { color: var(--accent-sand); }
-body.dark-mode .cycle-card .btn-small { color: var(--accent-sand); border-bottom-color: var(--accent-sand); }
-body.dark-mode .cycle-card .btn-small:hover { color: var(--accent-red); border-bottom-color: var(--accent-red); }
-body.dark-mode .universe-quote { background: rgba(42, 127, 143, 0.12); border-left-color: var(--accent-sand); }
+/* REMOVED: body.dark-mode .universe-section.alt — класс не используется */
+/* REMOVED: body.dark-mode .cycle-card — класс не используется */
+/* REMOVED: body.dark-mode .universe-quote — класс не используется */
 body.dark-mode .books-section { background-color: #0e2130; box-shadow: inset 0 20px 30px -30px rgba(0,0,0,0.4), inset 0 -20px 30px -30px rgba(0,0,0,0.4); }
 /* REMOVED: body.dark-mode .hero { background: var(--bg-sand); } — избыточно, конфликтует с ::before/::after */
 body.dark-mode .hero::before { filter: blur(24px) brightness(0.35) saturate(0.8); }
 body.dark-mode .hero::after { background: linear-gradient(to right, rgba(11, 26, 38, 0.92) 0%, rgba(11, 26, 38, 0.78) 50%, rgba(11, 26, 38, 0.92) 100%); }
-/* universe-section.paper перекрашивается автоматически через var(--bg-paper) */
-body.dark-mode .universe-hero {
-    background: linear-gradient(to bottom, rgba(11, 26, 38, 0.95), rgba(11, 26, 38, 0.85)),
-                url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1920&q=80') center/cover;
-}
-body.dark-mode .universe-hero h1 { color: var(--accent-sand); }
+/* REMOVED: body.dark-mode .universe-section.paper — класс не используется */
+/* REMOVED: body.dark-mode .universe-hero — класс не используется */
 
 /* ========================================= */
 /* --- АДАПТИВНОСТЬ --- */
