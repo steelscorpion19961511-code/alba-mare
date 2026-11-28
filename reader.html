@@ -337,21 +337,19 @@
 	
     <!-- Панель инструментов -->
     <div class="floating-controls">
-        <div class="toolbar-row">
-            <div class="toolbar-info">
-                <span class="book-progress-label" id="book-progress-top"></span>
-                <span class="chapter-progress-label" id="chapter-progress-top"></span>
-            </div>
-            <div class="toolbar-icons">
-                <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление">📖 <span>Оглавление</span></button>
-                <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция">🏆 <span>Коллекция</span></button>
-                <button class="tool-btn" onclick="showPage('books-page')" title="Книги">📚 <span>Книги</span></button>
-            </div>
+        <div class="left-zone">
+            <span class="book-progress-label" id="book-progress-top"></span>
+            <span class="chapter-progress-label" id="chapter-progress-top"></span>
         </div>
-        <div class="font-sizer">
-            <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
-            <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
-            <button onclick="toggleFontWeight()" id="font-weight-btn" title="Жирный текст" style="font-weight: 700;">B</button>
+        <div class="right-zone">
+            <button class="tool-btn" onclick="showPage('toc-page')" title="Оглавление">📖 <span>Оглавление</span></button>
+            <button class="tool-btn" onclick="showPage('collection-page')" title="Коллекция">🏆 <span>Коллекция</span></button>
+            <button class="tool-btn" onclick="showPage('books-page')" title="Книги">📚 <span>Книги</span></button>
+            <div class="font-sizer">
+                <button onclick="changeFontSize(-2)" title="Уменьшить шрифт">A−</button>
+                <button onclick="changeFontSize(2)" title="Увеличить шрифт">A+</button>
+                <button onclick="toggleFontWeight()" id="font-weight-btn" title="Жирный текст" style="font-weight: 700;">B</button>
+            </div>
         </div>
     </div>
 
@@ -410,11 +408,10 @@
             <button id="btn-prev" onclick="changeChapter(-1)">← Предыдущая глава</button>
             <span id="chapter-indicator" style="font-weight: bold; color: var(--accent-sea);"></span>
             <button id="btn-next" onclick="changeChapter(1)">Следующая глава →</button>
-        </div>
+        </div>        </div>
     </div>
 
-    <!-- Модалки -->
-    <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
+    <!-- Модалки -->    <div class="modal-overlay" id="resume-modal" onclick="closeResumeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeResumeModal(event)">&times;</span>
             <h3>С возвращением!</h3>

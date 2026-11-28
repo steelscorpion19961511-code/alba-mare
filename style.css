@@ -21,6 +21,7 @@ body {
     color: var(--text-main);
     line-height: 1.7;
     overflow-x: hidden;
+    background-image:
 }
 
 h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
@@ -212,14 +213,14 @@ footer a { color: var(--accent-sea); text-decoration: none; font-weight: 600; }
 /* ========================================= */
 /* --- ПАНЕЛЬ ИНСТРУМЕНТОВ ЧИТАЛКИ (ПАРЯЩАЯ) --- */
 /* ========================================= */
-.floating-controls { position: fixed; top: 50%; right: 20px; transform: translateY(-50%); z-index: 3000; background: rgba(252, 250, 245, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px 10px; display: flex; flex-direction: column; align-items: center; gap: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; }
-.floating-controls .left-zone, .floating-controls .right-zone { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
-.floating-controls .left-zone { border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+.floating-controls { position: fixed !important; top: 180px !important; right: 80px !important; transform: none !important; z-index: 3000; background: rgba(252, 250, 245, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 14px; display: flex !important; flex-direction: row !important; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; min-width: 300px; }
+.floating-controls .left-zone, .floating-controls .right-zone { display: flex; flex-direction: row; align-items: center; gap: 12px; width: auto; }
+.floating-controls .left-zone { border-bottom: none; padding-bottom: 0; }
 .chapter-progress-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: var(--accent-sea); text-align: center; white-space: normal; line-height: 1.2; padding: 0; }
 .floating-controls .tool-btn { background: transparent; border: 1px solid transparent; padding: 8px; border-radius: 8px; cursor: pointer; font-size: 18px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; width: 40px; height: 40px; }
 .floating-controls .tool-btn span { display: none; }
 .floating-controls .tool-btn:hover { background: var(--bg-paper); border-color: var(--border-color); color: var(--accent-sea); transform: scale(1.1); }
-.font-sizer { display: flex; flex-direction: column; gap: 5px; margin-left: 0; border-top: 1px solid var(--border-color); padding-top: 10px; width: 100%; align-items: center; }
+.font-sizer { display: flex !important; flex-direction: row !important; gap: 8px; margin-left: 0; border-top: 1px solid var(--border-color); padding-top: 10px; width: 100%; align-items: center; justify-content: center; }
 .font-sizer button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-paper); color: var(--text-main); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
 .font-sizer button:hover { background: var(--accent-sand); color: #fff; border-color: var(--accent-sand); }
 body.dark-mode .floating-controls { background: rgba(17, 34, 51, 0.95); border-color: #2a3f4d; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
@@ -229,9 +230,6 @@ body.dark-mode .floating-controls .tool-btn:hover { background: #1a2f3a; border-
 body.dark-mode .font-sizer button { background: #1a2f3a; border-color: #2a3f4d; color: var(--accent-sand); }
 body.dark-mode .font-sizer button:hover { background: var(--accent-sand); color: #0b1a26; border-color: var(--accent-sand); }
 
-/* ========================================= */
-/* --- ВЫПАДАЮЩЕЕ МЕНЮ "ПОДЕЛИТЬСЯ" --- */
-/* ========================================= */
 /* ========================================= */
 /* --- МОДАЛЬНОЕ ОКНО "СПАСИБО" И ИСКРЫ --- */
 /* ========================================= */
@@ -460,59 +458,10 @@ body.dark-mode .status-badge.done { color: #7fd48a; border-color: rgba(127, 212,
     margin-bottom: 10px;
 }
 
-
 /* --- Кораблик в логотипе (общий) --- */
 .deco-ship { display: inline-block; width: 72px; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25)); }
 .deco-ship svg { display: block; width: 60%; height: auto; animation: deco-ship-bob 5s ease-in-out infinite; }
 @keyframes deco-ship-bob {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
   50%      { transform: translateY(-6px) rotate(2deg); }
-}
-
-
-/* ========================================= */
-/* --- ПАНЕЛЬ ИНСТРУМЕНТОВ: ДВУХЪЯРУСНАЯ РАСКЛАДКА --- */
-/* Верхний ярус: инфо о книге (слева) + кнопки-иконки (справа).
-   Линия — на всю ширину панели. Нижний ярус: A− A+ B по центру. */
-/* ========================================= */
-.floating-controls {
-    position: fixed !important;
-    top: 180px !important;
-    right: 80px !important;
-    transform: none !important;
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    row-gap: 8px;
-    column-gap: 6px;
-    padding: 12px 14px;
-}
-.floating-controls .left-zone {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    width: auto !important;
-    gap: 2px;
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-right: auto;
-}
-.floating-controls .right-zone {
-    display: contents !important;
-}
-.floating-controls .tool-btn {
-    order: 1;
-    margin: 0;
-}
-.floating-controls .font-sizer {
-    order: 10;
-    flex-direction: row !important;
-    width: 100% !important;
-    justify-content: center !important;
-    align-items: center;
-    gap: 10px;
-    margin-left: 0;
-    border-top: 1px solid var(--border-color);
-    padding-top: 12px;
-    margin-top: 4px;
 }
